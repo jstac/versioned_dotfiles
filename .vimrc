@@ -20,7 +20,6 @@ Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
 Plugin 'SirVer/ultisnips'           " Ultisnips
 Plugin 'jstac/vim-snippets' 
-Plugin 'bling/vim-airline'          " Airline
 
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
@@ -30,7 +29,6 @@ Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 
 """""""""""""" Basic preferences """""""""""""""
@@ -49,10 +47,8 @@ set smarttab
 set autoindent            " use current level of indent in next line
 set wildmode=longest,list " bash-like tab completion when opening files
 
-
 set foldmethod=indent
 set foldlevel=99
-
 set formatoptions=tqn
 
 
@@ -150,6 +146,7 @@ let g:vimtex_quickfix_ignored_warnings = [
 
 " Always show statusline
 set laststatus=2
+set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 
 """""""""""""" Restructured Text """"""""""""""""

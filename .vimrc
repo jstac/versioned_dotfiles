@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
 Plugin 'SirVer/ultisnips'           " Ultisnips
 Plugin 'jstac/vim-snippets' 
+Plugin 'flazz/vim-colorschemes'
 
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
@@ -66,10 +67,8 @@ if has("gui_running")
 else
     set t_Co=256
     set background=dark
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="high"
-    let g:solarized_termcolors=256
-    colorscheme solarized
+    "colorscheme zenburn
+    colorscheme oceanblack256
 endif
 
 

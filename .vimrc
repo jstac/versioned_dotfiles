@@ -53,6 +53,20 @@ set foldlevel=99
 set formatoptions=tqn
 
 
+"""""""""""" Splits """"""""""""""""""""
+
+" More natural splits (new splits are below or on right)
+"
+set splitbelow
+set splitright
+
+" Moving between splits
+"
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 
 
 """""""""""""" Colors and font """""""""""""""""""
@@ -72,15 +86,12 @@ else
 endif
 
 
-""""""""""""""""" Maps  """""""""""""""""""""""""""""
+""""""""""""""""" General maps  """""""""""""""""""""""""""""
 
 " map of maps
 imap jj <Esc>
 " Q is format paragraph
 map Q {gq}
-" Map shift up and down to page scrolling
-map <S-Up>   <C-E>
-map <S-Down> <C-Y>
 
 
 """"""""""""""""" Leader and related """""""""""""""""""""""
@@ -100,9 +111,7 @@ map <F2> <Esc>:setlocal spell spelllang=en_us<CR>
 map <F3> <Esc>:setlocal nospell<CR>
 " Toggle paste on and off
 map <F4> :set invpaste<CR>
-" Change tabs
-map <C-Right> :tabnext<CR>
-map <C-Left> :tabprev<CR>
+
 
 
 """""""""""""""""" YCM """"""""""""""""""""""""""""""
@@ -130,7 +139,7 @@ let g:vimtex_fold_enabled = 0
 let g:vimtex_fold_envs = 0
 let g:vimtex_motion_enabled = 0
 let g:vimtex_latexmk_continuous = 0
-let g:vimtex_latexmk_background = 0
+let g:vimtex_latexmk_background = 1
 let g:vimtex_view_method = 'mupdf'
 let g:vimtex_quickfix_ignored_warnings = [
         \ 'Underfull',

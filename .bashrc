@@ -17,5 +17,6 @@ fi
 
 # helpful to get the right colors in the terminal
 export TERM="screen-256color"
+alias ls='ls --color=auto'
 
 . /home/john/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh

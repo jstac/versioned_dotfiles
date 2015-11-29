@@ -80,9 +80,10 @@ if has("gui_running")
     colorscheme solarized
 else
     set t_Co=256
-    set background=dark
+    colorscheme solarized
+    "set term=screen-256color
     "colorscheme zenburn
-    colorscheme oceanblack256
+    "colorscheme oceanblack256
 endif
 
 

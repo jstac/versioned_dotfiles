@@ -1,9 +1,11 @@
 # versioned_dotfiles
 
-To get everything working nicely, make sure you have a recent version of tmux.
-See, e.g.,
+Remember to install 
 
-https://debiantalk.wordpress.com/2015/08/04/updating-tmux-from-1-9-to-2-0-in-debian-8/
+* zsh
+* https://github.com/jstac/prezto 
+* tmux
+* powerline.
 
 Helpful for powerline:
 

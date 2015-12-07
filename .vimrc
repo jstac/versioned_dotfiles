@@ -115,6 +115,7 @@ map <F2> <Esc>:setlocal spell spelllang=en_us<CR>
 map <F3> <Esc>:setlocal nospell<CR>
 " Toggle paste on and off
 map <F4> :set invpaste<CR>
+map <F5> :set invnumber<CR>
 
 
 

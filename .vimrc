@@ -144,7 +144,7 @@ let g:vimtex_fold_enabled = 0
 let g:vimtex_fold_envs = 0
 let g:vimtex_motion_enabled = 0
 let g:vimtex_latexmk_continuous = 0
-let g:vimtex_latexmk_background = 1
+let g:vimtex_latexmk_background = 0
 let g:vimtex_view_method = 'mupdf'
 let g:vimtex_quickfix_ignored_warnings = [
         \ 'Underfull',

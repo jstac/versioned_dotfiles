@@ -1,7 +1,8 @@
 """
 " John Stachurski's vimrc
 "
-" Comment: Neocomplete is installed outside of Vundle.  See below.
+" Comment: Neocomplete is installed outside of Vundle.  To install
+" cd to .vim/bundle and git clone neocomplete
 "
 """
 
@@ -128,7 +129,26 @@ map <F5> :set invnumber<CR>
 """"""""""""""" Neocomplete """"""""""""""""""""
 
 set rtp+=~/.vim/bundle/neocomplete.vim
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 let g:neocomplete#enable_at_startup = 1
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
 
 
 

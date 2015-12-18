@@ -1,3 +1,10 @@
+"""
+" John Stachurski's vimrc
+"
+" Comment: Neocomplete is installed outside of Vundle.  See below.
+"
+"""
+
 
 """"""""""""""" Vundle stuff up top """"""""""""""
 
@@ -14,12 +21,12 @@ Plugin 'gmarik/Vundle.vim'
 
 """" My list of plugins
 
-Plugin 'Valloric/YouCompleteMe'     " Autocompletion
+Plugin 'jstac/vim-snippets' 
+Plugin 'SirVer/ultisnips'           " Ultisnips
+
 Plugin 'lervag/vimtex'              " vimtex
 Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
-Plugin 'SirVer/ultisnips'           " Ultisnips
-Plugin 'jstac/vim-snippets' 
 Plugin 'flazz/vim-colorschemes'
 
 Plugin 'jnurmine/Zenburn'
@@ -118,11 +125,11 @@ map <F4> :set invpaste<CR>
 map <F5> :set invnumber<CR>
 
 
+""""""""""""""" Neocomplete """"""""""""""""""""
 
-"""""""""""""""""" YCM """"""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/neocomplete.vim
+let g:neocomplete#enable_at_startup = 1
 
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 """"""""""""" Ultisnips """"""""""""""""""""""""

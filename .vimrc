@@ -1,3 +1,11 @@
+"""
+" John Stachurski's vimrc
+"
+" Comment: Neocomplete is installed outside of Vundle.  To install
+" cd to .vim/bundle and git clone neocomplete
+"
+"""
+
 
 """"""""""""""" Vundle stuff up top """"""""""""""
 
@@ -14,12 +22,12 @@ Plugin 'gmarik/Vundle.vim'
 
 """" My list of plugins
 
-Plugin 'Valloric/YouCompleteMe'     " Autocompletion
+Plugin 'jstac/vim-snippets' 
+Plugin 'SirVer/ultisnips'           " Ultisnips
+
 Plugin 'lervag/vimtex'              " vimtex
 Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
-Plugin 'SirVer/ultisnips'           " Ultisnips
-Plugin 'jstac/vim-snippets' 
 Plugin 'flazz/vim-colorschemes'
 
 Plugin 'jnurmine/Zenburn'
@@ -66,6 +74,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"""""""""""" Buffers """"""""""""""""""""
+
 
 " Moving between buffers
 :nnoremap <C-n> :bnext<CR>
@@ -118,11 +129,30 @@ map <F4> :set invpaste<CR>
 map <F5> :set invnumber<CR>
 
 
+""""""""""""""" Neocomplete """"""""""""""""""""
 
-"""""""""""""""""" YCM """"""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/neocomplete.vim
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+let g:neocomplete#enable_at_startup = 1
 
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+
 
 
 """"""""""""" Ultisnips """"""""""""""""""""""""

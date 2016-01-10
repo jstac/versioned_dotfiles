@@ -1,11 +1,10 @@
 """
 " John Stachurski's vimrc
 "
-" Comment: Neocomplete is installed outside of Vundle.  To install
+" Comment: Neocomplete is not currently installed.  To install
 " cd to .vim/bundle and git clone neocomplete
 "
 """
-
 
 """"""""""""""" Vundle stuff up top """"""""""""""
 
@@ -23,9 +22,11 @@ Plugin 'gmarik/Vundle.vim'
 """" My list of plugins
 
 Plugin 'jstac/vim-snippets' 
-Plugin 'SirVer/ultisnips'           " Ultisnips
+Plugin 'SirVer/ultisnips'    
+Plugin 'ajh17/VimCompletesMe'
+"Plugin 'davidhalter/jedi-vim'
 
-Plugin 'lervag/vimtex'              " vimtex
+Plugin 'lervag/vimtex'      
 Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
 Plugin 'flazz/vim-colorschemes'
@@ -128,29 +129,34 @@ map <F3> <Esc>:setlocal nospell<CR>
 map <F4> :set invpaste<CR>
 map <F5> :set invnumber<CR>
 
+"""""""""""""""""""" Jedi and jedi-vim """""""""""""""""""
+
+"let g:jedi#auto_initialization = 1
+"let g:jedi#force_py_version = 3
+
 
 """"""""""""""" Neocomplete """"""""""""""""""""
 
-set rtp+=~/.vim/bundle/neocomplete.vim
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-let g:neocomplete#enable_at_startup = 1
+"set rtp+=~/.vim/bundle/neocomplete.vim
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"let g:neocomplete#enable_at_startup = 1
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  "" For no inserting <CR> key.
+  ""return pumvisible() ? "\<C-y>" : "\<CR>"
+"endfunction
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"" Close popup by <Space>.
+""inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 
 

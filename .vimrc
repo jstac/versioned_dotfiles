@@ -24,11 +24,13 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'jstac/vim-snippets' 
 Plugin 'SirVer/ultisnips'    
 Plugin 'ajh17/VimCompletesMe'
-"Plugin 'davidhalter/jedi-vim'
+
+Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 
 Plugin 'lervag/vimtex'      
 Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
+
 Plugin 'flazz/vim-colorschemes'
 
 Plugin 'jnurmine/Zenburn'
@@ -46,7 +48,8 @@ filetype plugin indent on    " required
 set background=dark
 set showmode              " show da mode
 set bs=2                  " backspace over everything
-set hlsearch              " highlight search matches
+"set hlsearch              " highlight search matches
+set incsearch
 set textwidth=78
 set vb t_vb=              " flash screen instead of beep
 set showmatch             " shows matching parenthesis
@@ -83,6 +86,14 @@ nnoremap <C-H> <C-W><C-H>
 :nnoremap <C-n> :bnext<CR>
 :nnoremap <C-p> :bprevious<CR>
 
+""""""""""""" Range commands """""""""""""""
+
+" allows incsearch highlighting for range commands
+cnoremap $t <CR>:t''<CR>
+cnoremap $T <CR>:T''<CR>
+cnoremap $m <CR>:m''<CR>
+cnoremap $M <CR>:M''<CR>
+cnoremap $d <CR>:d<CR>``
 
 """""""""""""" Colors and font """""""""""""""""""
 
@@ -98,6 +109,7 @@ else
     colorscheme solarized
     "set term=screen-256color
     "colorscheme zenburn
+    "colorscheme peacock
     "colorscheme oceanblack256
 endif
 
@@ -133,31 +145,6 @@ map <F5> :set invnumber<CR>
 
 "let g:jedi#auto_initialization = 1
 "let g:jedi#force_py_version = 3
-
-
-""""""""""""""" Neocomplete """"""""""""""""""""
-
-"set rtp+=~/.vim/bundle/neocomplete.vim
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"let g:neocomplete#enable_at_startup = 1
-
-"" Recommended key-mappings.
-"" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  "" For no inserting <CR> key.
-  ""return pumvisible() ? "\<C-y>" : "\<CR>"
-"endfunction
-"" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"" Close popup by <Space>.
-""inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
 
 
 

@@ -1,9 +1,6 @@
 """
 " John Stachurski's vimrc
 "
-" Comment: Neocomplete is not currently installed.  To install
-" cd to .vim/bundle and git clone neocomplete
-"
 """
 
 """"""""""""""" Vundle stuff up top """"""""""""""
@@ -19,11 +16,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 
-"""" My list of plugins
+""""""" """" My plugins """"""""""" """""""""""
 
 Plugin 'jstac/vim-snippets' 
 Plugin 'SirVer/ultisnips'    
-Plugin 'ajh17/VimCompletesMe'
 
 Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 
@@ -43,13 +39,16 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
+
+
+
 """""""""""""" Basic preferences """""""""""""""
 
 set background=dark
 set showmode              " show da mode
 set bs=2                  " backspace over everything
-"set hlsearch              " highlight search matches
 set incsearch
+"set hlsearch              " highlight search matches
 set textwidth=78
 set vb t_vb=              " flash screen instead of beep
 set showmatch             " shows matching parenthesis
@@ -63,6 +62,14 @@ set wildmode=longest,list " bash-like tab completion when opening files
 set foldmethod=indent
 set foldlevel=99
 set formatoptions=tqn
+
+
+
+"""""""""""""" Completion """""""""""""""
+
+" Expand as much as you can (longest) and always show menu
+set completeopt=longest,menuone
+
 
 
 """""""""""" Splits """"""""""""""""""""
@@ -79,21 +86,17 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"""""""""""" Buffers """"""""""""""""""""
 
+
+
+"""""""""""" Buffers """"""""""""""""""""
 
 " Moving between buffers
 :nnoremap <C-n> :bnext<CR>
 :nnoremap <C-p> :bprevious<CR>
 
-""""""""""""" Range commands """""""""""""""
 
-" allows incsearch highlighting for range commands
-cnoremap $t <CR>:t''<CR>
-cnoremap $T <CR>:T''<CR>
-cnoremap $m <CR>:m''<CR>
-cnoremap $M <CR>:M''<CR>
-cnoremap $d <CR>:d<CR>``
+
 
 """""""""""""" Colors and font """""""""""""""""""
 

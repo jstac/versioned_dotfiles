@@ -3,6 +3,7 @@
 "
 """
 
+
 """"""""""""""" Vundle stuff up top """"""""""""""
 
 set nocompatible              " required
@@ -15,17 +16,19 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-
 """"""" """" My plugins """"""""""" """""""""""
 
 Plugin 'jstac/vim-snippets' 
 Plugin 'SirVer/ultisnips'    
+
+Plugin 'ervandew/supertab'
 
 Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 
 Plugin 'lervag/vimtex'      
 Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
+
 
 Plugin 'flazz/vim-colorschemes'
 
@@ -67,8 +70,8 @@ set formatoptions=tqn
 
 """""""""""""" Completion """""""""""""""
 
-" Expand as much as you can (longest) and always show menu
-set completeopt=longest,menuone
+" Always show menu
+set completeopt=menuone
 
 
 

@@ -11,6 +11,9 @@
 # Permanently map CAPS to CTRL
 /usr/bin/setxkbmap -option "ctrl:nocaps"
 
+# Start rofi
+rofi -key-run F12 &
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists

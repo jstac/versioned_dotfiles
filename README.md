@@ -5,9 +5,12 @@ Remember to install
 * zsh
 * https://github.com/jstac/prezto 
 * tmux
-* powerline.
+* maybe powerline, I'm not sure
+* rofi, via apt-get
 
-Helpful for powerline:
+Also, for solarized colors, follow these instructions:
 
-https://github.com/tiev/tiev/wiki/Install-Vim---Tmux---Powerline-%28Ubuntu-14.04-Trusty%29
+https://github.com/sgerrand/xfce4-terminal-colors-solarized
+
+
 

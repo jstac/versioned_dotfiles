@@ -29,10 +29,10 @@ Plugin 'lervag/vimtex'
 Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
 
-
 Plugin 'flazz/vim-colorschemes'
 
 Plugin 'jnurmine/Zenburn'
+
 Plugin 'altercation/vim-colors-solarized'
 
 
@@ -40,7 +40,6 @@ Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 
 
@@ -111,8 +110,11 @@ if has("gui_running")
     set guifont=Ubuntu\ Mono\ 14
     colorscheme solarized
 else
+    let solarized_termtrans = 1
+    let g:solarized_termcolors=256
     set t_Co=256
     colorscheme solarized
+    "colorscheme desert256
     "set term=screen-256color
     "colorscheme zenburn
     "colorscheme peacock
@@ -164,8 +166,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
+
+
 """""""""""" vimtex """""""""""""""""""""""""""
 
+let g:vimtex_echo_ignore_wait = 1
 let g:tex_flavor = 'latex'
 let g:vimtex_complete_enabled = 1
 let g:vimtex_indent_enabled = 1

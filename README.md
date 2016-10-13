@@ -8,9 +8,11 @@ Remember to install
 * maybe powerline, I'm not sure
 * rofi, via apt-get
 
-Also, for solarized colors, follow these instructions:
+Also, useful instructions:
 
-https://github.com/sgerrand/xfce4-terminal-colors-solarized
+* for solarized colors: https://github.com/sgerrand/xfce4-terminal-colors-solarized
+
+* for vim, with system paste support: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
 
 
 

@@ -35,6 +35,8 @@ Plugin 'jnurmine/Zenburn'
 
 Plugin 'altercation/vim-colors-solarized'
 
+Plugin 'jpalardy/vim-slime'
+
 
 """ End my list of plugins
 
@@ -154,6 +156,11 @@ map <F5> :set invnumber<CR>
 "let g:jedi#auto_initialization = 1
 "let g:jedi#force_py_version = 3
 
+
+"""""""""""""""""""" vim-slime """""""""""""""""""
+
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.1"}
 
 
 """"""""""""" Ultisnips """"""""""""""""""""""""

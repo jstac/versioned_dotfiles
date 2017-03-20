@@ -187,14 +187,13 @@ let g:vimtex_motion_enabled = 0
 let g:vimtex_latexmk_continuous = 0
 let g:vimtex_latexmk_background = 0
 let g:vimtex_view_method = 'mupdf'
-let g:vimtex_quickfix_ignored_warnings = [
-        \ 'Underfull',
-        \ 'Overfull',
-        \ 'LaTeX Font Warning',
-        \ 'specifier changed to',
-        \ 'Package minted',
-      \ ]
-
+let g:vimtex_quickfix_warnings = {
+          \ 'overfull' : 0,
+          \ 'underfull' : 0,
+          \ 'packages' : {
+          \   'default' : 0,
+          \ },
+\}
 
 """""""""""""" Powerline """"""""""""""""""""""""""""
 

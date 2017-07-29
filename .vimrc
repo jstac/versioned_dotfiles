@@ -18,6 +18,8 @@ Plugin 'gmarik/Vundle.vim'
 
 """"""" """" My plugins """"""""""" """""""""""
 
+Plugin 'christoomey/vim-tmux-navigator'
+
 Plugin 'jstac/vim-snippets' 
 Plugin 'SirVer/ultisnips'    
 
@@ -138,7 +140,7 @@ let mapleader = "\<Space>"
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>d :bd<CR>
-nnoremap <Leader>q :wq<CR>
+"nnoremap <Leader>q :wq<CR>
 
 
 """""""""""""""""" Function key maps """""""""""""""""""""""
@@ -149,6 +151,7 @@ map <F2> <Esc>:setlocal spell spelllang=en_us<CR>
 map <F3> <Esc>:setlocal nospell<CR>
 " Toggle paste on and off
 map <F4> :set invpaste<CR>
+" Toggle line numbers
 map <F5> :set invnumber<CR>
 
 """""""""""""""""""" Jedi and jedi-vim """""""""""""""""""
@@ -184,8 +187,6 @@ let g:vimtex_indent_enabled = 1
 let g:vimtex_fold_enabled = 0
 let g:vimtex_fold_envs = 0
 let g:vimtex_motion_enabled = 0
-let g:vimtex_latexmk_continuous = 0
-let g:vimtex_latexmk_background = 0
 let g:vimtex_view_method = 'mupdf'
 let g:vimtex_quickfix_ignored_warnings = [
         \ 'Underfull',
@@ -194,7 +195,21 @@ let g:vimtex_quickfix_ignored_warnings = [
         \ 'specifier changed to',
         \ 'Package minted',
       \ ]
-
+let g:vimtex_compiler_latexmk = {
+    \ 'backend' : 'process',
+    \ 'background' : 1,
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 0,
+    \ 'executable' : 'latexmk',
+    \ 'options' : [
+    \   '-pdf',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
 
 """""""""""""" Powerline """"""""""""""""""""""""""""
 

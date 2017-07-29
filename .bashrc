@@ -21,3 +21,6 @@ alias ls='ls --color=auto'
 
 . /home/john/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
+
+# added by Anaconda3 4.3.0 installer
+export PATH="/home/john/anaconda3/bin:$PATH"

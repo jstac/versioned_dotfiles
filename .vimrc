@@ -4,6 +4,7 @@
 """
 
 
+
 """"""""""""""" Vundle stuff up top """"""""""""""
 
 set nocompatible              " required
@@ -20,21 +21,23 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'christoomey/vim-tmux-navigator'
 
-Plugin 'jstac/vim-snippets' 
+"" Snippets 
+"
+" Track the engine.
 Plugin 'SirVer/ultisnips'    
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'jstac/vim-snippets' 
 
 Plugin 'ervandew/supertab'
-
-Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 
 Plugin 'lervag/vimtex'      
 Plugin 'scrooloose/nerdcommenter'   " Comments
 Plugin 'JuliaLang/julia-vim'        " Julia
 
+"" Colors
+Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Plugin 'flazz/vim-colorschemes'
-
 Plugin 'jnurmine/Zenburn'
-
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'jpalardy/vim-slime'
@@ -169,7 +172,7 @@ let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane"
 """"""""""""" Ultisnips """"""""""""""""""""""""
 
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
-let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 

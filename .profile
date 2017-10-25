@@ -11,6 +11,9 @@
 # Permanently map CAPS to CTRL
 /usr/bin/setxkbmap -option "ctrl:nocaps"
 
+/usr/bin/setxkbmap -option "compose:ralt"
+
+
 # Start rofi
 rofi -key-run F12 &
 

@@ -164,6 +164,7 @@ map <F5> :set invnumber<CR>
 
 
 """""""""""""""""""" vim-slime """""""""""""""""""
+" Send lines to REPL by highlighting and then C-c C-c
 
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.1"}

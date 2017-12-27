@@ -17,6 +17,7 @@ rofi -key-run F12 &
 
 ```
 
+* map `synclient TouchpadOff=0` to `Ctrl-Super-Right` and `=1` to `Left`
 
 
 

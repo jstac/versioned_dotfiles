@@ -17,6 +17,8 @@ rofi -key-run F12 &
 
 ```
 
+* add `pullsync.py` etc to `bin` and then add dir `home/john/backups/sync_dir_backup`
+
 * map `synclient TouchpadOff=0` to `Ctrl-Super-Right` and `=1` to `Left`
 
 

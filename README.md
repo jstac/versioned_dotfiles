@@ -3,7 +3,7 @@
 
 ## Install steps
 
-* install rofi, latex, anaconda, julia
+* install rofi, latex, anaconda, julia, zsh, git
 
 * add the following to `.profile`
 

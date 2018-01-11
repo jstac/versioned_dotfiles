@@ -9,17 +9,21 @@
 
 * install oh-my-zsh via `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"` or similar
 
-* `yaourt -S google-chrome`
-
-* `ln -s versioned_dotfiles/.Xmodmap .`  # maps CAPS to CTRL
+* `yaourt -S google-chrome` and `sudo pacman -S firefox`
 
 * `ln -s versioned_dotfiles/.zshrc .`
 * `ln -s versioned_dotfiles/.vimrc .`
+* `ln -s versioned_dotfiles/.xprofile .`
+* `ln -s versioned_dotfiles/.Xdefaults .`
+* `ln -s versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
 * `ln -s ~/versioned_dotfiles/.i3_config .` from inside `.i3` directory
 
+* `jupyter notebook --generate-config` and set browser to firefox
 
-* curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+* `ipython profile create`
+
+* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
 * `ssh-keygen`  
 

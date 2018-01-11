@@ -4,56 +4,24 @@
 """
 
 
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
 
-""""""""""""""" Vundle stuff up top """"""""""""""
-
-set nocompatible              " required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-""""""" """" My plugins """"""""""" """""""""""
-
-Plugin 'christoomey/vim-tmux-navigator'
-
-"" Snippets 
-"
-" Track the engine.
-Plugin 'SirVer/ultisnips'    
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'jstac/vim-snippets' 
-
-Plugin 'ervandew/supertab'
-
-Plugin 'lervag/vimtex'      
-Plugin 'scrooloose/nerdcommenter'   " Comments
-Plugin 'JuliaLang/julia-vim'        " Julia
-
-"" Colors
-Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
-Plugin 'flazz/vim-colorschemes'
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-
-Plugin 'jpalardy/vim-slime'
+Plug 'gregsexton/Atom'
+Plug 'dracula/vim'
+Plug 'nanotech/jellybeans.vim'
 
 
-""" End my list of plugins
+" Initialize plugin system
+call plug#end()
 
-call vundle#end()            " required
-filetype plugin indent on    " required
 
 
 
 
 """""""""""""" Basic preferences """""""""""""""
 
-set background=dark
+"set background=dark
 set showmode              " show da mode
 set bs=2                  " backspace over everything
 set incsearch
@@ -74,10 +42,10 @@ set formatoptions=tqn
 
 
 
-"""""""""""""" Completion """""""""""""""
+""""""""""""" Colorscheme """""""""""""""""""""""""
 
-" Always show menu
-set completeopt=menuone
+color jellybeans
+syntax on
 
 
 
@@ -104,29 +72,6 @@ nnoremap <C-H> <C-W><C-H>
 :nnoremap <C-n> :bnext<CR>
 :nnoremap <C-p> :bprevious<CR>
 
-
-
-
-"""""""""""""" Colors and font """""""""""""""""""
-
-if has("gui_running")
-    set lines=60
-    set columns=112
-    set background=dark
-    set guioptions=a             
-    set guifont=Ubuntu\ Mono\ 14
-    colorscheme solarized
-else
-    let solarized_termtrans = 1
-    let g:solarized_termcolors=256
-    set t_Co=256
-    colorscheme solarized
-    "colorscheme desert256
-    "set term=screen-256color
-    "colorscheme zenburn
-    "colorscheme peacock
-    "colorscheme oceanblack256
-endif
 
 
 """"""""""""""""" General maps  """""""""""""""""""""""""""""
@@ -157,78 +102,6 @@ map <F4> :set invpaste<CR>
 " Toggle line numbers
 map <F5> :set invnumber<CR>
 
-"""""""""""""""""""" Jedi and jedi-vim """""""""""""""""""
-
-"let g:jedi#auto_initialization = 1
-"let g:jedi#force_py_version = 3
-
-
-"""""""""""""""""""" vim-slime """""""""""""""""""
-" Send lines to REPL by highlighting and then C-c C-c
-
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.1"}
-
-
-""""""""""""" Ultisnips """"""""""""""""""""""""
-
-" Trigger configuration. Do not use <tab> if you use YouCompleteMe
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
-
-
-
-"""""""""""" vimtex """""""""""""""""""""""""""
-
-let g:vimtex_echo_ignore_wait = 1
-let g:tex_flavor = 'latex'
-let g:vimtex_complete_enabled = 1
-let g:vimtex_indent_enabled = 1
-let g:vimtex_fold_enabled = 0
-let g:vimtex_fold_envs = 0
-let g:vimtex_motion_enabled = 0
-let g:vimtex_view_method = 'mupdf'
-let g:vimtex_quickfix_ignored_warnings = [
-        \ 'Underfull',
-        \ 'Overfull',
-        \ 'LaTeX Font Warning',
-        \ 'specifier changed to',
-        \ 'Package minted',
-      \ ]
-let g:vimtex_compiler_latexmk = {
-    \ 'backend' : 'process',
-    \ 'background' : 1,
-    \ 'build_dir' : '',
-    \ 'callback' : 1,
-    \ 'continuous' : 0,
-    \ 'executable' : 'latexmk',
-    \ 'options' : [
-    \   '-pdf',
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-    \}
-let g:vimtex_quickfix_warnings = {
-          \ 'overfull' : 0,
-          \ 'underfull' : 0,
-          \ 'packages' : {
-          \   'default' : 0,
-          \ },
-\}
-
-
-
-"""""""""""""" Powerline """"""""""""""""""""""""""""
-
-" Always show statusline
-set laststatus=2
-set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 
 """""""""""""" Restructured Text """"""""""""""""

@@ -11,6 +11,7 @@ Plug 'gregsexton/Atom'
 Plug 'dracula/vim'
 Plug 'nanotech/jellybeans.vim'
 
+Plug 'lervag/vimtex'
 
 " Initialize plugin system
 call plug#end()

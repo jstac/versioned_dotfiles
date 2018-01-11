@@ -15,12 +15,13 @@
 
 * `ln -s versioned_dotfiles/.zshrc .`
 * `ln -s versioned_dotfiles/.vimrc .`
+* `ln -s ~/versioned_dotfiles/.i3_config .` from inside `.i3` directory
 
 
 * curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-* `ssh-keygen -t rsa -b 4096 -C "john.stachurski@gmail.com" ` and follow remaining steps on https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+* `ssh-keygen`  
 
 * add `pullsync.py` etc to `bin` and then add dir `home/john/backups/sync_dir_backup`
 

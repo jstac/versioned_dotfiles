@@ -7,11 +7,26 @@
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+" Snippets engine
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. I'll use my fork of honza/vim-snippets.  
+" This is the repo to edit when adding/changing snippets.  To keep things
+" clean, perhaps clone it separately, edit, push changes and then PlugUpdate
+Plug 'jstac/vim-snippets'
+
+" Latex support
+Plug 'lervag/vimtex'
+
+" Vim-plug
+Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+
+" Colors
+Plug 'nightsense/vimspectr'
+Plug 'tomasiser/vim-code-dark'
 Plug 'gregsexton/Atom'
 Plug 'dracula/vim'
 Plug 'nanotech/jellybeans.vim'
-
-Plug 'lervag/vimtex'
 
 " Initialize plugin system
 call plug#end()
@@ -25,8 +40,8 @@ call plug#end()
 "set background=dark
 set showmode              " show da mode
 set bs=2                  " backspace over everything
-set incsearch
-"set hlsearch              " highlight search matches
+"set incsearch
+set hlsearch              " highlight search matches
 set textwidth=78
 set vb t_vb=              " flash screen instead of beep
 set showmatch             " shows matching parenthesis
@@ -45,7 +60,9 @@ set formatoptions=tqn
 
 """"""""""""" Colorscheme """""""""""""""""""""""""
 
-color jellybeans
+set t_Co=256
+set t_ut=
+colorscheme codedark
 syntax on
 
 
@@ -63,6 +80,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 
 
 
@@ -104,6 +122,35 @@ map <F4> :set invpaste<CR>
 map <F5> :set invnumber<CR>
 
 
+""""""""""""""" ultisnips """"""""""""""""""
+
+let g:UltiSnipsExpandTrigger="<c-l>"
+
+
+""""""""""""""" vimtex """"""""""""""""""""""
+
+let g:vimtex_view_method = 'mupdf'
+
+let g:vimtex_quickfix_latexlog = {
+  \ 'font' : 0,
+  \ 'overfull' : 0,
+  \ 'underfull' : 0
+\}
+
+let g:vimtex_compiler_latexmk = {
+    \ 'background' : 1,
+    \ 'build_dir' : '',
+    \ 'callback' : 0,  
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'options' : [
+    \   '-pdf',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+\}
 
 """""""""""""" Restructured Text """"""""""""""""
 

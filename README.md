@@ -29,12 +29,13 @@
 
 * add `pullsync.py` etc to `bin` and then add dir `home/john/backups/sync_dir_backup`
 
-* map `synclient TouchpadOff=0` to `Ctrl-Super-Right` and `=1` to `Left`
-
 
 ## Other tips
 
-* for vim, with system paste support: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+
+* Useful discussion regarding default applications: https://www.reddit.com/r/linuxquestions/comments/5z3n81/default_applications_in_arch_linux/
+
+* For vim with system paste support: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
 
 
 

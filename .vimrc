@@ -18,8 +18,11 @@ Plug 'jstac/vim-snippets'
 " Latex support
 Plug 'lervag/vimtex'
 
-" Vim-plug
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+" Commenting
+Plug 'scrooloose/nerdcommenter'
+
+" Supertab
+Plug 'ervandew/supertab'
 
 " Colors
 Plug 'nightsense/vimspectr'
@@ -40,7 +43,7 @@ call plug#end()
 "set background=dark
 set showmode              " show da mode
 set bs=2                  " backspace over everything
-"set incsearch
+set incsearch
 set hlsearch              " highlight search matches
 set textwidth=78
 set vb t_vb=              " flash screen instead of beep

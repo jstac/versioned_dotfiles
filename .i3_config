@@ -1,7 +1,8 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
+# For high resolution screens
+# exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod1

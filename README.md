@@ -29,6 +29,9 @@
 
 * add `pullsync.py` etc to `bin` and then add dir `home/john/backups/sync_dir_backup`
 
+* `xdg-mime default zathura.desktop application/pdf`
+
+
 
 ## Other tips
 

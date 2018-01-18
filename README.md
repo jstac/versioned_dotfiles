@@ -17,6 +17,7 @@
 * `ln -s versioned_dotfiles/.Xdefaults .`
 * `ln -s versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
 * `ln -s ~/versioned_dotfiles/.i3_config .` from inside `.i3` directory
+* `ln -s ~/versioned_dotfiles/zathurarc .` from inside `.config/zathura/`
 
 * `jupyter notebook --generate-config` and set browser to firefox
 

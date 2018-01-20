@@ -12,6 +12,7 @@
 * `yaourt -S google-chrome` and `sudo pacman -S firefox`
 
 * `ln -s versioned_dotfiles/.zshrc .`
+* `ln -s versioned_dotfiles/.latexmkrc .`
 * `ln -s versioned_dotfiles/.vimrc .`
 * `ln -s versioned_dotfiles/.xprofile .`
 * `ln -s versioned_dotfiles/.Xdefaults .`

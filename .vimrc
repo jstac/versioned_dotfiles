@@ -132,7 +132,7 @@ let g:UltiSnipsExpandTrigger="<c-l>"
 
 """"""""""""""" vimtex """"""""""""""""""""""
 
-let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_method = 'mupdf'
 
 let g:vimtex_quickfix_latexlog = {
   \ 'font' : 0,

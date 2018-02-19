@@ -15,6 +15,11 @@ Plug 'SirVer/ultisnips'
 " clean, perhaps clone it separately, edit, push changes and then PlugUpdate
 Plug 'jstac/vim-snippets'
 
+" Unicode characters (see :h unicode-plugin)
+"
+" Marginally useful.  :Digraphs eta shows the diagraph for eta, then use <C-k>
+Plug 'chrisbra/unicode.vim'
+
 " Latex support
 Plug 'lervag/vimtex'
 

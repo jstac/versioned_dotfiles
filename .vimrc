@@ -1,6 +1,8 @@
 """
 " John Stachurski's vimrc
 "
+" Plugin manager = vim-plug
+"
 """
 
 
@@ -35,6 +37,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'gregsexton/Atom'
 Plug 'dracula/vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'mhinz/vim-janah'
 
 " Initialize plugin system
 call plug#end()
@@ -71,6 +74,7 @@ set formatoptions=tqn
 set t_Co=256
 set t_ut=
 colorscheme codedark
+"colorscheme janah
 syntax on
 
 
@@ -142,7 +146,8 @@ let g:vimtex_view_method = 'mupdf'
 let g:vimtex_quickfix_latexlog = {
   \ 'font' : 0,
   \ 'overfull' : 0,
-  \ 'underfull' : 0
+  \ 'underfull' : 0,
+  \ 'Overwriting' : 0
 \}
 
 let g:vimtex_compiler_latexmk = {

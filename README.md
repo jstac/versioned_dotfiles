@@ -14,11 +14,11 @@
 * `ln -s versioned_dotfiles/.zshrc .`
 * `ln -s versioned_dotfiles/.latexmkrc .`
 * `ln -s versioned_dotfiles/.vimrc .`
+* `ln -s versioned_dotfiles/.ssh/config .`  from inside `~/.ssh`
 * `ln -s versioned_dotfiles/.xprofile .`
 * `ln -s versioned_dotfiles/.Xdefaults .`
 * `ln -s versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
 * `ln -s ~/versioned_dotfiles/.i3_config .` from inside `.i3` directory
-* `ln -s ~/versioned_dotfiles/zathurarc .` from inside `.config/zathura/`
 
 * `jupyter notebook --generate-config` and set browser to firefox
 

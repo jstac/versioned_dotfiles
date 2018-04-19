@@ -17,6 +17,7 @@ Plug 'SirVer/ultisnips'
 " clean, perhaps clone it separately, edit, push changes and then PlugUpdate
 Plug 'jstac/vim-snippets'
 
+
 " Unicode characters (see :h unicode-plugin)
 "
 " Marginally useful.  :Digraphs eta shows the diagraph for eta, then use <C-k>
@@ -32,12 +33,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 
 " Colors
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'nightsense/vimspectr'
 Plug 'tomasiser/vim-code-dark'
 Plug 'gregsexton/Atom'
 Plug 'dracula/vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'mhinz/vim-janah'
+Plug 'michalbachowski/vim-wombat256mod'
 
 " Initialize plugin system
 call plug#end()
@@ -73,8 +76,10 @@ set formatoptions=tqn
 
 set t_Co=256
 set t_ut=
-colorscheme codedark
+colorscheme wombat256mod
+"colorscheme codedark
 "colorscheme janah
+"colorscheme challenger-deep
 syntax on
 
 
@@ -147,7 +152,7 @@ let g:vimtex_quickfix_latexlog = {
   \ 'font' : 0,
   \ 'overfull' : 0,
   \ 'underfull' : 0,
-  \ 'Overwriting' : 0
+  \ 'warning' : 0
 \}
 
 let g:vimtex_compiler_latexmk = {

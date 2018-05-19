@@ -29,7 +29,7 @@
 
 * `ssh-keygen`  
 
-* add `pullsync.py` etc to `bin` and then add dir `home/john/backups/sync_dir_backup`
+* `cd ~` and `git clone https://github.com/jstac/versioned_tools`, then add symbolic links in `bin`
 
 * `xdg-mime default zathura.desktop application/pdf`
 

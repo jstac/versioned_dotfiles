@@ -7,7 +7,7 @@ urxvt.background: black
 urxvt.foreground: gray
 !! Font prefferenes
 urxvt.font: xft:DejaVu Sans Mono:pixelsize=14
-urxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=13:weight=bold
+urxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=14:weight=bold
 urxvt.letterSpace: -1
 !! Larger history limit
 urxvt.saveLines: 1000000

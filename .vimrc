@@ -6,17 +6,23 @@
 """
 
 
+
+
+
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
 " Snippets engine
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. I'll use my fork of honza/vim-snippets.  
 " This is the repo to edit when adding/changing snippets.  To keep things
 " clean, perhaps clone it separately, edit, push changes and then PlugUpdate
-Plug 'jstac/vim-snippets'
+" Plug 'jstac/vim-snippets'
 
+" Status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Unicode characters (see :h unicode-plugin)
 "
@@ -81,6 +87,7 @@ colorscheme wombat256mod
 "colorscheme janah
 "colorscheme challenger-deep
 syntax on
+
 
 
 

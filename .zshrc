@@ -87,6 +87,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias jp="jupyter notebook"
 alias xo="xdg-open"
+alias vi="nvim"
 
 
 

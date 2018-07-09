@@ -5,7 +5,12 @@
 "
 """
 
+set runtimepath+=~/.vim
+let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets"
+let g:UltiSnipsSnippetDirectories = ['vim-snippets', 'UltiSnips']
 
+
+let g:python_host_prog='/home/john/anaconda3/bin/python'
 
 
 
@@ -13,12 +18,12 @@
 call plug#begin('~/.vim/plugged')
 
 " Snippets engine
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. I'll use my fork of honza/vim-snippets.  
 " This is the repo to edit when adding/changing snippets.  To keep things
 " clean, perhaps clone it separately, edit, push changes and then PlugUpdate
-" Plug 'jstac/vim-snippets'
+Plug 'jstac/vim-snippets'
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -149,6 +154,7 @@ map <F5> :set invnumber<CR>
 """"""""""""""" ultisnips """"""""""""""""""
 
 let g:UltiSnipsExpandTrigger="<c-l>"
+let g:tex_flavor = "latex"
 
 
 """"""""""""""" vimtex """"""""""""""""""""""

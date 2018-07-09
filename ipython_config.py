@@ -21,7 +21,6 @@
 ## Execute the given command string.
 #c.InteractiveShellApp.code_to_run = ''
 
-
 ## Run the file referenced by the PYTHONSTARTUP environment variable at IPython
 #  startup.
 #c.InteractiveShellApp.exec_PYTHONSTARTUP = True

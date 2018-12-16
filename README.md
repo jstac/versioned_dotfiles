@@ -18,6 +18,7 @@
   - Alt-c cycles
   - Alt-m maximizes
   - Alt-k closes
+  - Alt-f fullscreen
 
 
 * `yaourt -S google-chrome` 
@@ -30,11 +31,15 @@
 
 * cd to `~/.config/nvim/` and type `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
 
+* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
+* got to `https://github.com/arcticicestudio/nord-xfce-terminal` and follow instructions
+
 * `jupyter notebook --generate-config` and set browser to firefox
 
 * `ipython profile create`
 
-* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+* `sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
 
 * `ssh-keygen`  
 

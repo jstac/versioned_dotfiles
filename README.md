@@ -40,7 +40,7 @@
 
 * `sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
 
-* `ssh-keygen`  
+* ssh keys: see https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 
 * `cd ~` and `git clone https://github.com/jstac/versioned_tools`, then add symbolic links in `bin`
 

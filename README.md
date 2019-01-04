@@ -20,8 +20,7 @@
   - Alt-k closes
   - Alt-f fullscreen
 
-
-* `yaourt -S google-chrome` 
+* install chrome (e.g, https://linuxconfig.org/how-to-install-google-chrome-on-manjaro-18-linux or `yaourt -S google-chrome`)
 
 * `ln -s versioned_dotfiles/.zshrc .`
 * `ln -s versioned_dotfiles/.latexmkrc .`

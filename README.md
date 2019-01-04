@@ -42,6 +42,8 @@
 
 * ssh keys: see https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 
+    - also, https://www.ssh.com/ssh/copy-id
+
 * `cd ~` and `git clone https://github.com/jstac/versioned_tools`, then add symbolic links in `bin`
 
 * make the dir `~/texmf/bibtex/bst` and add ecta.bst, etc., and then do `texhash ~/texmf`, check with `kpsewhich ecta.bst`

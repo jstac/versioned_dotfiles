@@ -3,37 +3,46 @@
 
 ## Install steps
 
-* install latex, anaconda, julia, zsh, git
+* install latex, anaconda, julia, zsh, git, neovim, python-neovim
 
 * `chsh -s /bin/zsh` 
 
 * install oh-my-zsh via `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"` or similar
 
-* `yaourt -S google-chrome` and `sudo pacman -S firefox`
+* set keyboard shortcuts in launcher 
+
+  - Alt-Enter for xfce4-terminal
+
+* set keyboard shortcuts in window manager
+
+  - Alt-c cycles
+  - Alt-m maximizes
+  - Alt-k closes
+  - Alt-f fullscreen
+
+* install chrome (e.g, https://linuxconfig.org/how-to-install-google-chrome-on-manjaro-18-linux or `yaourt -S google-chrome`)
 
 * `ln -s versioned_dotfiles/.zshrc .`
 * `ln -s versioned_dotfiles/.latexmkrc .`
 * `ln -s versioned_dotfiles/.vimrc .`
 * `ln -s versioned_dotfiles/.ssh/config .`  from inside `~/.ssh`
-* `ln -s versioned_dotfiles/.xprofile .`
-* `ln -s versioned_dotfiles/.Xdefaults .`
 * `ln -s versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
-* `ln -s ~/versioned_dotfiles/.i3_config .` from inside `.i3` directory
 
-* `~/.config/nvim/init.vim` should link to `.vimrc`
+* cd to `~/.config/nvim/` and type `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
+
+* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
+* got to `https://github.com/arcticicestudio/nord-xfce-terminal` and follow instructions
 
 * `jupyter notebook --generate-config` and set browser to firefox
 
 * `ipython profile create`
 
-* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+* `sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
 
 * `ssh-keygen`  
 
 * `cd ~` and `git clone https://github.com/jstac/versioned_tools`, then add symbolic links in `bin`
-
-* `xdg-mime default zathura.desktop application/pdf`
 
 * make the dir `~/texmf/bibtex/bst` and add ecta.bst, etc., and then do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 

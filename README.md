@@ -49,8 +49,6 @@
 
 * make the dir `~/texmf/bibtex/bst` and add ecta.bst, etc., and then do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 
-* `pip install neovim` seems to be necessary (after installing neovim through pacman)
-
 
 ## Other tips
 

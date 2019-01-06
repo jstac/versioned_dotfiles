@@ -17,6 +17,7 @@
 
   - Alt-c cycles
   - Alt-m maximizes
+  - Alt-v maximizes vertically
   - Alt-k closes
   - Alt-f fullscreen
 

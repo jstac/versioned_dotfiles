@@ -9,13 +9,12 @@
 
 * install oh-my-zsh via `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"` or similar
 
-* set keyboard shortcuts in launcher 
+* set keyboard shortcuts in keyboard -> applications shortcuts
 
   - Alt-Enter for xfce4-terminal
 
 * set keyboard shortcuts in window manager
 
-  - Alt-c cycles
   - Alt-m maximizes
   - Alt-v maximizes vertically
   - Alt-k closes

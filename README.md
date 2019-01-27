@@ -9,14 +9,14 @@
 
 * install oh-my-zsh via `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"` or similar
 
-* set keyboard shortcuts in launcher 
+* set keyboard shortcuts in keyboard -> applications shortcuts
 
   - Alt-Enter for xfce4-terminal
 
 * set keyboard shortcuts in window manager
 
-  - Alt-c cycles
   - Alt-m maximizes
+  - Alt-v maximizes vertically
   - Alt-k closes
   - Alt-f fullscreen
 
@@ -42,11 +42,13 @@
 
 * ssh keys: see https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 
+    - also, https://www.ssh.com/ssh/copy-id
+
 * `cd ~` and `git clone https://github.com/jstac/versioned_tools`, then add symbolic links in `bin`
 
 * make the dir `~/texmf/bibtex/bst` and add ecta.bst, etc., and then do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 
-* `pip install neovim` seems to be necessary (after installing neovim through pacman)
+* sometimes need `pip install neovim`
 
 
 ## Other tips

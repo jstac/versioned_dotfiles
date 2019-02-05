@@ -51,12 +51,42 @@
 * sometimes need `pip install neovim`
 
 
-## Other tips
+
+### Notes on AWS
 
 
-* Useful discussion regarding default applications: https://www.reddit.com/r/linuxquestions/comments/5z3n81/default_applications_in_arch_linux/
+#### To get an instance running
 
-* For vim with system paste support: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+1. Login to Amazon AWS Console 
+2. Navigate to EC2 Service
+3. Choose your region for setting up an instance
+6. Create security key-pair for the region if you don't have one
+4. Launch & Configure an instance and choose Ubuntu 64-bit
+5. enable access through Port 8000 (in addition to Port 22 for ssh)
+6. Choose security key you've set up
+
+#### Connecting and set up 
+
+Use `ssh -i /path/to/pem-key ubuntu@hostname`
+
+Here `hostname` is your Public DNS, as shown in the instance information from AWS console
+
+Now run `sudo apt-get update` so you can install things you might need using `apt-get`
 
 
+#### Configure instance to run Jupyter
+
+1. ssh into the running instance using IP from AWS Console
+2. Install Anaconda using wget and the latest download link for python36
+3. Run: jupyter notebook --generate-config
+4. For Automatic Password Setup run: jupyter notebook password
+5. Edit .jupyter/jupyter_notebook_config.py and set the following
+
+```
+c.NotebookApp.ip = '0.0.0.0'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8000 
+```
+
+(Previously we set ip to '*' to bind on all interfaces (ips) for the public server but this seems to be broken right now, the above is a fix.)
 

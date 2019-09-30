@@ -50,7 +50,9 @@
 
 * sometimes need `pip install neovim`
 
+### For Japanese
 
+https://confluence.jaytaala.com/display/TKB/Japanese+input+with+i3+and+Arch+based+distros
 
 ### Notes on AWS
 

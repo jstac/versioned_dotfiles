@@ -52,7 +52,10 @@
 
 ### For Japanese
 
-https://confluence.jaytaala.com/display/TKB/Japanese+input+with+i3+and+Arch+based+distros
+Just use Google's Japanese input
+
+Or see https://confluence.jaytaala.com/display/TKB/Japanese+input+with+i3+and+Arch+based+distros
+
 
 ### Notes on AWS
 

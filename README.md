@@ -3,8 +3,8 @@
 
 ## Computer Set Up
 
-
 All steps to get a new machine up and running, assuming Manjaro XFCE.
+
 
 ### Download ISO and Install
 
@@ -17,10 +17,21 @@ Get ISO and then
 
 ### Install zsh and Tweaks to Shell
 
+First change root user:
+
+* `sudo -s` followed by `chsh -s /bin/zsh root`
+
+Now the user:
+
 * `chsh -s /bin/zsh` 
 
 * install oh-my-zsh via `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"` or similar
 
+* `sudo pacman -S exa` (modern replacement for ls)
+
+Colors:
+
+* got to `https://github.com/arcticicestudio/nord-xfce-terminal` and follow instructions
 
 ### Set Up Dotfiles
 
@@ -35,10 +46,10 @@ Get ISO and then
 
 * install latex, zsh, git
 
-* install chrome (e.g, https://linuxconfig.org/how-to-install-google-chrome-on-manjaro-18-linux or `yaourt -S google-chrome`)
+* install chrome --- google for latest terminal method
 
 
-### Keyboard Shortcuts
+### Configure XFCE
 
 * set keyboard shortcuts in keyboard -> applications shortcuts
 
@@ -50,6 +61,8 @@ Get ISO and then
   - Alt-v maximizes vertically
   - Alt-k closes
   - Alt-f fullscreen
+
+* Use "windown manager tweaks" to turn of wrapping of workspaces
 
 
 ### Anaconda / Jupyter / IPython
@@ -69,9 +82,7 @@ Install neovim, python-neovim
 
 * cd to `~/.config/nvim/` and type `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
 
-* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-
-* got to `https://github.com/arcticicestudio/nord-xfce-terminal` and follow instructions
+* follow instructions to install and set up `vim-plug` from junegunn
 
 * sometimes need `pip install neovim`
 

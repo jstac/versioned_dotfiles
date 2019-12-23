@@ -13,7 +13,6 @@ let g:UltiSnipsSnippetDirectories = ['vim-snippets', 'UltiSnips']
 let g:python_host_prog='/home/john/anaconda3/bin/python'
 
 
-
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 

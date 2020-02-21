@@ -1,13 +1,55 @@
-# versioned_dotfiles
+# Versioned Dotfiles
 
 
-## Install steps
+## Computer Set Up
 
-* install latex, anaconda, julia, zsh, git, neovim, python-neovim
+All steps to get a new machine up and running, assuming Manjaro XFCE.
+
+
+### Download ISO and Install
+
+Get ISO and then
+
+* `sudo fdisk -l` to find which device --- usually `/dev/sdb/`
+
+* `sudo umount /dev/sdb` and then `sudo dd if=/path/to/iso of=/dev/sdb bs=1M`
+
+
+### Install zsh and Tweaks to Shell
+
+First change root user:
+
+* `sudo -s` followed by `chsh -s /bin/zsh root`
+
+Now the user:
 
 * `chsh -s /bin/zsh` 
 
 * install oh-my-zsh via `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"` or similar
+
+* `sudo pacman -S exa` (modern replacement for ls)
+
+Colors:
+
+* got to `https://github.com/arcticicestudio/nord-xfce-terminal` and follow instructions
+
+### Set Up Dotfiles
+
+* `ln -s versioned_dotfiles/.zshrc .`
+* `ln -s versioned_dotfiles/.latexmkrc .`
+* `ln -s versioned_dotfiles/.vimrc .`
+* `ln -s versioned_dotfiles/.ssh/config .`  from inside `~/.ssh`
+* `ln -s versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
+
+
+### Install Basic Software
+
+* install latex, zsh, git
+
+* install chrome --- google for latest terminal method
+
+
+### Configure XFCE
 
 * set keyboard shortcuts in keyboard -> applications shortcuts
 
@@ -20,19 +62,12 @@
   - Alt-k closes
   - Alt-f fullscreen
 
-* install chrome (e.g, https://linuxconfig.org/how-to-install-google-chrome-on-manjaro-18-linux or `yaourt -S google-chrome`)
+* Use "windown manager tweaks" to turn of wrapping of workspaces
 
-* `ln -s versioned_dotfiles/.zshrc .`
-* `ln -s versioned_dotfiles/.latexmkrc .`
-* `ln -s versioned_dotfiles/.vimrc .`
-* `ln -s versioned_dotfiles/.ssh/config .`  from inside `~/.ssh`
-* `ln -s versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
 
-* cd to `~/.config/nvim/` and type `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
+### Anaconda / Jupyter / IPython
 
-* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-
-* got to `https://github.com/arcticicestudio/nord-xfce-terminal` and follow instructions
+Get Anaconda and then
 
 * `jupyter notebook --generate-config` and set browser to firefox
 
@@ -40,24 +75,44 @@
 
 * `sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
 
-* ssh keys: see https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 
-    - also, https://www.ssh.com/ssh/copy-id
+### Set Up Editor
+
+Install neovim, python-neovim
+
+* cd to `~/.config/nvim/` and type `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
+
+* follow instructions to install and set up `vim-plug` from junegunn
+
+* sometimes need `pip install neovim`
+
+### SSH
+
+To generate a key, use
+
+* `ssh-keygen -t rsa` and then your ssh passphrase
+
+Now `ssh-add` when you start your machine.  To copy it to the server, use
+
+* `ssh-copy-id -i ~/.ssh/mykey user@host`
+
+
+### Versioned Tools
 
 * `cd ~` and `git clone https://github.com/jstac/versioned_tools`, then add symbolic links in `bin`
 
 * make the dir `~/texmf/bibtex/bst` and add ecta.bst, etc., and then do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 
-* sometimes need `pip install neovim`
 
-### For Japanese
+
+## For Japanese
 
 Just use Google's Japanese input
 
 Or see https://confluence.jaytaala.com/display/TKB/Japanese+input+with+i3+and+Arch+based+distros
 
 
-### Notes on AWS
+## Notes on AWS
 
 
 #### To get an instance running

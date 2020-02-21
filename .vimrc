@@ -6,13 +6,11 @@
 """
 
 set runtimepath+=~/.vim
+
 let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets"
 let g:UltiSnipsSnippetDirectories = ['vim-snippets', 'UltiSnips']
 
-
 let g:python_host_prog='/home/john/anaconda3/bin/python'
-
-
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -29,10 +27,8 @@ Plug 'jstac/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Unicode characters (see :h unicode-plugin)
-"
-" Marginally useful.  :Digraphs eta shows the diagraph for eta, then use <C-k>
-Plug 'chrisbra/unicode.vim'
+" Unicode characters 
+Plug 'arthurxavierx/vim-unicoder'
 
 " Latex support
 Plug 'lervag/vimtex'

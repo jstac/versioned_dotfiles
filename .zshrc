@@ -88,6 +88,8 @@ alias vi="nvim"
 alias vim="nvim"
 alias ls="exa"
 
+# stop zsh from screwing up pip extras
+alias pip='noglob pip'
 
 
 

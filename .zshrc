@@ -2,7 +2,7 @@
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # added by Anaconda3 installer
-export PATH="/home/john/anaconda3/bin:$PATH"
+# export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/john/.oh-my-zsh
@@ -89,4 +89,20 @@ alias vim="nvim"
 alias ls="exa"
 
 
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/john/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/john/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/john/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/john/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

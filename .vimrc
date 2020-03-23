@@ -5,27 +5,41 @@
 "
 """
 
+
 set runtimepath+=~/.vim
 
-let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets"
-let g:UltiSnipsSnippetDirectories = ['vim-snippets', 'UltiSnips']
+" let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets"
+" let g:UltiSnipsSnippetDirectories = ['vim-snippets', 'UltiSnips']
 
 let g:python_host_prog='/home/john/anaconda3/bin/python'
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+" Code completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Have installed the following extensions via CocInstall
+" * coc-texlab
+" * coc-python
+" * coc-snippets
+
+
 " Snippets engine
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. I'll use my fork of honza/vim-snippets.  
 " This is the repo to edit when adding/changing snippets.  To keep things
 " clean, perhaps clone it separately, edit, push changes and then PlugUpdate
 Plug 'jstac/vim-snippets'
 
+" Nice file icons
+Plug 'ryanoasis/vim-devicons'
+
 " Status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+set statusline^=%{coc#status()}
 
 " Unicode characters 
 Plug 'arthurxavierx/vim-unicoder'
@@ -36,10 +50,12 @@ Plug 'lervag/vimtex'
 " Commenting
 Plug 'scrooloose/nerdcommenter'
 
-" Supertab
-Plug 'ervandew/supertab'
+" Nerdtree
+Plug 'preservim/nerdtree'
 
 " Colors
+Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'nightsense/vimspectr'
 Plug 'tomasiser/vim-code-dark'
@@ -47,11 +63,11 @@ Plug 'gregsexton/Atom'
 Plug 'dracula/vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'mhinz/vim-janah'
+Plug 'arcticicestudio/nord-vim'
 Plug 'michalbachowski/vim-wombat256mod'
 
 " Initialize plugin system
 call plug#end()
-
 
 
 
@@ -83,7 +99,10 @@ set formatoptions=tqn
 
 set t_Co=256
 set t_ut=
+colorscheme OceanicNext
+"colorscheme nord
 colorscheme wombat256mod
+"colorscheme gruvbox
 "colorscheme codedark
 "colorscheme janah
 "colorscheme challenger-deep
@@ -98,16 +117,6 @@ syntax on
 "
 set splitbelow
 set splitright
-
-" Moving between splits
-"
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-
-
 
 
 """""""""""" Buffers """"""""""""""""""""
@@ -147,10 +156,43 @@ map <F4> :set invpaste<CR>
 map <F5> :set invnumber<CR>
 
 
-""""""""""""""" ultisnips """"""""""""""""""
+""""""""""""""" coc """"""""""""""""""""""""
 
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:tex_flavor = "latex"
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" <tab> and <S-tab> are used to navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" <cr> confirms competion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+"""""""""""""""" coc-snippets """""""""""""""
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
 
 
 """"""""""""""" vimtex """"""""""""""""""""""

@@ -35,11 +35,20 @@ Colors:
 
 ### Set Up Dotfiles
 
-* `ln -s versioned_dotfiles/.zshrc .`
-* `ln -s versioned_dotfiles/.latexmkrc .`
-* `ln -s versioned_dotfiles/.vimrc .`
-* `ln -s versioned_dotfiles/.ssh/config .`  from inside `~/.ssh`
-* `ln -s versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
+In home dir
+
+* `ln -s gh_synced/versioned_dotfiles/.zshrc .`
+* `ln -s gh_synced/versioned_dotfiles/.latexmkrc .`
+* `ln -s gh_synced/versioned_dotfiles/.vimrc .`
+* `ln -s gh_synced/versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
+
+From inside `~/.ssh`
+
+* `ln -s gh_synced/versioned_dotfiles/.ssh/config .`  
+
+From inside `~/.config/nvim/` 
+
+* `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
 
 
 ### Install Basic Software
@@ -47,6 +56,15 @@ Colors:
 * install latex, zsh, git
 
 * install chrome --- google for latest terminal method
+
+### Install and Set Fonts
+
+Caskaydia Cove Nerd font via AUR
+
+* `yay -S nerd-font-cascadia-code`
+
+Now select this font for terminal by GUI, in preferences 
+(seems to have different spelling)
 
 
 ### Configure XFCE
@@ -80,11 +98,14 @@ Get Anaconda and then
 
 Install neovim, python-neovim
 
-* cd to `~/.config/nvim/` and type `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
+Install npm and nodejs via yay
 
 * follow instructions to install and set up `vim-plug` from junegunn
 
-* sometimes need `pip install neovim`
+* Run `:PlugInstall` and then `:CocInstall xyz` as per vimrc
+
+* sometimes need `pip install --upgrade neovim`
+
 
 ### SSH
 

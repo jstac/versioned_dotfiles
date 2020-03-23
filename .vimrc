@@ -22,10 +22,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " * coc-texlab
 " * coc-python
 " * coc-snippets
+"
+" Also, add the following, bit by bit: https://github.com/neoclide/coc.nvim#example-vim-configuration
 
-
-" Snippets engine
-" Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. I'll use my fork of honza/vim-snippets.  
 " This is the repo to edit when adding/changing snippets.  To keep things
@@ -50,7 +49,7 @@ Plug 'lervag/vimtex'
 " Commenting
 Plug 'scrooloose/nerdcommenter'
 
-" Nerdtree
+" Nerdtree (activated by <ctrl-t>, see below)
 Plug 'preservim/nerdtree'
 
 " Colors
@@ -88,6 +87,7 @@ set shiftwidth=4
 set smarttab 
 set autoindent            " use current level of indent in next line
 set wildmode=longest,list " bash-like tab completion when opening files
+set hidden                " can open new files w/o saving existing
 
 set foldmethod=indent
 set foldlevel=99
@@ -193,6 +193,10 @@ let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
+
+""""""""""""""" Nerdtree """"""""""""""""""""
+
+nmap <C-t> :NERDTreeToggle<CR>
 
 
 """"""""""""""" vimtex """"""""""""""""""""""

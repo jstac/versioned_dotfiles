@@ -1,56 +1,53 @@
-"""
-" John Stachurski's vimrc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"
+""""""""""""" John Stachurski's vimrc """""""""""""""
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""" preamble
 "
 " Plugin manager = vim-plug
 "
-"""
-
-
 set runtimepath+=~/.vim
-
-" let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets"
-" let g:UltiSnipsSnippetDirectories = ['vim-snippets', 'UltiSnips']
-
-let g:python_host_prog='/home/john/anaconda3/bin/python'
-
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-" Code completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Have installed the following extensions via CocInstall
-" * coc-texlab
-" * coc-python
-" * coc-snippets
+"""" Code completion (currently disabled)
 "
-" Also, add the following, bit by bit: https://github.com/neoclide/coc.nvim#example-vim-configuration
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
+""" Snippets
+"
+Plug 'SirVer/ultisnips'
+"
 " Snippets are separated from the engine. I'll use my fork of honza/vim-snippets.  
 " This is the repo to edit when adding/changing snippets.  To keep things
 " clean, perhaps clone it separately, edit, push changes and then PlugUpdate
 Plug 'jstac/vim-snippets'
 
-" Nice file icons
-Plug 'ryanoasis/vim-devicons'
 
-" Status line
+""" Status line
+"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-set statusline^=%{coc#status()}
 
-" Unicode characters (select and <ctrl-l> or <ctrl-l> in normal mode)
+"""" Unicode characters 
+"
+" (select and <ctrl-l> or <ctrl-l> in normal mode)
 Plug 'joom/latex-unicoder.vim'
 
-" Latex support
+"""" Latex support
+"
 Plug 'lervag/vimtex'
 
-" Commenting
+"""" Commenting
+"
 Plug 'scrooloose/nerdcommenter'
-
-" Nerdtree (activated by <ctrl-t>, see below)
-Plug 'preservim/nerdtree'
 
 " Colors
 Plug 'mhartington/oceanic-next'
@@ -156,39 +153,11 @@ map <F4> :set invpaste<CR>
 map <F5> :set invnumber<CR>
 
 
-""""""""""""""" coc """"""""""""""""""""""""
-
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" <tab> and <S-tab> are used to navigate completion list
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" <cr> confirms competion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-
-"""""""""""""""" coc-snippets """""""""""""""
-
-" Snippets are accessible through <tab> and navigation is by <tab> and <S-tab>
-
-
-""""""""""""""" Nerdtree """"""""""""""""""""
-
-nmap <C-t> :NERDTreeToggle<CR>
 
 
 """"""""""""""" vimtex """"""""""""""""""""""
 
+let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'mupdf'
 
 let g:vimtex_quickfix_latexlog = {
@@ -212,6 +181,17 @@ let g:vimtex_compiler_latexmk = {
     \   '-interaction=nonstopmode',
     \ ],
 \}
+
+
+"""" Ultisnips """"""""
+
+" Triggered by <tab> (conflicts with YouCompleteMe, completion-nvim, " etc.)
+let g:UltiSnipsExpandTrigger="<tab>"
+" Forward and backward
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Snippet location
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
 """""""""""""" Restructured Text """"""""""""""""
 

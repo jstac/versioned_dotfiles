@@ -15,18 +15,23 @@ set runtimepath+=~/.vim
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-"""" Code completion (currently disabled)
+"""" Code completion 
 "
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Provides all forms of tab completion.  See settings below.
+"
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 """ Snippets
 "
+" Expand snippets with <c-k> as per settings below.  Typical
+" workflow is to tab expand the trigger word (uses coc) and
+" then hit <c-k> to invoke ultisnips.
+"
 Plug 'SirVer/ultisnips'
 "
-" Snippets are separated from the engine. I'll use my fork of honza/vim-snippets.  
-" This is the repo to edit when adding/changing snippets.  To keep things
-" clean, perhaps clone it separately, edit, push changes and then PlugUpdate
+" This is the repo to edit when adding/changing snippets. 
+" A fork of honza/vim-snippets.  
 Plug 'jstac/vim-snippets'
 
 
@@ -183,15 +188,6 @@ let g:vimtex_compiler_latexmk = {
 \}
 
 
-"""" Ultisnips """"""""
-
-" Triggered by <tab> (conflicts with YouCompleteMe, completion-nvim, " etc.)
-let g:UltiSnipsExpandTrigger="<tab>"
-" Forward and backward
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" Snippet location
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
 """""""""""""" Restructured Text """"""""""""""""
 
@@ -222,4 +218,27 @@ set suffixes+=.dvi
 set suffixes+=.log
 set suffixes+=.pdf
 set suffixes+=.ps
+
+
+"""" Ultisnips """"""""
+
+" Trigger
+let g:UltiSnipsExpandTrigger="<c-k>"
+" Forward and backward
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Snippet location
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
+
+
+"""" coc """""""""""""""
+
+" trigger completion with <tab>
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 

@@ -20,19 +20,24 @@ call plug#begin('~/.vim/plugged')
 " Provides all forms of tab completion.  See settings below.
 "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
+"  Extensions added through :CocInstall coc-snippets
+"
+"     :CocInstall coc-snippets
 
 
-""" Snippets
+
+""" Snippets (replaced ultisnips with :CocInstall coc-snippets)
 "
 " Expand snippets with <c-k> as per settings below.  Typical
 " workflow is to tab expand the trigger word (uses coc) and
 " then hit <c-k> to invoke ultisnips.
 "
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 "
 " This is the repo to edit when adding/changing snippets. 
-" A fork of honza/vim-snippets.  
-Plug 'jstac/vim-snippets'
+" Plug 'jstac/vim-snippets'   " A fork of honza/vim-snippets.  
+Plug 'honza/vim-snippets'  
 
 
 """ Status line
@@ -43,7 +48,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 """" Unicode characters 
 "
-" (select and <ctrl-l> or <ctrl-l> in normal mode)
+" (select and <c-l> or <c-l> in normal mode)
 Plug 'joom/latex-unicoder.vim'
 
 """" Latex support
@@ -162,15 +167,21 @@ map <F5> :set invnumber<CR>
 
 """"""""""""""" vimtex """"""""""""""""""""""
 
-let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'mupdf'
 
-let g:vimtex_quickfix_latexlog = {
-  \ 'font' : 0,
-  \ 'overfull' : 0,
-  \ 'underfull' : 0,
-  \ 'warning' : 0
-\}
+let g:tex_flavor = 'latex'
+
+" Currently suppressing all warnings, which is a little dangerous
+let g:vimtex_quickfix_open_on_warning = 0
+
+" This isn't working well so killed it
+"
+"let g:vimtex_quickfix_latexlog = {
+"  \ 'Font' : 0,
+"  \ 'Overfull' : 0,
+"  \ 'Underfull' : 0,
+"  \ 'Warning' : 0
+"\}
 
 let g:vimtex_compiler_latexmk = {
     \ 'background' : 1,
@@ -223,12 +234,12 @@ set suffixes+=.ps
 """" Ultisnips """"""""
 
 " Trigger
-let g:UltiSnipsExpandTrigger="<c-k>"
+" let g:UltiSnipsExpandTrigger="<C-k>"
 " Forward and backward
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" Snippet location
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"" Snippet location
+"let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
 
 """" coc """""""""""""""
@@ -237,8 +248,23 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
+" After :CocInstall coc-snippets, based on information from
+" https://www.chrisatmachine.com/Neovim/17-snippets/
+"
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 

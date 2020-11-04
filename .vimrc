@@ -182,21 +182,32 @@ let g:vimtex_quickfix_open_on_warning = 0
 "  \ 'Underfull' : 0,
 "  \ 'Warning' : 0
 "\}
+"
 
-let g:vimtex_compiler_latexmk = {
-    \ 'background' : 1,
-    \ 'build_dir' : '',
-    \ 'callback' : 0,  
-    \ 'continuous' : 0,
-    \ 'executable' : 'latexmk',
-    \ 'options' : [
-    \   '-pdf',
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-\}
+let g:vimtex_compiler_latexmk = { 
+        \ 'executable' : 'latexmk',
+        \ 'continuous' : 0,
+        \ 'options' : [ 
+        \   '-xelatex',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+
+"let g:vimtex_compiler_latexmk = {
+    "\ 'background' : 1,
+    "\ 'build_dir' : '',
+    "\ 'callback' : 0,  
+    "\ 'executable' : 'latexmk',
+    "\ 'options' : [
+    "\   '-pdf',
+    "\   '-verbose',
+    "\   '-file-line-error',
+    "\   '-synctex=1',
+    "\   '-interaction=nonstopmode',
+    "\ ],
+"\}
 
 
 

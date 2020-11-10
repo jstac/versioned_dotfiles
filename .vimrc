@@ -15,11 +15,12 @@ set runtimepath+=~/.vim
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-"""" Code completion 
+"""" Code completion through coc --- I dropped this because it was too 
+" heavy, slow and unreliable with large documents.
 "
 " Provides all forms of tab completion.  See settings below.
 "
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 "  Extensions added through :CocInstall coc-snippets
 "
@@ -27,17 +28,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 
-""" Snippets (replaced ultisnips with :CocInstall coc-snippets)
+""" Snippets 
 "
 " Expand snippets with <c-k> as per settings below.  Typical
 " workflow is to tab expand the trigger word (uses coc) and
 " then hit <c-k> to invoke ultisnips.
 "
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 "
 " This is the repo to edit when adding/changing snippets. 
-" Plug 'jstac/vim-snippets'   " A fork of honza/vim-snippets.  
-Plug 'honza/vim-snippets'  
+" Plug 'honza/vim-snippets'  
+Plug 'jstac/vim-snippets'   " A fork of honza/vim-snippets.  
 
 
 """ Status line
@@ -245,12 +246,12 @@ set suffixes+=.ps
 """" Ultisnips """"""""
 
 " Trigger
-" let g:UltiSnipsExpandTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger="<C-k>"
 " Forward and backward
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"" Snippet location
-"let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Snippet location
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
 
 """" coc """""""""""""""
@@ -258,24 +259,24 @@ set suffixes+=.ps
 " trigger completion with <tab>
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+    "\ pumvisible() ? "\<C-n>" :
+    "\ <SID>check_back_space() ? "\<TAB>" :
+    "\ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 
-" After :CocInstall coc-snippets, based on information from
-" https://www.chrisatmachine.com/Neovim/17-snippets/
-"
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+"" After :CocInstall coc-snippets, based on information from
+"" https://www.chrisatmachine.com/Neovim/17-snippets/
+""
+"" Use <C-l> for trigger snippet expand.
+"imap <C-l> <Plug>(coc-snippets-expand)
+"" Use <C-j> for select text for visual placeholder of snippet.
+"vmap <C-j> <Plug>(coc-snippets-select)
+"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+"let g:coc_snippet_next = '<c-j>'
+"" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+"let g:coc_snippet_prev = '<c-k>'
+"" Use <C-j> for both expand and jump (make expand higher priority.)
+"imap <C-j> <Plug>(coc-snippets-expand-jump)
 

@@ -27,6 +27,9 @@ call plug#begin('~/.vim/plugged')
 "     :CocInstall coc-snippets
 
 
+""" Using tab for omnicomplete
+Plug 'ervandew/supertab'
+
 
 """ Snippets 
 "

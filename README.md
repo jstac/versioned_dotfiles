@@ -98,13 +98,10 @@ Get Anaconda and then
 
 Install neovim, python-neovim
 
-Install npm and nodejs via yay
-
 * follow instructions to install and set up `vim-plug` from junegunn
 
-* Run `:PlugInstall` and then `:CocInstall xyz` as per vimrc
+* Run `:PlugInstall` 
 
-* sometimes need `pip install --upgrade neovim`
 
 
 ### SSH

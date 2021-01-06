@@ -87,7 +87,7 @@ call plug#end()
 "set background=dark
 set showmode              " show da mode
 set bs=2                  " backspace over everything
-set noincsearch            " incremental search (sucks)
+set noincsearch           " incremental search (sucks)
 set hlsearch              " highlight search matches
 set textwidth=78
 set vb t_vb=              " flash screen instead of beep

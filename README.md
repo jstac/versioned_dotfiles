@@ -121,7 +121,11 @@ Now `ssh-add` when you start your machine.  To copy it to the server, use
 
 * make the dir `~/texmf/bibtex/bst` and add ecta.bst, etc., and then do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 
+### GH Credentials
 
+https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tokens
+
+See comments there about caching credentials.
 
 ## For Japanese
 

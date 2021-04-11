@@ -82,6 +82,10 @@ Now select this font for terminal by GUI, in preferences
 
 * Use "windown manager tweaks" to turn of wrapping of workspaces
 
+### Screen lock
+
+Install `pacman -S slock`, execute on command line, password to exit
+
 
 ### Anaconda / Jupyter / IPython
 

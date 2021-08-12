@@ -123,6 +123,9 @@ map <F5> :set invnumber<CR>
 
 """"""""""""""" vimtex """"""""""""""""""""""
 
+" vimtex uses the <localleader> for compiling, etc.  
+" For example, <localleader>ll means compile
+
 let g:vimtex_view_method = 'mupdf'
 let g:tex_flavor = 'latex'
 

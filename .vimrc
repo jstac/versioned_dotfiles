@@ -20,6 +20,9 @@ Plug 'jstac/vim-snippets'   " edit snippets. Fork of honza/vim-snippets.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+""" Send code to a terminal
+Plug 'kassio/neoterm'
+
 """" Unicode characters 
 "Plug 'joom/latex-unicoder.vim'  " select and <c-a> or <c-a> in normal mode, see below
 
@@ -98,6 +101,7 @@ map Q {gq}
 """"""""""""""""" Leader and related """""""""""""""""""""""
 
 let mapleader = "\<Space>"
+let maplocalleader = ";"
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>d :bd<CR>
@@ -183,4 +187,25 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"""""""""" Terminal """"""""""""""""""""
+
+tnoremap jk <C-\><C-n>
+
+
+"""""""""" Config of Neoterm """""""""""
+
+" open terminal in bottom split
+let g:neoterm_default_mod='belowright' 
+" terminal split size
+let g:neoterm_size=16 
+" scroll to the bottom when running a command
+let g:neoterm_autoscroll=1 
+" open terminal in insert mode
+let g:neoterm_autoinsert=1
+
+nnoremap <silent> <localleader>cc :TREPLSendLine<CR>
+vnoremap <silent> <localleader>cc :TREPLSendSelection<CR><CR>
+
+
 

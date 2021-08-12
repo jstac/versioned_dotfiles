@@ -148,6 +148,11 @@ let g:vimtex_compiler_latexmk = {
 
 autocmd FileType python set smartindent 
 
+" For handling myst files -- use Python syntax, trick neoterm 
+" into sending code to IPython
+au BufReadPost *.md set syntax=python
+au VimEnter,BufRead,BufNewFile *.md set filetype=python
+
 
 """"""""""""""" line numbers """"""""""""""""""""""
 
@@ -193,15 +198,18 @@ nnoremap <C-H> <C-W><C-H>
 
 """""""""" Terminal """"""""""""""""""""
 
+" Open in insert mode
+autocmd TermOpen * startinsert  
+" Escape in the terminal
 tnoremap jk <C-\><C-n>
 
 
 """""""""" Config of Neoterm """""""""""
 
 " open terminal in bottom split
-let g:neoterm_default_mod='belowright' 
+let g:neoterm_default_mod='botright vertical' 
 " terminal split size
-let g:neoterm_size=16 
+let g:neoterm_size=80
 " scroll to the bottom when running a command
 let g:neoterm_autoscroll=1 
 " open terminal in insert mode

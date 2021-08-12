@@ -2,6 +2,9 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+""""""""""""" Manage plugins """"""""""""""""""""""""
+
 " Plugin manager = vim-plug
 set runtimepath+=~/.vim
 call plug#begin('~/.vim/plugged')  " Specify a directory for plugins
@@ -18,7 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 """" Unicode characters 
-Plug 'joom/latex-unicoder.vim'  " select and <c-a> or <c-a> in normal mode, see below
+"Plug 'joom/latex-unicoder.vim'  " select and <c-a> or <c-a> in normal mode, see below
 
 """" Latex support
 Plug 'lervag/vimtex'
@@ -44,8 +47,7 @@ call plug#end()
 
 
 
-
-"""""""""""""" Basic preferences """""""""""""""
+"""""""""""""" Basic preferences """""""""""""""""
 
 "set background=dark
 set showmode              " show da mode
@@ -85,14 +87,6 @@ syntax on
 
 
 
-"""""""""""" Splits """"""""""""""""""""
-
-" More natural splits (new splits are below or on right)
-"
-set splitbelow
-set splitright
-
-
 """""""""""""""""" General maps  """""""""""""""""""""""""""""
 
 " map of maps
@@ -105,8 +99,8 @@ map Q {gq}
 
 let mapleader = "\<Space>"
 
-nnoremap <Leader>w :w<CR>     
-nnoremap <Leader>d :bd<CR>   
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>d :bd<CR>
 
 
 """""""""""""""""" Function key maps """""""""""""""""""""""
@@ -126,7 +120,6 @@ map <F5> :set invnumber<CR>
 """"""""""""""" vimtex """"""""""""""""""""""
 
 let g:vimtex_view_method = 'mupdf'
-
 let g:tex_flavor = 'latex'
 
 " Currently suppressing all warnings, which is a little dangerous
@@ -143,15 +136,6 @@ let g:vimtex_compiler_latexmk = {
         \ ],
         \}
 
-
-""""""""""""""" latex-unicoder """"""""""""""""
-
-let g:unicoder_cancel_normal = 1
-let g:unicoder_cancel_insert = 1
-let g:unicoder_cancel_visual = 1
-nnoremap <C-a> :call unicoder#start(0)<CR>
-inoremap <C-a> <Esc>:call unicoder#start(1)<CR>
-vnoremap <C-a> :<C-u>call unicoder#selection()<CR>
 
 """"""""""""""" Python stuff  """""""""""""""""
 
@@ -186,4 +170,17 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Snippet location
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
+
+"""""""""""" Splits """"""""""""""""""""
+
+" More natural splits (new splits are below or on right)
+"
+set splitbelow
+set splitright
+
+" Easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 

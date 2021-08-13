@@ -101,7 +101,7 @@ map Q {gq}
 """"""""""""""""" Leader and related """""""""""""""""""""""
 
 let mapleader = "\<Space>"
-let maplocalleader = ";"
+let maplocalleader = "\\"
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>d :bd<CR>

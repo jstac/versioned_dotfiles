@@ -21,16 +21,19 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 """ Send code to a terminal
-Plug 'kassio/neoterm'
+Plug 'jpalardy/vim-slime'
 
 """" Unicode characters 
-"Plug 'joom/latex-unicoder.vim'  " select and <c-a> or <c-a> in normal mode, see below
+Plug 'joom/latex-unicoder.vim'  " select and <c-k> or <c-k> in normal mode, see below
 
 """" Latex support
 Plug 'lervag/vimtex'
 
 """" Commenting
 Plug 'scrooloose/nerdcommenter'
+
+"""" File browser
+
 
 " Colors
 Plug 'mhartington/oceanic-next'
@@ -47,6 +50,16 @@ Plug 'michalbachowski/vim-wombat256mod'
 
 " Initialize plugin system
 call plug#end()
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""" General configuration """"""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 
 
@@ -90,7 +103,7 @@ syntax on
 
 
 
-"""""""""""""""""" General maps  """""""""""""""""""""""""""""
+""""""""""""""" General maps  """""""""""""""""""""""
 
 " map of maps
 imap jj <Esc>
@@ -98,7 +111,7 @@ imap jj <Esc>
 map Q {gq}
 
 
-""""""""""""""""" Leader and related """""""""""""""""""""""
+""""""""""""""""" Leader and related """""""""""""""
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
@@ -107,7 +120,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>d :bd<CR>
 
 
-"""""""""""""""""" Function key maps """""""""""""""""""""""
+"""""""""""""""""" Function key maps """""""""""""""
 
 " Spelling on 
 map <F2> <Esc>:setlocal spell spelllang=en_us<CR>
@@ -119,9 +132,71 @@ map <F4> :set invpaste<CR>
 map <F5> :set invnumber<CR>
 
 
+"""""""""""""""""""""" Splits """"""""""""""""""""
+
+" More natural splits (new splits are below or on right)
+"
+set splitbelow
+set splitright
 
 
-""""""""""""""" vimtex """"""""""""""""""""""
+
+"""""""""" Terminal within vim """"""""""""""""""""
+
+" Escape in the terminal
+tnoremap jk <C-\><C-n>
+
+
+""""""""""""""" Python stuff  """""""""""""""""
+
+autocmd FileType python set smartindent 
+
+" For handling myst files -- use Python syntax, trick neoterm 
+" into sending code to IPython
+au BufReadPost *.md set syntax=python
+au VimEnter,BufRead,BufNewFile *.md set filetype=python
+
+
+""""""""""""""" line numbers """"""""""""""""""""""
+
+autocmd FileType python set number  
+autocmd FileType c set number  
+autocmd FileType julia set number  
+
+
+"""""""""""""""" Other stuff """"""""""""""""""""""
+
+" low priority to these files in file name expansion 
+
+set suffixes+=.aux
+set suffixes+=.out
+set suffixes+=.dvi
+set suffixes+=.log
+set suffixes+=.pdf
+set suffixes+=.ps
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""" Plugin configuration """"""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""" Ultisnips """""""""""""""""""""""
+
+" Trigger
+let g:UltiSnipsExpandTrigger="<C-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Snippet location
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
+
+
+
+"""""""""""""""""" vimtex """"""""""""""""""""""""""
 
 " vimtex uses the <localleader> for compiling, etc.  
 " For example, <localleader>ll means compile
@@ -144,79 +219,20 @@ let g:vimtex_compiler_latexmk = {
         \}
 
 
-""""""""""""""" Python stuff  """""""""""""""""
+""""""""""""""""" latex-unicoder """"""""""""""""""
 
-autocmd FileType python set smartindent 
-
-" For handling myst files -- use Python syntax, trick neoterm 
-" into sending code to IPython
-au BufReadPost *.md set syntax=python
-au VimEnter,BufRead,BufNewFile *.md set filetype=python
-
-
-""""""""""""""" line numbers """"""""""""""""""""""
-
-autocmd FileType python set number  
-autocmd FileType c set number  
-autocmd FileType julia set number  
+let g:unicoder_cancel_normal = 1
+let g:unicoder_cancel_insert = 1
+let g:unicoder_cancel_visual = 1
+nnoremap <C-k> :call unicoder#start(0)<CR>
+inoremap <C-k> <Esc>:call unicoder#start(1)<CR>
+vnoremap <C-k> :<C-u>call unicoder#selection()<CR>
 
 
-"""""""""""""""" Other stuff """""""""""""""""""
+""""""""""""""""" vim-slime """""""""""""""""""""""
 
-" low priority to these files in file name expansion 
-
-set suffixes+=.aux
-set suffixes+=.out
-set suffixes+=.dvi
-set suffixes+=.log
-set suffixes+=.pdf
-set suffixes+=.ps
-
-
-"""" Ultisnips """"""""
-
-" Trigger
-let g:UltiSnipsExpandTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" Snippet location
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
-
-
-"""""""""""" Splits """"""""""""""""""""
-
-" More natural splits (new splits are below or on right)
-"
-set splitbelow
-set splitright
-
-" Easier split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"""""""""" Terminal """"""""""""""""""""
-
-" Open in insert mode
-autocmd TermOpen * startinsert  
-" Escape in the terminal
-tnoremap jk <C-\><C-n>
-
-
-"""""""""" Config of Neoterm """""""""""
-
-" open terminal in bottom split
-let g:neoterm_default_mod='botright vertical' 
-" terminal split size
-let g:neoterm_size=80
-" scroll to the bottom when running a command
-let g:neoterm_autoscroll=1 
-" open terminal in insert mode
-let g:neoterm_autoinsert=1
-
-nnoremap <silent> <localleader>cc :TREPLSendLine<CR>
-vnoremap <silent> <localleader>cc :TREPLSendSelection<CR><CR>
-
-
-
+let g:slime_python_ipython=1
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+"let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}

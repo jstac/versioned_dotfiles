@@ -110,6 +110,8 @@ imap jj <Esc>
 " Q is format paragraph
 map Q {gq}
 
+map <C-n> :bnext<CR>
+
 
 """"""""""""""""" Leader and related """""""""""""""
 

@@ -203,7 +203,7 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 " vimtex uses the <localleader> for compiling, etc.  
 " For example, <localleader>ll means compile
 
-let g:vimtex_view_method = 'mupdf'
+let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 
 " Currently suppressing all warnings, which is a little dangerous

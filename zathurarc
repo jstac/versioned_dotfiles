@@ -6,3 +6,6 @@ set adjust-open "best-fit"
 # Full screen
 map m toggle_fullscreen
 map [fullscreen] m toggle_fullscreen
+
+map r reload
+map R rotate

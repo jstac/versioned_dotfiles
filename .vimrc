@@ -17,8 +17,7 @@ Plug 'SirVer/ultisnips'     " Expand snippets with <c-k>, see below.
 Plug 'jstac/vim-snippets'   " edit snippets. Fork of honza/vim-snippets.  
 
 """ Status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 
 """ Send code to a terminal
 Plug 'jpalardy/vim-slime'
@@ -36,6 +35,7 @@ Plug 'scrooloose/nerdcommenter'
 
 
 " Colors
+Plug 'folke/tokyonight.nvim'
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
@@ -93,6 +93,7 @@ set t_Co=256
 set t_ut=
 "colorscheme OceanicNext
 "colorscheme nord
+"colorscheme tokyonight
 colorscheme wombat256mod
 "colorscheme gruvbox
 "colorscheme codedark

@@ -47,6 +47,8 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'mhinz/vim-janah'
 Plug 'arcticicestudio/nord-vim'
 Plug 'michalbachowski/vim-wombat256mod'
+Plug 'joshdick/onedark.vim'
+Plug 'bluz71/vim-moonfly-colors'
 
 " Initialize plugin system
 call plug#end()
@@ -94,14 +96,26 @@ set t_ut=
 "colorscheme OceanicNext
 "colorscheme nord
 "colorscheme tokyonight
-colorscheme wombat256mod
+"colorscheme wombat256mod
+colorscheme onedark
 "colorscheme gruvbox
 "colorscheme codedark
 "colorscheme janah
 "colorscheme challenger-deep
-syntax on
 
+syntax on   " syntax highlighting
 
+" Enable true colors
+if exists('+termguicolors')
+  " Necessary when using tmux
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" Enable italics, Make sure this is immediately after colorscheme
+" https://stackoverflow.com/questions/3494435/vimrc-make-comments-italic
+highlight Comment cterm=italic gui=italic
 
 
 """"""""""""""" General maps  """""""""""""""""""""""

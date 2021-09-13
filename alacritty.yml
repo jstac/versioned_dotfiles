@@ -162,7 +162,7 @@ schemes:
     cyan:    '#5c8482'
     white:   '#828282'
 
-colors: *onedark
+colors: *srcery
 
 background_opacity: 0.90
 

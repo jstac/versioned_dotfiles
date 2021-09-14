@@ -15,29 +15,28 @@ Get ISO and then
 * `sudo umount /dev/sdb` and then `sudo dd if=/path/to/iso of=/dev/sdb bs=1M`
 
 
-### Install zsh and Tweaks to Shell
+### Install fish and Tweaks to Shell
 
 First change root user:
 
-* `sudo -s` followed by `chsh -s /bin/zsh root`
+* `sudo -s` followed by `chsh -s /bin/fish root`
 
 Now the user:
 
-* `chsh -s /bin/zsh` 
+* `chsh -s /bin/fish` 
 
-* install oh-my-zsh via `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"` or similar
+* install oh-my-fish and use it to install themes `omf install xyz` 
 
-* `sudo pacman -S exa` (modern replacement for ls)
+Terminal:
 
-Colors:
-
-* got to `https://github.com/arcticicestudio/nord-xfce-terminal` and follow instructions
+* Install alacritty
 
 ### Set Up Dotfiles
 
-In home dir
+Links for dotfiles
 
-* `ln -s gh_synced/versioned_dotfiles/.zshrc .`
+* fish files go in `.config/fish` (`/fish/config.fish` and `/fish/functions/fish_user_key_bindings.fish`)
+* `alacritty.yml` goes in `.config/alacritty`
 * `ln -s gh_synced/versioned_dotfiles/.latexmkrc .`
 * `ln -s gh_synced/versioned_dotfiles/.vimrc .`
 * `ln -s gh_synced/versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
@@ -53,25 +52,19 @@ From inside `~/.config/nvim/`
 
 ### Install Basic Software
 
-* install latex, zsh, git
+* install latex, git
 
 * install chrome --- google for latest terminal method
 
 ### Install and Set Fonts
 
-Caskaydia Cove Nerd font via AUR
-
-* `yay -S nerd-font-cascadia-code`
-
-Now select this font for terminal by GUI, in preferences 
-(seems to have different spelling)
-
+Install Nerd Fonts via AUR
 
 ### Configure XFCE
 
 * set keyboard shortcuts in keyboard -> applications shortcuts
 
-  - Alt-Enter for xfce4-terminal
+  - Alt-Enter for alacritty
 
 * set keyboard shortcuts in window manager
 

@@ -1,5 +1,7 @@
 set fish_key_bindings fish_user_key_bindings
 
+set fish_greeting
+
 # Define alias in config file
 alias vi="nvim"
 alias jp="jupyter notebook"

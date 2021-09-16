@@ -5,6 +5,7 @@ set fish_greeting
 # Define alias in config file
 alias vi="nvim"
 alias jp="jupyter notebook"
+alias mu="zathura"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here

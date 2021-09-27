@@ -15,17 +15,17 @@ Get ISO and then
 * `sudo umount /dev/sdb` and then `sudo dd if=/path/to/iso of=/dev/sdb bs=1M`
 
 
-### Install fish and Tweaks to Shell
+### Install zsh and Tweaks to Shell
 
 First change root user:
 
-* `sudo -s` followed by `chsh -s /bin/fish root`
+* `sudo -s` followed by `chsh -s /bin/zsh root`
 
 Now the user:
 
-* `chsh -s /bin/fish` 
+* `chsh -s /bin/zsh` 
 
-* install oh-my-fish and use it to install themes `omf install xyz` 
+* install oh-my-zsh 
 
 Terminal:
 
@@ -35,11 +35,11 @@ Terminal:
 
 Links for dotfiles
 
-* fish files go in `.config/fish` (`/fish/config.fish` and `/fish/functions/fish_user_key_bindings.fish`)
 * `alacritty.yml` goes in `.config/alacritty`
 * `ln -s gh_synced/versioned_dotfiles/.latexmkrc .`
 * `ln -s gh_synced/versioned_dotfiles/.vimrc .`
 * `ln -s gh_synced/versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
+* fish files go in `.config/fish` (`/fish/config.fish` and `/fish/functions/fish_user_key_bindings.fish`)
 
 From inside `~/.ssh`
 

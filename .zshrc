@@ -10,7 +10,7 @@ export ZSH=/home/john/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="jonathan"
+ZSH_THEME="af-magic"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -86,7 +86,7 @@ alias jp="jupyter notebook"
 alias xo="xdg-open"
 alias vi="nvim"
 alias vim="nvim"
-alias ls="exa"
+alias mu="zathura"
 
 # stop zsh from screwing up pip extras
 alias pip='noglob pip'

@@ -31,6 +31,9 @@ Plug 'lervag/vimtex'
 """" Commenting
 Plug 'scrooloose/nerdcommenter'
 
+"""" Editing with nvim in the browser
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 """" File browser
 
 

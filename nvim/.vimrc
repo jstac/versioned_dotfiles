@@ -9,6 +9,9 @@
 set runtimepath+=~/.vim
 call plug#begin('~/.vim/plugged')  " Specify a directory for plugins
 
+" Julia
+Plug 'JuliaEditorSupport/julia-vim'
+
 """ Using tab for omnicomplete
 Plug 'ervandew/supertab'
 

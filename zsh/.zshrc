@@ -2,7 +2,9 @@
 export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # added by Anaconda3 installer
-# export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initialize
+export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initialize
+
+export PATH="$PATH:/home/john/julia-1.7.0/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/john/.oh-my-zsh
@@ -10,7 +12,7 @@ export ZSH=/home/john/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="gnzh"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

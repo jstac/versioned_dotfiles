@@ -27,34 +27,23 @@ Now the user:
 
 * install oh-my-zsh 
 
+Rofi:
+
+`sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
+
 Terminal:
 
-* Install alacritty
+* Install kitty
 
 ### Set Up Dotfiles
 
 Links for dotfiles
 
-* `alacritty.yml` goes in `.config/alacritty`
-* `ln -s gh_synced/versioned_dotfiles/.latexmkrc .`
-* `ln -s gh_synced/versioned_dotfiles/.vimrc .`
-* `ln -s gh_synced/versioned_dotfiles/.Xmodmap .`   # maps CAPS to CTRL
-* fish files go in `.config/fish` (`/fish/config.fish` and `/fish/functions/fish_user_key_bindings.fish`)
-
-From inside `~/.ssh`
-
-* `ln -s gh_synced/versioned_dotfiles/.ssh/config .`  
-
-From inside `~/.config/nvim/` 
-
-* `ln -s ~/versioned_dotfiles/.config/nvim/init.vim .`
-
+* use GNU stow (`sudo pacman -S stow`)
 
 ### Install Basic Software
 
 * install latex, git
-
-* install chrome --- google for latest terminal method
 
 ### Install and Set Fonts
 
@@ -64,7 +53,7 @@ Install Nerd Fonts via AUR
 
 * set keyboard shortcuts in keyboard -> applications shortcuts
 
-  - Alt-Enter for alacritty
+  - Alt-Enter for kitty
 
 * set keyboard shortcuts in window manager
 
@@ -78,17 +67,6 @@ Install Nerd Fonts via AUR
 ### Screen lock
 
 Install `pacman -S slock`, execute on command line, password to exit
-
-
-### Anaconda / Jupyter / IPython
-
-Get Anaconda and then
-
-* `jupyter notebook --generate-config` and set browser to firefox
-
-* `ipython profile create`
-
-* `sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
 
 
 ### Set Up Editor

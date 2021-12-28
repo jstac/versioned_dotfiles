@@ -1,13 +1,15 @@
-""""""""""""" John Stachurski's vimrc """""""""""""""
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ================================================= "
+ 
+"           John Stachurski's vim config
+ 
+" ================================================= "
 
 
 """"""""""""" Manage plugins """"""""""""""""""""""""
 
-" Plugin manager = vim-plug
+" Plugin manager = vim-plug 
 set runtimepath+=~/.vim
-call plug#begin('~/.vim/plugged')  " Specify a directory for plugins
+call plug#begin('~/.vim/plugged')  
 
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
@@ -37,8 +39,8 @@ Plug 'scrooloose/nerdcommenter'
 """
 Plug 'junegunn/fzf.vim'
 
-
 " Colors
+Plug 'rebelot/kanagawa.nvim'
 Plug 'folke/tokyonight.nvim'
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
@@ -60,12 +62,10 @@ call plug#end()
 
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""" General configuration """"""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" ================================================ "
+"             General configuration 
+" ================================================ "
 
 
 
@@ -86,7 +86,6 @@ set smarttab
 set autoindent            " use current level of indent in next line
 set wildmode=longest,list " bash-like tab completion when opening files
 set hidden                " can open new files w/o saving existing
-
 set foldmethod=indent
 set foldlevel=99
 set formatoptions=tqn
@@ -97,11 +96,12 @@ set formatoptions=tqn
 
 set t_Co=256
 set t_ut=
+"colorscheme kanagawa
 "colorscheme OceanicNext
 "colorscheme nord
-"colorscheme tokyonight
+colorscheme tokyonight
 "colorscheme wombat256mod
-colorscheme onedark
+"colorscheme onedark
 "colorscheme gruvbox
 "colorscheme codedark
 "colorscheme janah
@@ -215,8 +215,14 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
 """""""""""""""" fzf """""""""""""""""""""""""""""""
 
-nnoremap <C-p> :Files<CR>
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let g:fzf_layout = { 'up': '~90%', 'window': { 'width': 0.8, 'height': 0.8, 'yoffset':0.5, 'xoffset': 0.5 } }
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+" Include hidden (dotfiles), ignore .gitignore files, .git/* files
+let $FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
+
+nmap <leader>f :Files<cr>
+
 
 
 """""""""""""""""" vimtex """"""""""""""""""""""""""

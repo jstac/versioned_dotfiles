@@ -14,6 +14,9 @@ export ZSH=/home/john/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="gnzh"
 
+# Bat theme
+export BAT_THEME="Dracula"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

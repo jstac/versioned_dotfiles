@@ -34,10 +34,8 @@ Plug 'lervag/vimtex'
 """" Commenting
 Plug 'scrooloose/nerdcommenter'
 
-"""" Editing with nvim in the browser
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
-"""" File browser
+"""
+Plug 'junegunn/fzf.vim'
 
 
 " Colors
@@ -202,10 +200,7 @@ set suffixes+=.ps
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
-
 """""""""""""" Plugin configuration """"""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """""""""""""""""" Ultisnips """""""""""""""""""""""
@@ -217,6 +212,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Snippet location
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
+
+"""""""""""""""" fzf """""""""""""""""""""""""""""""
+
+nnoremap <C-p> :Files<CR>
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 
 """""""""""""""""" vimtex """"""""""""""""""""""""""

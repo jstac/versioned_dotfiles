@@ -22,7 +22,7 @@ Plug 'SirVer/ultisnips'     " Expand snippets with <c-k>, see below.
 Plug 'jstac/vim-snippets'   " edit snippets. Fork of honza/vim-snippets.  
 
 """ Status line
-Plug 'itchyny/lightline.vim'
+ Plug 'itchyny/lightline.vim'
 
 """ Send code to a terminal
 Plug 'jpalardy/vim-slime'
@@ -199,11 +199,12 @@ set suffixes+=.ps
 
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ================================================= "
 """""""""""""" Plugin configuration """"""""""""""""
+" ================================================= "
 
 
-"""""""""""""""""" Ultisnips """""""""""""""""""""""
+"""""""""""""""""" ultisnips """""""""""""""""""""""
 
 " Trigger
 let g:UltiSnipsExpandTrigger="<C-k>"
@@ -246,6 +247,7 @@ let g:vimtex_compiler_latexmk = {
         \   '-interaction=nonstopmode',
         \ ],
         \}
+
 
 
 """"""""""""""""" latex-unicoder """"""""""""""""""

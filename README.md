@@ -37,9 +37,11 @@ Terminal:
 
 ### Set Up Dotfiles
 
-Links for dotfiles
+Download dotfiles and use GNU stow (`sudo pacman -S stow`)
 
-* use GNU stow (`sudo pacman -S stow`)
+* example: `cd dotfiles` and then `stow zsh`  
+
+
 
 ### Install Basic Software
 

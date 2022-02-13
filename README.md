@@ -3,16 +3,18 @@
 
 ## Computer Set Up
 
-All steps to get a new machine up and running, assuming Manjaro XFCE.
+All steps to get a new machine up and running, assuming MX Linux XFCE.
 
 
 ### Download ISO and Install
 
-Get ISO and then
+Follow latest instructions to burn the iso to a USB and install
 
-* `sudo fdisk -l` to find which device --- usually `/dev/sdb/`
+### Notes for XPS
 
-* `sudo umount /dev/sdb` and then `sudo dd if=/path/to/iso of=/dev/sdb bs=1M`
+In MX Tweak, Other, set "Use Intel driver instead of default modesetting..."
+
+This gives better performance with dual monitors.
 
 
 ### Install zsh and Tweaks to Shell
@@ -55,12 +57,12 @@ Install Nerd Fonts via AUR
 
 * set keyboard shortcuts in keyboard -> applications shortcuts
 
-  - Alt-Enter for kitty
+  - Alt-Enter for kitty or xfce-terminal
 
 * set keyboard shortcuts in window manager
 
   - Alt-m maximizes
-  - Alt-v maximizes vertically
+  - Alt-r resize
   - Alt-k closes
   - Alt-f fullscreen
 

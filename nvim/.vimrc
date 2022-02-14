@@ -99,8 +99,8 @@ set t_ut=
 "colorscheme kanagawa
 "colorscheme OceanicNext
 "colorscheme nord
-colorscheme tokyonight
-"colorscheme wombat256mod
+"colorscheme tokyonight
+colorscheme wombat256mod
 "colorscheme onedark
 "colorscheme gruvbox
 "colorscheme codedark

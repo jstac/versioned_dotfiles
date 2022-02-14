@@ -5,7 +5,6 @@
 
 All steps to get a new machine up and running, assuming MX Linux XFCE.
 
-
 ### Download ISO and Install
 
 Follow latest instructions to burn the iso to a USB and install
@@ -43,8 +42,6 @@ Download dotfiles and use GNU stow (`sudo pacman -S stow`)
 
 * example: `cd dotfiles` and then `stow zsh`  
 
-
-
 ### Install Basic Software
 
 * install latex, git
@@ -70,12 +67,14 @@ Install Nerd Fonts via AUR
 
 ### Screen lock
 
-Install `pacman -S slock`, execute on command line, password to exit
+Install `sudo apt install suckless-tools`, execute on command line, password to exit
 
 
-### Set Up Editor
+### Set Up Neovim
 
-Install neovim, python-neovim
+Use package manager to install neovim, python3-neovim
+
+* `pip install neovim`
 
 * follow instructions to install and set up `vim-plug` from junegunn
 
@@ -105,6 +104,7 @@ Now `ssh-add` when you start your machine.  To copy it to the server, use
 https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tokens
 
 See comments there about caching credentials.
+
 
 ## For Japanese
 

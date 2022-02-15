@@ -5,6 +5,7 @@
 
 All steps to get a new machine up and running, assuming MX Linux XFCE.
 
+
 ### Download ISO and Install
 
 Follow latest instructions to burn the iso to a USB and install
@@ -41,6 +42,14 @@ Terminal:
 Download dotfiles and use GNU stow (`sudo pacman -S stow`)
 
 * example: `cd dotfiles` and then `stow zsh`  
+
+### Map Caps to CTRL
+
+The remap is in `.profile`.  
+
+If this does not work, then add `/usr/bin/setxkbmap -option "ctrl:nocaps"` to
+XFCE Session and Startup -> Application Autostart.
+
 
 ### Install Basic Software
 

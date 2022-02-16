@@ -15,7 +15,7 @@ export ZSH=/home/john/.oh-my-zsh
 ZSH_THEME="gnzh"
 
 # Bat theme
-export BAT_THEME="Dracula"
+export BAT_THEME="TwoDark"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -93,6 +93,7 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias mu="zathura"
+alias bat="batcat"
 
 # stop zsh from screwing up pip extras
 alias pip='noglob pip'

@@ -37,6 +37,7 @@ Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdcommenter'
 
 """
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Colors

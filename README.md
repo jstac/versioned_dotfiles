@@ -3,19 +3,13 @@
 
 ## Computer Set Up
 
-All steps to get a new machine up and running, assuming MX Linux XFCE.
+All steps to get a new machine up and running, assuming Ubuntu flavor
 
+## Examine your set up
 
-### Download ISO and Install
+* `inxi -Gxx` gives information on your graphics drivers
 
-Follow latest instructions to burn the iso to a USB and install
-
-### Notes for XPS
-
-In MX Tweak, Other, set "Use Intel driver instead of default modesetting..."
-
-This gives better performance with dual monitors.
-
+(On XPS, Device-1 Intel uses driver: i915, Device-2 uses driver: nvidia v: 510.47.03)
 
 ### Install zsh and Tweaks to Shell
 
@@ -33,63 +27,49 @@ Rofi:
 
 `sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
 
-Terminal:
-
-* Install kitty
 
 ### Set Up Dotfiles
 
-Download dotfiles and use GNU stow (`sudo pacman -S stow`)
-
-* example: `cd dotfiles` and then `stow zsh`  
+Do the obvious
 
 ### Map Caps to CTRL
 
-The remap is in `.profile`.  
+The remap is in `.profile` and consider `ln -s .profile .xprofile`
 
-If this does not work, then add `/usr/bin/setxkbmap -option "ctrl:nocaps"` to
-XFCE Session and Startup -> Application Autostart.
+The command is `setxkbmap -option "ctrl:nocaps"` 
 
+### Set Up Neovim 
+
+* follow instructions to install and set up `vim-plug` from junegunn
+* `pip install pynvim` or `pip install neovim`
+* Run `:PlugInstall` 
+
+### Tailscale 
+
+Follow website instructions and install via apt
+
+### Anaconda
+
+Install as usual.  Create configs with 
+
+* `jupyter notebook --generate-config`  (set browser to `chomium`)
+* `ipython profile create`
 
 ### Install Basic Software
 
-* install latex, git
+* install latex, git, etc.
 
 ### Install and Set Fonts
 
-Install Nerd Fonts via AUR
+Install Nerd Fonts 
 
-### Configure XFCE
+### Configure keyboard shortcuts
 
-* set keyboard shortcuts in keyboard -> applications shortcuts
-
-  - Alt-Enter for kitty or xfce-terminal
-
-* set keyboard shortcuts in window manager
-
-  - Alt-m maximizes
-  - Alt-r resize
-  - Alt-k closes
-  - Alt-f fullscreen
-
-* Use "windown manager tweaks" to turn of wrapping of workspaces
+To be added
 
 ### Screen lock
 
 Install `sudo apt install suckless-tools`, execute on command line, password to exit
-
-
-### Set Up Neovim
-
-Use package manager to install neovim, python3-neovim
-
-* `pip install neovim`
-
-* follow instructions to install and set up `vim-plug` from junegunn
-
-* Run `:PlugInstall` 
-
-
 
 ### SSH
 
@@ -112,7 +92,7 @@ Now `ssh-add` when you start your machine.  To copy it to the server, use
 
 https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tokens
 
-See comments there about caching credentials.
+`git config --global credential.helper "cache --timeout=864000"`  # 10 days
 
 
 ## For Japanese

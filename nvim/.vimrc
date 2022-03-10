@@ -92,6 +92,9 @@ set foldlevel=99
 set formatoptions=tqn
 
 
+" vimtex requires this
+filetype plugin indent on
+syntax enable
 
 """"""""""""" Colorscheme """""""""""""""""""""""""
 
@@ -231,6 +234,7 @@ nmap <leader>f :Files<cr>
 
 " vimtex uses the <localleader> for compiling, etc.  
 " For example, <localleader>ll means compile
+"
 
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'

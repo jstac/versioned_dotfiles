@@ -3,6 +3,10 @@
 # Open document in fit-width mode by default
 set adjust-open "best-fit"
 
+# Use synctex 
+set dbus-service true
+set synctex true
+
 # Full screen
 map m toggle_fullscreen
 map [fullscreen] m toggle_fullscreen

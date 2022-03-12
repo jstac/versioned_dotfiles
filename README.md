@@ -96,6 +96,12 @@ To start the server
 * `sudo apt install openssh-server`
 * `sudo systemctl status ssh`
 
+If `ssh-add` does not start, try 
+
+```
+eval `ssh-agent -s`  
+ssh-add
+```
 
 ### Versioned Tools
 

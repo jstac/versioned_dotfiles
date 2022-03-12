@@ -89,6 +89,11 @@ Now `ssh-add` when you start your machine.  To copy it to the server, use
 
 * `ssh-copy-id -i ~/.ssh/mykey user@host`
 
+To start the server
+
+* `sudo apt install openssh-server`
+* `sudo systemctl status ssh`
+
 
 ### Versioned Tools
 

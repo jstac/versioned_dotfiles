@@ -38,6 +38,8 @@ The remap is in `.profile` and consider `ln -s .profile .xprofile`
 
 The command is `setxkbmap -option "ctrl:nocaps"` 
 
+In Windows, use `powertoys` from MS store
+
 ### Set Up Neovim 
 
 * follow instructions to install and set up `vim-plug` from junegunn
@@ -108,9 +110,15 @@ https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tok
 `git config --global credential.helper "cache --timeout=864000"`  # 10 days
 
 
+## Notes on the GPU
+
+* `sudo apt install nvidia-driver-xxx`
+* `conda install cudatoolkit` (perhaps add `-c nvidia` to get the latest)
+* build `nvtop` from source
+
 ## For Japanese
 
-Just use Google's Japanese input
+Just use Google Japanese input
 
 Or see https://confluence.jaytaala.com/display/TKB/Japanese+input+with+i3+and+Arch+based+distros
 

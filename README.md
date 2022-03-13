@@ -38,7 +38,7 @@ The remap is in `.profile` and consider `ln -s .profile .xprofile`
 
 The command is `setxkbmap -option "ctrl:nocaps"` 
 
-In Windows, use `powertoys` from MS store
+(In Windows, use `powertoys` from MS store)
 
 ### Set Up Neovim 
 
@@ -48,7 +48,9 @@ In Windows, use `powertoys` from MS store
 
 ### Tailscale 
 
-Follow website instructions and install via apt
+Follow website instructions and install deb package.
+
+On Windows may need `start tailscaled` to start the daemon.
 
 ### Anaconda
 

@@ -5,6 +5,7 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # Anaconda3 and Julia
 export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initialize
+export LD_LIBRARY_PATH="/home/john/anaconda3/lib"
 export PATH="$PATH:/home/john/julia-1.7.0/bin"
 
 # =========== themes and plugins =========== #

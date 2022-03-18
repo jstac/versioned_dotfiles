@@ -11,6 +11,9 @@
 set runtimepath+=~/.vim
 call plug#begin('~/.vim/plugged')  
 
+"Syntaxrange
+Plug 'inkarkat/vim-SyntaxRange'
+
 "Ghosttext
 Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'}
 
@@ -181,8 +184,8 @@ autocmd FileType python set smartindent
 
 " For handling myst files -- use Python syntax, trick neoterm 
 " into sending code to IPython
-au BufReadPost *.md set syntax=python
-au VimEnter,BufRead,BufNewFile *.md set filetype=python
+" au BufReadPost *.md set syntax=python
+" au VimEnter,BufRead,BufNewFile *.md set filetype=python
 
 
 """"""""""""""" line numbers """"""""""""""""""""""
@@ -270,8 +273,14 @@ vnoremap <C-l> :<C-u>call unicoder#selection()<CR>
 
 """"""""""""""""" vim-slime """""""""""""""""""""""
 
-let g:slime_python_ipython=1
+" vim-slime sends selected area to tmux window with C-c-c
+"
+" Note: jalvesaq/vimcmdline is an alternative
+
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
-"let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+
+" The following puts `%cpaste -q` at the start of the paste whenever
+" ft=python.  This solves the indent problem when pasting into ipython.
+let g:slime_python_ipython=1

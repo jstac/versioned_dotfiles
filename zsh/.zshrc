@@ -5,8 +5,12 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # Anaconda3 and Julia
 export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initialize
-export LD_LIBRARY_PATH="/home/john/anaconda3/lib"
 export PATH="$PATH:/home/john/julia-1.7.0/bin"
+
+# This one is fiddly.  Added /home/john/anaconda3/lib to make numba cuda happy
+# and then /usr/lib/x86_64-linux-gnu because tmux was failing.  Haven't
+# retested cuda since last change.
+export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
 
 # =========== themes and plugins =========== #
 

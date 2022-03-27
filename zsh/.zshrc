@@ -15,7 +15,7 @@ export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
 # =========== themes and plugins =========== #
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes for more options
-ZSH_THEME="frisk"
+ZSH_THEME="cdimascio-lambda"
 
 plugins=(git 
          vi-mode)

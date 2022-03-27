@@ -23,6 +23,8 @@ Now the user:
 
 * install oh-my-zsh 
 
+* lambda theme is at https://github.com/cdimascio/lambda-zsh-theme
+
 Rofi:
 
 `sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts

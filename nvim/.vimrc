@@ -11,6 +11,9 @@
 set runtimepath+=~/.vim
 call plug#begin('~/.vim/plugged')  
 
+" Sneak
+Plug 'justinmk/vim-sneak'
+
 "Syntaxrange
 Plug 'inkarkat/vim-SyntaxRange'
 
@@ -259,6 +262,10 @@ let g:vimtex_compiler_latexmk = {
         \ ],
         \}
 
+
+""""""""""""""""" Sneak """"""""""""""""""
+
+let g:sneak#label = 1
 
 
 """"""""""""""""" latex-unicoder """"""""""""""""""

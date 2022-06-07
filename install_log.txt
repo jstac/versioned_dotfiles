@@ -1,0 +1,47 @@
+sudo apt install -y rofi, tmux, kitty, neovim, suckless-tools, bat, zsh, git
+sudo apt update
+sudo apt upgrade
+
+git config --global user.email "john.stachurski@gmail.com"
+git config --global user.name "John Stachurski"
+git config --global credential.helper "cache --timeout=8640000"
+
+setxkbmap -option "ctrl:nocaps"
+
+mv Music /tmp
+mv Pictures /tmp
+mv Public /tmp
+mv Videos /tmp
+mv Templates /tmp
+mv Documents /tmp
+
+pip install -U pip
+pip install neovim
+
+mv .zshrc /tmp
+ln -s gh_synced/versioned_dotfiles/zsh/.zshrc .
+source .zshrc
+
+ln -s gh_synced/versioned_dotfiles/nvim/.vimrc .
+mkdir .config/nvim/
+ln -s gh_synced/versioned_dotfiles/nvim/.config/nvim/init.vim .config/nvim/
+
+cd .config/kitty
+ln -s ~/gh_synced/versioned_dotfiles/kitty/.config/kitty/Galaxy.conf .
+ln -s ~/gh_synced/versioned_dotfiles/kitty/.config/kitty/kitty.conf .
+
+ln -s gh_synced/versioned_dotfiles/misc_top_level/.profile .
+ln -s gh_synced/versioned_dotfiles/misc_top_level/.Xmodmap .
+ln -s gh_synced/versioned_dotfiles/misc_top_level/.latexmkrc .
+ln -s gh_synced/versioned_dotfiles/misc_top_level/.inputrc .
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \\n    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ln ~s ~/gh_synced/versioned_dotfiles/nvim/.config/nvim/init.vim .
+ln -s ~/gh_synced/versioned_dotfiles/nvim/.config/nvim/init.vim .
+
+ln -s ~/gh_synced/versioned_dotfiles/tmux/tmux.conf ./.tmux.conf
+source .tmux.conf
+
+wget   https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+cd Downloads
+bash ./Anaconda3-2021.11-Linux-x86_64.sh

@@ -54,6 +54,16 @@ Follow website instructions and install deb package.
 
 On Windows may need `start tailscaled` to start the daemon.
 
+### Zoom
+
+Download the deb file from zoom and then install with 
+
+`sudo apt install ./file_name.deb`
+
+See zoom linux install support
+
+https://support.zoom.us/hc/en-us/articles/204206269-Installing-or-updating-Zoom-on-Linux
+
 ### Anaconda
 
 Install as usual.  Create configs with 

@@ -30,9 +30,12 @@ bindkey "jj" vi-cmd-mode
 export EDITOR='vi'
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export BAT_THEME="TwoDark"
+# Exclude the following from fzf 
+export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,_minted} --type f"
 
 # =========== aliases =========== #
 
+alias fd="fdfind"
 alias jp="jupyter notebook"
 alias xo="xdg-open"
 alias v="nvim"

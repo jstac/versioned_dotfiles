@@ -5,11 +5,13 @@
 
 Install latest Ubuntu and then the budgie desktop via apt
 
+### Install Basic Software
+
+* install chromium, rofi, latex, git, kitty, suckless-tools, bat, neovim, tmux
+
 ## Examine your set up
 
 * `inxi -Gxx` gives information on your graphics drivers
-
-(On XPS, Device-1 Intel uses driver: i915, Device-2 uses driver: nvidia v: 510.47.03)
 
 ### Anaconda
 
@@ -18,11 +20,7 @@ Install as usual.  Create configs with
 * `jupyter notebook --generate-config`  (set browser to `chomium`)
 * `ipython profile create`
 
-### Install Basic Software
-
-* install latex, git, kitty, etc.
-
-### Install zsh and Tweaks to Shell
+### Install zsh 
 
 First change root user:
 
@@ -36,14 +34,10 @@ Now the user:
 
 * lambda theme is at https://github.com/cdimascio/lambda-zsh-theme
 
-Rofi:
-
-`sudo pacman -S rofi` and then bind `rofi -show drun` to `Alt d` in keyboard shortcuts
-
 
 ### Set Up Dotfiles
 
-Do the obvious
+Do the obvious, `source ~/.zshrc`, `source ~/.tmux.conf`
 
 ### Map Caps to CTRL
 
@@ -53,10 +47,20 @@ The command is `setxkbmap -option "ctrl:nocaps"`
 
 (In Windows, use `powertoys` from MS store)
 
-### Set Up Neovim 
+### Configure keyboard shortcuts
 
+Go to `Keyboard` -> `Customize Shortcuts` 
+
+To add a new launcher for kitty, etc., go to `Keyboard` -> `Customize Shortcuts` -> `Custom shortcuts` -> `+`
+
+Rofi: bind `rofi -show drun` to `Alt d` in keyboard shortcuts
+
+### Set Up neovim 
+
+
+* `pip install -U pip`
+* `pip install neovim`
 * follow instructions to install and set up `vim-plug` from junegunn
-* `pip install pynvim` or `pip install neovim`
 * Run `:PlugInstall` 
 
 ### Tailscale 
@@ -67,13 +71,7 @@ On Windows may need `start tailscaled` to start the daemon.
 
 ### Zoom
 
-Download the deb file from zoom and then install with 
-
-`sudo apt install ./file_name.deb`
-
-See zoom linux install support
-
-https://support.zoom.us/hc/en-us/articles/204206269-Installing-or-updating-Zoom-on-Linux
+Follow the instructions on zoom website
 
 
 ### Install and Set Fonts
@@ -84,17 +82,6 @@ Install Nerd Fonts according to [these instructions](https://gist.github.com/mat
 * Unzip and copy to `~/.local/share/fonts`
 * Run the command `fc-cache -fv` to manually rebuild the font cache
 
-
-### Configure keyboard shortcuts
-
-Go to `Keyboard` -> `Customize Shortcuts` 
-
-To add a new launcher for kitty, etc., go to `Keyboard` -> `Customize Shortcuts` -> `Custom shortcuts` -> `+`
-
-
-### Screen lock
-
-Install `sudo apt install suckless-tools`, execute on command line, password to exit
 
 ### SSH
 
@@ -120,22 +107,38 @@ ssh-add
 
 ### Versioned Tools
 
-* `cd ~` and `git clone https://github.com/jstac/versioned_tools`, then add symbolic links in `bin`
+* `git clone https://github.com/jstac/versioned_tools`
+* `ch ~` and `mkdir bin` and `cd bin`.
+* `ln -s gh_synced/versioned_tools/*.py .`
+* `mkdir ~/texmf/bibtex/bst` and add ecta.bst, etc.
+* do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 
-* make the dir `~/texmf/bibtex/bst` and add ecta.bst, etc., and then do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 
 ### GH Credentials
 
 https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tokens
 
-`git config --global credential.helper "cache --timeout=864000"`  # 10 days
+git config --global user.email "john.stachurski@gmail.com"
+git config --global user.name "John Stachurski"
+git config --global credential.helper "cache --timeout=8640000"
 
 
 ## Notes on the GPU
 
-* `sudo apt install nvidia-driver-xxx`
-* `conda install cudatoolkit` (perhaps add `-c nvidia` to get the latest)
+* If necessary, `sudo apt install nvidia-driver-xxx` (not needed on Ubuntu 22.x LTS)
+* install CUDA toolkit from nvidia website (currently https://developer.nvidia.com/cuda-downloads)
 * build `nvtop` from source
+
+Current install of CUDA toolkit on XPS used the following
+
+`wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb`
+`sudo dpkg -i cuda-keyring_1.0-1_all.deb`
+`sudo apt-get update`
+`sudo apt-get -y install cuda`
+
+Install JAX via pip -- current install on XPS used
+
+`pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html`
 
 ## For Japanese
 

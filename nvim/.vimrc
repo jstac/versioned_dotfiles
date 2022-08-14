@@ -14,9 +14,6 @@ call plug#begin('~/.vim/plugged')
 "Syntaxrange
 Plug 'inkarkat/vim-SyntaxRange'
 
-"Ghosttext
-Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'}
-
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
 

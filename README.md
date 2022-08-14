@@ -3,13 +3,24 @@
 
 ## Computer Set Up
 
-All steps to get a new machine up and running, assuming Ubuntu flavor
+Install latest Ubuntu and then the budgie desktop via apt
 
 ## Examine your set up
 
 * `inxi -Gxx` gives information on your graphics drivers
 
 (On XPS, Device-1 Intel uses driver: i915, Device-2 uses driver: nvidia v: 510.47.03)
+
+### Anaconda
+
+Install as usual.  Create configs with 
+
+* `jupyter notebook --generate-config`  (set browser to `chomium`)
+* `ipython profile create`
+
+### Install Basic Software
+
+* install latex, git, kitty, etc.
 
 ### Install zsh and Tweaks to Shell
 
@@ -64,16 +75,6 @@ See zoom linux install support
 
 https://support.zoom.us/hc/en-us/articles/204206269-Installing-or-updating-Zoom-on-Linux
 
-### Anaconda
-
-Install as usual.  Create configs with 
-
-* `jupyter notebook --generate-config`  (set browser to `chomium`)
-* `ipython profile create`
-
-### Install Basic Software
-
-* install latex, git, kitty, etc.
 
 ### Install and Set Fonts
 

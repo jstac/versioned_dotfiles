@@ -49,7 +49,6 @@ Plug 'folke/tokyonight.nvim'
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'nightsense/vimspectr'
 Plug 'tomasiser/vim-code-dark'
 Plug 'gregsexton/Atom'
 Plug 'dracula/vim'

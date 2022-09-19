@@ -7,7 +7,7 @@ Install latest Ubuntu and then the budgie desktop via apt
 
 ### Install Basic Software
 
-* install chromium, rofi, latex, git, kitty, suckless-tools, bat, neovim, tmux
+* install chromium, rofi, latex, git, kitty, suckless-tools, bat, neovim, tmux, fd-find, fzf
 
 ## Examine your set up
 
@@ -29,9 +29,7 @@ First change root user:
 Now the user:
 
 * `chsh -s /bin/zsh` 
-
 * install oh-my-zsh 
-
 * lambda theme is at https://github.com/cdimascio/lambda-zsh-theme
 
 
@@ -55,13 +53,18 @@ To add a new launcher for kitty, etc., go to `Keyboard` -> `Customize Shortcuts`
 
 Rofi: bind `rofi -show drun` to `Alt d` in keyboard shortcuts
 
-### Set Up neovim 
-
+### Set up neovim 
 
 * `pip install -U pip`
 * `pip install neovim`
 * follow instructions to install and set up `vim-plug` from junegunn
 * Run `:PlugInstall` 
+
+### Navigation and file system
+
+* search with `fd` --- see https://github.com/sharkdp/fd, brush up skills
+* when searching, optionally pip results to fzf
+* use zoxide to navigate
 
 ### Tailscale 
 

@@ -30,8 +30,8 @@ Plug 'jstac/vim-snippets'   " edit snippets. Fork of honza/vim-snippets.
 """ Send code to a terminal
 Plug 'jpalardy/vim-slime'
 
-"""" Unicode characters 
-Plug 'joom/latex-unicoder.vim'  " select and <c-k> or <c-k> in normal mode, see below
+""" Unicode via latex commands  --- toggle on and off with <C-6>
+Plug 'ntessore/unicode-math.vim'
 
 """" Latex support
 Plug 'lervag/vimtex'
@@ -256,14 +256,13 @@ let g:vimtex_compiler_latexmk = {
         \}
 
 
-""""""""""""""""" latex-unicoder """"""""""""""""""
+""""""""""""""""" unicoder-math """"""""""""""""""
 
-let g:unicoder_cancel_normal = 1
-let g:unicoder_cancel_insert = 1
-let g:unicoder_cancel_visual = 1
-nnoremap <C-l> :call unicoder#start(0)<CR>
-inoremap <C-l> <Esc>:call unicoder#start(1)<CR>
-vnoremap <C-l> :<C-u>call unicoder#selection()<CR>
+set keymap=unicode-math
+set iminsert=0
+set imsearch=-1
+
+" You can then toggle the unicode-math keymap by pressing <C-6> in insert mode.
 
 
 """"""""""""""""" vim-slime """""""""""""""""""""""

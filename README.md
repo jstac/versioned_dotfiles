@@ -129,19 +129,13 @@ git config --global credential.helper "cache --timeout=8640000"
 ## Notes on the GPU
 
 * If necessary, `sudo apt install nvidia-driver-xxx` (not needed on Ubuntu 22.x LTS)
-* install CUDA toolkit from nvidia website (currently https://developer.nvidia.com/cuda-downloads)
+* install CUDA toolkit from nvidia website (currently https://developer.nvidia.com/cuda-downloads, follow Ubuntu instructions)
 * build `nvtop` from source
-
-Current install of CUDA toolkit on XPS used the following
-
-`wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb`
-`sudo dpkg -i cuda-keyring_1.0-1_all.deb`
-`sudo apt-get update`
-`sudo apt-get -y install cuda`
 
 Install JAX via pip -- current install on XPS used
 
 `pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html`
+
 
 ## For Japanese
 

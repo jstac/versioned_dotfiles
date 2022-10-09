@@ -12,6 +12,10 @@ export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initializ
 # retested cuda since last change.
 export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
 
+# For Nvidia cuda toolkit --- can run binaries in /usr/local/cuda
+export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} 
+export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
+
 # =========== themes and plugins =========== #
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes for more options

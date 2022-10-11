@@ -81,13 +81,14 @@ alias xo="xdg-open"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
+alias n="nnn"
 alias mu="zathura"
 alias bat="batcat"
 alias cat="batcat"     # map cat to bat
 alias pip='noglob pip' # stop zsh from screwing up pip extras
 
 alias gs='git status'
-alias ga='git add'
+alias ga='git add -A'
 alias gp='git push'
 alias gcm='git commit -am misc'
 alias grs='git remote show'

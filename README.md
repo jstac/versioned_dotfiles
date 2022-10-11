@@ -1,9 +1,10 @@
 # Versioned Dotfiles
 
+See also `install_log.txt`, which automates some of these steps
 
 ## Computer Set Up
 
-Install latest Ubuntu and then the budgie desktop via apt
+Install latest Ubuntu and then the budgie desktop via apt.
 
 ### Install Basic Software
 

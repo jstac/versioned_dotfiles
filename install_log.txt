@@ -15,29 +15,44 @@ mv Videos /tmp
 mv Templates /tmp
 mv Documents /tmp
 
+# Install Anaconda and then
 pip install -U pip
 pip install neovim
 
+# Zsh
+cd ~
 mv .zshrc /tmp
+ln -s gh_synced/versioned_dotfiles/zsh/.zshenv .
+mkdir .config/zsh
+cd .config/zsh
 ln -s gh_synced/versioned_dotfiles/zsh/.zshrc .
-source .zshrc
+mkdir plugins
+mkdir themes
+cd themes
+git clone https://github.com:spaceship-prompt/spaceship-prompt
+cd ../plugins
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting
+cd ~
+source ~/gh_synced/versioned_dotfiles/zsh/.zshrc
 
-ln -s gh_synced/versioned_dotfiles/nvim/.vimrc .
-mkdir .config/nvim/
-ln -s gh_synced/versioned_dotfiles/nvim/.config/nvim/init.vim .config/nvim/
-
+# Kitty
+cd ~
+mkdir .config/kitty
 cd .config/kitty
 ln -s ~/gh_synced/versioned_dotfiles/kitty/.config/kitty/Galaxy.conf .
 ln -s ~/gh_synced/versioned_dotfiles/kitty/.config/kitty/kitty.conf .
 
-ln -s gh_synced/versioned_dotfiles/misc_top_level/.profile .
+ln -s gh_synced/versioned_dotfiles/misc_top_level/.zprofile .
 ln -s gh_synced/versioned_dotfiles/misc_top_level/.Xmodmap .
 ln -s gh_synced/versioned_dotfiles/misc_top_level/.latexmkrc .
 ln -s gh_synced/versioned_dotfiles/misc_top_level/.inputrc .
 
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \\n    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln ~s ~/gh_synced/versioned_dotfiles/nvim/.config/nvim/init.vim .
+
+ln -s gh_synced/versioned_dotfiles/nvim/.vimrc .
+mkdir ~/.config/nvim/
+cd ~/.config/nvim
 ln -s ~/gh_synced/versioned_dotfiles/nvim/.config/nvim/init.vim .
+# Go to /junegunn/vim-plug/ and follow instructions for neovim install
 
 ln -s ~/gh_synced/versioned_dotfiles/tmux/tmux.conf ./.tmux.conf
 source .tmux.conf

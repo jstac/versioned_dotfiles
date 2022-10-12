@@ -43,6 +43,3 @@ symbol = "β "
 truncation_length = 50
 truncation_symbol = "…"
 style="bold purple"
-
-[python]
-pyenv_version_name = true

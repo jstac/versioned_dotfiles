@@ -2,47 +2,26 @@
 
 export HISTFILE=$ZSH/.zsh_history
 # How many commands zsh will load to memory.
-export HISTSIZE=10000
+export HISTSIZE=100000
 # How maney commands history will save on file.
-export SAVEHIST=10000
+export SAVEHIST=100000
 # History won't save duplicates.
 setopt HIST_IGNORE_ALL_DUPS
 # History won't show duplicates on search.
 setopt HIST_FIND_NO_DUPS
 
-# =========== themes and plugins =========== #
-
-# Themes
-source "$HOME/.config/zsh/themes/spaceship-prompt/spaceship.zsh"
+# =========== load themes and plugins =========== #
 
 # Plugins
 source $ZSH/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-#
+
+
+
+# =========== vi-mode config =========== #
 
 # zsh-vi-mode config
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jj  # for insert mode, keep default `^[` in other modes
-
-# spaceship config 
-
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-SPACESHIP_USER_SHOW=always
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
-SPACESHIP_CHAR_SUFFIX=" "
-
-# =========== bindings =========== #
 
 # Tells vi-mode to map jj to escape
 bindkey "jj" vi-cmd-mode
@@ -73,6 +52,7 @@ export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,_minted} --type f"
 
 # =========== aliases =========== #
 
+alias l='ls --color'
 alias ls='ls --color'
 alias ll='ls -la --color'
 alias fd="fdfind"
@@ -93,3 +73,8 @@ alias gp='git push'
 alias gcm='git commit -am misc'
 alias grs='git remote show'
 
+# =========== starship ================= #
+#
+# This should be added to the end of .zshrc
+
+eval "$(starship init zsh)"

@@ -33,6 +33,10 @@ Now the user:
 * install oh-my-zsh 
 * lambda theme is at https://github.com/cdimascio/lambda-zsh-theme
 
+Install starship:
+
+* `curl -O https://starship.rs/install.sh`
+
 
 ### Set Up Dotfiles
 

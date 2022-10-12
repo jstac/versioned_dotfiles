@@ -60,3 +60,7 @@ source .tmux.conf
 wget   https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 cd Downloads
 bash ./Anaconda3-2021.11-Linux-x86_64.sh
+
+# Python
+jupyter notebook --generate-config
+ipython profile create

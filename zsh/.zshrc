@@ -16,6 +16,12 @@ setopt HIST_FIND_NO_DUPS
 source $ZSH/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# ============ completion ==================== #
+
+zstyle ':completion:*' matcher-list \
+    'm:{[:lower:]}={[:upper:]}' \
+    '+r:|[._-]=* r:|=*' \
+    '+l:|=*'
 
 
 # =========== vi-mode config =========== #

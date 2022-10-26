@@ -14,6 +14,9 @@ call plug#begin('~/.vim/plugged')
 "Syntaxrange
 Plug 'inkarkat/vim-SyntaxRange'
 
+"Flake8  --- open a py file and hit F7
+Plug 'nvie/vim-flake8'
+
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
 

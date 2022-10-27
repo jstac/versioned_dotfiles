@@ -75,7 +75,8 @@ alias pip='noglob pip' # stop zsh from screwing up pip extras
 
 alias gs='git status'
 alias ga='git add -A'
-alias gp='git push'
+alias gl='git pull'
+alias gh='git push'
 alias gc='git commit -am misc'
 alias gr='git remote show origin'
 

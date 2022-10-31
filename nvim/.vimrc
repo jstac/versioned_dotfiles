@@ -229,7 +229,7 @@ let g:fzf_layout = { 'up': '~90%', 'window': { 'width': 0.8, 'height': 0.8, 'yof
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 " Include hidden (dotfiles), ignore .gitignore files, .git/* files
-let $FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
+let $FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*,_minted*}"'
 
 nmap <leader>f :Files<cr>
 

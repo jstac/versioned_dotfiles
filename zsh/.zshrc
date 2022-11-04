@@ -75,10 +75,25 @@ alias pip='noglob pip' # stop zsh from screwing up pip extras
 
 alias gs='git status'
 alias ga='git add -A'
-alias gl='git pull'
-alias gh='git push'
 alias gc='git commit -am misc'
+alias gp='git push'
 alias gr='git remote show origin'
+
+
+# == conda initialize (for setting up environments) == # 
+
+__conda_setup="$('/home/john/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/john/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/john/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/john/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
 
 # =========== starship ================= #
 #

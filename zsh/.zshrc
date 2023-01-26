@@ -63,6 +63,7 @@ alias ls='ls --color'
 alias ll='ls -la --color'
 alias fd="fdfind"
 alias jp="jupyter notebook"
+alias jl="jupyter lab"
 alias xo="xdg-open"
 alias v="nvim"
 alias vi="nvim"

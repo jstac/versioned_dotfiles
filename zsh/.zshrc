@@ -74,6 +74,7 @@ alias bat="batcat"
 alias cat="batcat"     # map cat to bat
 alias pip='noglob pip' # stop zsh from screwing up pip extras
 
+alias gls='git log --stat'
 alias gs='git status'
 alias ga='git add -A'
 alias gc='git commit -am misc'

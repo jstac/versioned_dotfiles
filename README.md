@@ -6,41 +6,11 @@ See also `install_log.txt`, which automates some of these steps
 
 Install latest Ubuntu and then the budgie desktop via apt.
 
-### Install Basic Software
-
-* install chromium, rofi, latex, git, kitty, suckless-tools, bat, neovim, tmux, fd-find, fzf
 
 ## Examine your set up
 
 * `inxi -Gxx` gives information on your graphics drivers
 
-### Anaconda
-
-Install as usual.  Create configs with 
-
-* `jupyter notebook --generate-config`  (set browser to `chomium`)
-* `ipython profile create`
-
-### Install zsh 
-
-First change root user:
-
-* `sudo -s` followed by `chsh -s /bin/zsh root`
-
-Now the user:
-
-* `chsh -s /bin/zsh` 
-* install oh-my-zsh 
-* lambda theme is at https://github.com/cdimascio/lambda-zsh-theme
-
-Install starship:
-
-* `curl -O https://starship.rs/install.sh`
-
-
-### Set Up Dotfiles
-
-Do the obvious, `source ~/.zshrc`, `source ~/.tmux.conf`
 
 ### Map Caps to CTRL
 
@@ -48,7 +18,6 @@ The remap is in `.profile` and consider `ln -s .profile .xprofile`
 
 The command is `setxkbmap -option "ctrl:nocaps"` 
 
-(In Windows, use `powertoys` from MS store)
 
 ### Configure keyboard shortcuts
 
@@ -56,26 +25,23 @@ Go to `Keyboard` -> `Customize Shortcuts`
 
 To add a new launcher for kitty, etc., go to `Keyboard` -> `Customize Shortcuts` -> `Custom shortcuts` -> `+`
 
-Rofi: bind `rofi -show drun` to `Alt d` in keyboard shortcuts
+* bind `rofi -show drun` to `Alt d` in keyboard shortcuts
+* bind `/usr/bin/kitty` to `Alt Enter` in keyboard shortcuts
 
-### Set up neovim 
-
-* `pip install -U pip`
-* `pip install neovim`
-* follow instructions to install and set up `vim-plug` from junegunn
-* Run `:PlugInstall` 
 
 ### Navigation and file system
 
 * search with `fd` --- see https://github.com/sharkdp/fd, brush up skills
-* when searching, optionally pip results to fzf
+* when searching, optionally pipe results to fzf
 * use zoxide to navigate
+
 
 ### Tailscale 
 
 Follow website instructions and install deb package.
 
 On Windows may need `start tailscaled` to start the daemon.
+
 
 ### Zoom
 
@@ -126,20 +92,14 @@ ssh-add
 
 https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tokens
 
-git config --global user.email "john.stachurski@gmail.com"
-git config --global user.name "John Stachurski"
-git config --global credential.helper "cache --timeout=8640000"
-
 
 ## Notes on the GPU
 
 * If necessary, `sudo apt install nvidia-driver-xxx` (not needed on Ubuntu 22.x LTS)
 * install CUDA toolkit from nvidia website (currently https://developer.nvidia.com/cuda-downloads, follow Ubuntu instructions)
 * build `nvtop` from source
+* Install JAX via pip 
 
-Install JAX via pip -- current install on XPS used
-
-`pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html`
 
 
 ## For Japanese

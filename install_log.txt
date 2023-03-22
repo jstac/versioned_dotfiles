@@ -1,6 +1,9 @@
-sudo apt install -y rofi, tmux, kitty, neovim, suckless-tools, bat, zsh, git
+sudo apt install -y rofi, tmux, kitty, neovim, suckless-tools, bat, zsh, git, chromium, fd-find, fzf
 sudo apt update
 sudo apt upgrade
+
+# zoxide (cd with z)  --- follow instructions on site or
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 git config --global user.email "john.stachurski@gmail.com"
 git config --global user.name "John Stachurski"
@@ -20,20 +23,28 @@ pip install -U pip
 pip install neovim
 
 # Zsh
+sudo -s
+chsh -s /bin/zsh root
+exit
+chsh -s /bin/zsh 
+# and now log out and back in
+
+curl -sS https://starship.rs/install.sh | sh
 cd ~
 mv .zshrc /tmp
 ln -s gh_synced/versioned_dotfiles/zsh/.zshenv .
 mkdir .config/zsh
 cd .config/zsh
-ln -s gh_synced/versioned_dotfiles/zsh/.zshrc .
+ln -s ~/gh_synced/versioned_dotfiles/zsh/.zshrc .
 mkdir plugins
 mkdir themes
 cd themes
-git clone https://github.com:spaceship-prompt/spaceship-prompt
+git clone https://github.com/spaceship-prompt/spaceship-prompt
 cd ../plugins
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting
 cd ~
 source ~/gh_synced/versioned_dotfiles/zsh/.zshrc
+
 
 # Kitty
 cd ~
@@ -62,5 +73,6 @@ cd Downloads
 bash ./Anaconda3-2021.11-Linux-x86_64.sh
 
 # Python
-jupyter notebook --generate-config
+jupyter notebook --generate-config  # set browser to `chomium`
 ipython profile create
+

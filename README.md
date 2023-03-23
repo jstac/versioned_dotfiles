@@ -38,9 +38,7 @@ To add a new launcher for kitty, etc., go to `Keyboard` -> `Customize Shortcuts`
 
 ### Tailscale 
 
-Follow website instructions and install deb package.
-
-On Windows may need `start tailscaled` to start the daemon.
+Follow website instructions (curl)
 
 
 ### Zoom

@@ -14,3 +14,6 @@ ZDOTDIR=$HOME/.config/zsh
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+
+# Codon compiler path (added by install script)
+export PATH=/home/john/.codon/bin:$PATH

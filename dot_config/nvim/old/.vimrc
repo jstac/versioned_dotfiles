@@ -281,3 +281,4 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
 " The following puts `%cpaste -q` at the start of the paste whenever
 " ft=python.  This solves the indent problem when pasting into ipython.
 let g:slime_python_ipython=1
+

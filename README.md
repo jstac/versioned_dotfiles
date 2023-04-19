@@ -6,6 +6,19 @@ See also `install_log.txt`, which automates some of these steps
 
 Install latest Ubuntu and then the budgie desktop via apt.
 
+## Dotfiles
+
+Clone `versioned_dotfiles`
+
+* files in `top_level` should be linked to from `~`
+* files in top level of `dot_config` should be linked to from `.config`
+* where possible, folders in `dot_config/xxx` should be linked to from `.config/xxx`
+* if not (because of generated binaries), files in `dot_config/xxx` should be linked to from `.config/xxx`
+
+
+## Neovim
+
+Note that neovim is currently installed from snap --- until default ubuntu version is around 0.6
 
 ## Examine your set up
 

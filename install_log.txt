@@ -6,7 +6,7 @@ setxkbmap -option "ctrl:nocaps"
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y rofi, tmux, kitty, neovim, suckless-tools, bat, zsh, git, chromium, fd-find, fzf
+sudo apt install -y rofi, tmux, kitty, suckless-tools, bat, zsh, git, chromium, fd-find, fzf
 
 ## Install starship prompt --- follow instructions on site or
 
@@ -85,6 +85,10 @@ ln -s gh_synced/versioned_dotfiles/misc_top_level/.latexmkrc .
 ln -s gh_synced/versioned_dotfiles/misc_top_level/.inputrc .
 
 ## Neovim
+
+Install via snap (until version moves to about v0.6)
+
+sudo snap install --beta nvim --classic
 
 ln -s gh_synced/versioned_dotfiles/nvim/.vimrc .
 mkdir ~/.config/nvim/

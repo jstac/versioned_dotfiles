@@ -1,0 +1,6 @@
+Currently nvim runs init.lua, which calls my old vimrc.
+
+This replaces use of init.vim, which is in old/
+
+Note that the current config requires that vim plug is working.  To install
+go to https://github.com/junegunn/vim-plug

@@ -1,19 +1,19 @@
-# This file needs to live in $HOME.  It's main job is to 
-# point zsh to $HOME/.config/zsh as a source of config files.
+# This file needs to live in $HOME.  It's only job is to 
+# point zsh to the location of config and other files (history, 
+# plugins, etc.)
+#
+# IMPORTANT: run mkdir ~/.local/share/zsh and mkdir ~/.cache/zsh
+# 
 
 # Set XDG
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
 # Zsh home
-export ZSH=$HOME/.config/zsh
-ZDOTDIR=$HOME/.config/zsh
-
-# Editor
-export EDITOR="nvim"
-export VISUAL="nvim"
+export ZDOTDIR=$HOME/.config/zsh
+export ZHOMEDIR=$HOME/.config/zsh
+export ZDATADIR=$XDG_DATA_HOME/zsh
+export ZCACHEDIR=$XDG_CACHE_HOME/zsh
 
 
-# Codon compiler path (added by install script)
-export PATH=/home/john/.codon/bin:$PATH

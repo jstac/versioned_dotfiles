@@ -1,22 +1,29 @@
+
 # =========== history ====================== #
 
-export HISTFILE=$ZSH/.zsh_history
+export HISTFILE=$ZCACHEDIR/.zsh_history
 # How many commands zsh will load to memory.
 export HISTSIZE=100000
 # How maney commands history will save on file.
 export SAVEHIST=100000
 # History won't save duplicates.
 setopt HIST_IGNORE_ALL_DUPS
-# History won't show duplicates on search.
+# History won't show duplicates.
 setopt HIST_FIND_NO_DUPS
 
-# =========== load themes and plugins =========== #
 
-# Plugins
-source $ZSH/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# =========== plugins =========== #
 
-# ============ completion ==================== #
+# zsh-vi-mode
+source $ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jj  
+
+# fast-syntax-highlighting
+source $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+
+
+#========== completion ========= #
 
 zstyle ':completion:*' matcher-list \
     'm:{[:lower:]}={[:upper:]}' \
@@ -24,37 +31,37 @@ zstyle ':completion:*' matcher-list \
     '+l:|=*'
 
 
-# =========== vi-mode config =========== #
-
-# zsh-vi-mode config
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jj  # for insert mode, keep default `^[` in other modes
-
-# Tells vi-mode to map jj to escape
-bindkey "jj" vi-cmd-mode
-
-# =========== zoxide ============= #
+# ========= zoxide ============= #
 
 eval "$(zoxide init zsh)"
-# You may have to rebuild your cache by running rm ~/.zcompdump*; compinit
 
-# =========== exports =========== #
 
-# General path additions
+# =========== paths =========== #
+
 export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
-# Anaconda3 
+export PATH=/home/john/.codon/bin:$PATH
 export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initialize
-# This one is fiddly.  Added /home/john/anaconda3/lib to make numba 
-# cuda happy
-# and then /usr/lib/x86_64-linux-gnu because tmux was failing.  Haven't
-# retested cuda since last change.
-export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
 
-export EDITOR='vi'
+export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# =========== editor ==========  # 
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+
+# ========== bat =============== #
+
 export BAT_THEME="TwoDark"
 
-# Control fzf (what a direct call to fzf triggers)
+
+# ========== fzf ================ #
+
+
+# Control what a direct call to fzf triggers
 export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,_minted} --type f"
+
 
 # =========== aliases =========== #
 
@@ -97,8 +104,12 @@ fi
 unset __conda_setup
 
 
-# =========== starship ================= #
-#
-# This should be added to the end of .zshrc
+# =========== starship prompt ======= #
 
+# first install the starship binary at https://starship.rs/
+
+# This must be added to the end of .zshrc
 eval "$(starship init zsh)"
+
+# Config file is ~/.config/starship.toml
+

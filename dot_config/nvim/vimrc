@@ -4,7 +4,6 @@
  
 " ================================================= "
 
-
 """"""""""""" Manage plugins """"""""""""""""""""""""
 
 " Plugin manager = vim-plug 
@@ -135,19 +134,24 @@ highlight Comment cterm=italic gui=italic
 
 " map of maps
 imap jj <Esc>
+
 " Q is format paragraph
 map Q {gq}
 
+" move to next buffer
 map <C-n> :bnext<CR>
 
 
 """"""""""""""""" Leader and related """""""""""""""
 
+" Set the leader and local leader
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-nnoremap <Leader>w :w<CR>
+" Leader maps
+nnoremap <Leader>w :w<CR>      
 nnoremap <Leader>d :bd<CR>
+nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 
 
 """""""""""""""""" Function key maps """""""""""""""

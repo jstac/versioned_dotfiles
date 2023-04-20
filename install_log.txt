@@ -1,28 +1,37 @@
-## Key maps
 
-setxkbmap -option "ctrl:nocaps"
-
-## Basic installs
+## == Basic installs ===== ##
 
 sudo apt update
 sudo apt upgrade
 sudo apt install -y rofi, tmux, kitty, suckless-tools, bat, zsh, git, chromium, fd-find, fzf
 
-## Install starship prompt --- follow instructions on site or
 
+## ==== Key maps ==== ##
+
+setxkbmap -option "ctrl:nocaps"
+# Also change in gnome tweaks! 
+
+
+## === starship prompt  === ##
+
+# --- follow instructions on site or
 curl -sS https://starship.rs/install.sh | sh
 
-## zoxide (cd with z)  --- follow instructions on site or
 
+## =====  zoxide ==== ##
+
+# (cd with z)  --- follow instructions on site or
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
-## Configure git
+
+## =========== Configure git ========== ##
 
 git config --global user.email "john.stachurski@gmail.com"
 git config --global user.name "John Stachurski"
 git config --global credential.helper "cache --timeout=8640000"
 
-## Cleanup dirs
+
+## =========== Clean dirs ========== ##
 
 mv Music /tmp
 mv Pictures /tmp
@@ -31,7 +40,7 @@ mv Videos /tmp
 mv Templates /tmp
 mv Documents /tmp
 
-## Python
+## =========== Python ========== ##
 
 wget   https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 cd Downloads
@@ -41,7 +50,7 @@ ipython profile create
 pip install -U pip
 pip install neovim
 
-## Zsh
+## =========== Zsh ========== ##
 
 # Change shell
 sudo -s
@@ -52,54 +61,61 @@ chsh -s /bin/zsh
 # Set up config files
 cd ~
 mv .zshrc /tmp
-ln -s gh_synced/versioned_dotfiles/zsh/.zshenv .
+ln -s gh_synced/versioned_dotfiles/top_level/.zshenv .
 mkdir .config/zsh
 cd .config/zsh
-ln -s ~/gh_synced/versioned_dotfiles/zsh/.zshrc .
-# Set up themes and plugins, managed manually
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/zsh/.zshrc .
+# Set up plugins, managed manually
 mkdir plugins
-mkdir themes
-cd themes
-git clone https://github.com/spaceship-prompt/spaceship-prompt
-cd ../plugins
+cd plugins
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting
 git clone https://github.com/jeffreytse/zsh-vi-mode
-cd ~
-source ~/gh_synced/versioned_dotfiles/zsh/.zshrc
+cd ..
+source .zshrc
 
-## Fonts
+
+## ========== Top level dotfiles ============ ##
+
+ln -s gh_synced/versioned_dotfiles/top_level/.zprofile .
+ln -s gh_synced/versioned_dotfiles/top_level/.Xmodmap .
+ln -s gh_synced/versioned_dotfiles/top_level/.latexmkrc .
+ln -s gh_synced/versioned_dotfiles/top_level/.inputrc .
+
+
+## Fonts ============ ##
 
 See README
 
-## Kitty
 
-cd ~
-mkdir .config/kitty
-cd .config/kitty
-ln -s ~/gh_synced/versioned_dotfiles/kitty/.config/kitty/Galaxy.conf .
-ln -s ~/gh_synced/versioned_dotfiles/kitty/.config/kitty/kitty.conf .
+## ========== Kitty ============ ##
 
-ln -s gh_synced/versioned_dotfiles/misc_top_level/.zprofile .
-ln -s gh_synced/versioned_dotfiles/misc_top_level/.Xmodmap .
-ln -s gh_synced/versioned_dotfiles/misc_top_level/.latexmkrc .
-ln -s gh_synced/versioned_dotfiles/misc_top_level/.inputrc .
+cd ~/.config
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/kitty .
 
-## Neovim
 
-Install via snap (until version moves to about v0.6)
+## ========== Neovim ============ ##
+
+# Install via snap (until version moves to about v0.6)
 
 sudo snap install --beta nvim --classic
 
-ln -s gh_synced/versioned_dotfiles/nvim/.vimrc .
-mkdir ~/.config/nvim/
-cd ~/.config/nvim
-ln -s ~/gh_synced/versioned_dotfiles/nvim/.config/nvim/init.vim .
 # Go to /junegunn/vim-plug/ and follow instructions for neovim install
 
-## Tmux
+cd ~/.config/
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/nvim .
 
-ln -s ~/gh_synced/versioned_dotfiles/tmux/tmux.conf ./.tmux.conf
+## ========== Zathura ============ ##
+
+cd ~/.config/
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/zathura .
+
+
+## ========== Tmux ============ ##
+
+cd ~
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf ./.tmux.conf
 source .tmux.conf
+# Note that the tmux config can be moved soon --- see ~/.tmux.conf instructions
 
 
 

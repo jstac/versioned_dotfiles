@@ -194,9 +194,9 @@ autocmd FileType python set smartindent
 
 """"""""""""""" line numbers """"""""""""""""""""""
 
-autocmd FileType python set number  
-autocmd FileType c set number  
-autocmd FileType julia set number  
+"autocmd FileType python set number  
+"autocmd FileType c set number  
+"autocmd FileType julia set number  
 
 
 """""""""""""""" Other stuff """"""""""""""""""""""

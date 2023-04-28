@@ -1,0 +1,199 @@
+" ================================================= "
+ 
+"           John Stachurski's vim config
+ 
+" ================================================= "
+
+
+""""""""""""" Manage plugins """"""""""""""""""""""""
+
+" Plugin manager = vim-plug 
+set runtimepath+=~/.vim
+call plug#begin('~/.vim/plugged')  
+
+
+" Julia
+"Plug 'JuliaEditorSupport/julia-vim'
+
+""" Using tab for omnicomplete
+"Plug 'ervandew/supertab'
+
+""" Snippets 
+"Plug 'SirVer/ultisnips'     " Expand snippets with <c-k>, see below.  
+"Plug 'jstac/vim-snippets'   " edit snippets. Fork of honza/vim-snippets.  
+
+""" Status line
+" Plug 'itchyny/lightline.vim'
+
+""" Send code to a terminal
+"Plug 'jpalardy/vim-slime'
+
+""" Unicode via latex commands  --- toggle on and off with <C-6>
+"Plug 'ntessore/unicode-math.vim'
+
+"""" Latex support
+"Plug 'lervag/vimtex'
+
+"""" Commenting
+"Plug 'scrooloose/nerdcommenter'
+
+"""
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+
+" Colors
+"Plug 'michalbachowski/vim-wombat256mod'
+
+" Initialize plugin system
+call plug#end()
+
+
+
+
+
+" ================================================ "
+"             General configuration 
+" ================================================ "
+
+
+
+
+set t_Co=256
+set t_ut=
+
+" Enable true colors
+if exists('+termguicolors')
+  " Necessary when using tmux
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+
+
+""""""""""""""" General maps  """""""""""""""""""""""
+
+" Set the leader and local leader
+nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
+
+"""""""""""""""""" Function key maps """""""""""""""
+
+" Spelling on 
+map <F2> <Esc>:setlocal spell spelllang=en_us<CR>
+" Spelling off 
+map <F3> <Esc>:setlocal nospell<CR>
+" Toggle paste on and off
+map <F4> :set invpaste<CR>
+" Toggle line numbers
+map <F5> :set invnumber<CR>
+
+
+
+
+
+
+""""""""""""""" Python stuff  """""""""""""""""
+
+autocmd FileType python set smartindent 
+
+" For handling myst files -- use Python syntax, trick neoterm 
+" into sending code to IPython
+" au BufReadPost *.md set syntax=python
+" au VimEnter,BufRead,BufNewFile *.md set filetype=python
+
+
+""""""""""""""" line numbers """"""""""""""""""""""
+
+"autocmd FileType python set number  
+"autocmd FileType c set number  
+"autocmd FileType julia set number  
+
+
+"""""""""""""""" Other stuff """"""""""""""""""""""
+
+" low priority to these files in file name expansion 
+
+set suffixes+=.aux
+set suffixes+=.out
+set suffixes+=.dvi
+set suffixes+=.log
+set suffixes+=.pdf
+set suffixes+=.ps
+
+
+
+
+" ================================================= "
+"""""""""""""" Plugin configuration """"""""""""""""
+" ================================================= "
+
+
+"""""""""""""""""" ultisnips """""""""""""""""""""""
+
+" Trigger
+let g:UltiSnipsExpandTrigger="<C-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Snippet location
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
+
+
+"""""""""""""""" fzf """""""""""""""""""""""""""""""
+
+let g:fzf_layout = { 'up': '~90%', 'window': { 'width': 0.8, 'height': 0.8, 'yoffset':0.5, 'xoffset': 0.5 } }
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+" Include hidden (dotfiles), ignore .gitignore files, .git/* files
+let $FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*,_minted*}"'
+
+
+
+
+"""""""""""""""""" vimtex """"""""""""""""""""""""""
+
+" vimtex uses the <localleader> for compiling, etc.  
+" For example, <localleader>ll means compile
+"
+
+
+filetype plugin indent on
+syntax enable
+
+let g:vimtex_view_method = 'zathura'
+let g:tex_flavor = 'latex'
+
+" Currently suppressing all warnings, which is a little dangerous
+let g:vimtex_quickfix_open_on_warning = 0
+
+let g:vimtex_compiler_latexmk = { 
+        \ 'executable' : 'latexmk',
+        \ 'continuous' : 0,
+        \ 'options' : [ 
+        \   '-xelatex',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+
+
+""""""""""""""""" unicoder-math """"""""""""""""""
+
+set keymap=unicode-math
+set iminsert=0
+set imsearch=-1
+
+" You can then toggle the unicode-math keymap by pressing <C-6> in insert mode.
+
+""""""""""""""""" vim-slime """""""""""""""""""""""
+
+" vim-slime sends selected area to tmux window with C-c-c
+
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+
+" The following puts `%cpaste -q` at the start of the paste whenever
+" ft=python.  This solves the indent problem when pasting into ipython.
+let g:slime_python_ipython=1
+

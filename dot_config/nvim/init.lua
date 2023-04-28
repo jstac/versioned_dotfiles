@@ -1,24 +1,26 @@
+-- Install package manager
+--
+--    https://github.com/folke/lazy.nvim
+--    `:help lazy.nvim.txt` for more info
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
+end
 
--- Current hack: just run old vimrc
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd([[runtime vimrc]])
+-- plugins handled by Lazy are listed in plugins/init.lua
 
+require('options')
+require('keymaps')
+require('colorscheme')
+require('plugins')
 
--- Move to here over time:
-
--- require('options')
--- require('keymaps')
 -- require('commands')
--- require('plugins')
--- require('themes')  -- Theme at end to prevent overwrite by other plugins
---
---
--- Useful references:
---  - https://github.com/nanotee/dotfiles/tree/master/.config/nvim
---  - https://github.com/glepnir/nvim
---  - https://github.com/guxuerui/nvim-0.8
---  - https://github.com/daalfox/nvim/tree/main/lua
---  - https://github.com/evantravers/dotfiles/tree/master/nvim
---  - https://github.com/GideonWolfe/nvim-lua/tree/main/lua
---  - https://www.reddit.com/r/neovim/comments/qnjlvu/lists_of_luabased_nvim_config_files/
---  - https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/

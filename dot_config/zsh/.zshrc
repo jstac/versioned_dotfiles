@@ -16,7 +16,7 @@ setopt HIST_FIND_NO_DUPS
 
 # zsh-vi-mode
 source $ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jj  
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jj  
 
 # fast-syntax-highlighting
 source $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh

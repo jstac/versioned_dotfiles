@@ -1,4 +1,8 @@
+-- Lazy set up
+
 require('lazy').setup({
+
+    'ervandew/supertab',
 
   {
     'akinsho/toggleterm.nvim', 
@@ -44,5 +48,3 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
 }, {})
-
-

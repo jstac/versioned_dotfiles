@@ -80,6 +80,7 @@ alias mu="zathura"
 alias bat="batcat"
 alias cat="batcat"     # map cat to bat
 alias pip='noglob pip' # stop zsh from screwing up pip extras
+alias wezterm="flatpack run org.wezfurlong.wezterm"
 
 alias gls='git log --stat'
 alias gs='git status'

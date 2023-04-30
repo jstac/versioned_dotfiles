@@ -29,7 +29,7 @@ vim.keymap.set('n', 'Q', '{gq}', opts)
 vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
 vim.keymap.set('n', '<leader>d', ':bd<CR>', opts)
 
--- split motion (alt h,j,k,l works in any mode)
+-- motion across splits (alt h,j,k,l works in any mode)
 vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<A-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<A-k>', '<C-w>k', opts)
@@ -44,21 +44,23 @@ vim.keymap.set('t', '<A-k>', '<C-\\><C-n><C-w>k', opts)
 vim.keymap.set('t', '<A-l>', '<C-\\><C-n><C-w>l', opts)
 
 -- buffer motion
+--vim.keymap.set('n', '<C-n>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<C-n>', ':bnext<CR>', opts)
 
 -- terminal escape
-vim.keymap.set('t', '<leader>te', '<C-\\><C-n>', opts)
+vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>', opts)
 
+-- reload
+vim.api.nvim_set_keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", opts)
 
 -- ## Plugin specific maps  
 
 -- Telescope
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', opts)
-vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', opts)
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', opts)
 
 -- ToggleTerm
 vim.keymap.set('n', '<leader>tv', ':ToggleTerm size=72 direction=vertical<CR>', opts)
-vim.keymap.set('n', '<leader>th', ':ToggleTerm size=12 direction=horizontal<CR>', opts)
+vim.keymap.set('n', '<leader>th', ':ToggleTerm size=8 direction=horizontal<CR>', opts)
 vim.keymap.set('n', '<leader>tf', ':ToggleTerm direction=float<CR>', opts)
 vim.keymap.set('n', '<leader>tl', ':ToggleTermSendCurrentLine<CR>', opts)
 vim.keymap.set('v', '<leader>ts', ":'<,'>ToggleTermSendVisualLines<CR>", opts)

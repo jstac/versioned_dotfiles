@@ -12,6 +12,7 @@ local options = {
     showmatch = true,               -- shows matching parenthesis
     tabstop = 4,                    -- no. of spaces when press tab
     expandtab = true,               -- tabs expanded into spaces
+    timeoutlen = 500,
     shiftwidth = 4,
     smarttab = true,
     autoindent = true ,             -- use current level of indent in next line

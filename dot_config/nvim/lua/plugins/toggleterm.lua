@@ -1,3 +1,2 @@
-require("toggleterm").setup {
-    shade_filetypes = {},
-}
+require("toggleterm").setup {}
+

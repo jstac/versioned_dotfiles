@@ -1,5 +1,6 @@
 -- # Keymaps
 
+-- Note that plugin-specific maps are in plugin_config
 
 -- ## List of modes
 --
@@ -28,6 +29,7 @@ vim.keymap.set('n', 'Q', '{gq}', opts)
 -- basic leader maps
 vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
 vim.keymap.set('n', '<leader>d', ':bd<CR>', opts)
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', opts)
 
 -- motion across splits (alt h,j,k,l works in any mode)
 vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
@@ -52,17 +54,5 @@ vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>', opts)
 
 -- reload
 vim.api.nvim_set_keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", opts)
-
--- ## Plugin specific maps  
-
--- Telescope
-vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', opts)
-
--- ToggleTerm
-vim.keymap.set('n', '<leader>tv', ':ToggleTerm size=72 direction=vertical<CR>', opts)
-vim.keymap.set('n', '<leader>th', ':ToggleTerm size=8 direction=horizontal<CR>', opts)
-vim.keymap.set('n', '<leader>tf', ':ToggleTerm direction=float<CR>', opts)
-vim.keymap.set('n', '<leader>tl', ':ToggleTermSendCurrentLine<CR>', opts)
-vim.keymap.set('v', '<leader>ts', ":'<,'>ToggleTermSendVisualLines<CR>", opts)
 
 

@@ -26,11 +26,6 @@ vim.g.maplocalleader = "\\"
 -- working with text
 vim.keymap.set('n', 'Q', '{gq}', opts)
 
--- basic leader maps
-vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
-vim.keymap.set('n', '<leader>d', ':bd<CR>', opts)
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', opts)
-
 -- motion across splits (alt h,j,k,l works in any mode)
 vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<A-j>', '<C-w>j', opts)
@@ -52,7 +47,35 @@ vim.keymap.set('n', '<C-n>', ':bnext<CR>', opts)
 -- terminal escape
 vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>', opts)
 
+
+----- leader maps ------
+
+-- basic editing
+vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
+vim.keymap.set('n', '<leader>d', ':bd<CR>', opts)
+
 -- reload
 vim.api.nvim_set_keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", opts)
 
+-- toggle spelling
+vim.keymap.set('n', '<leader>st',':setlocal spell! spelllang=en_us<CR>', opts)
 
+
+----- Plugin-specific keymaps ----
+--
+-- (keep here so they don't clash) ---
+
+
+-- ToggleTerm keymaps (s stands for 'send', a stands for 'add')
+vim.keymap.set('n', '<leader>av', ':ToggleTerm size=72 direction=vertical<CR>', opts)
+vim.keymap.set('n', '<leader>ah', ':ToggleTerm size=8 direction=horizontal<CR>', opts)
+vim.keymap.set('n', '<leader>af', ':ToggleTerm direction=float<CR>', opts)
+vim.keymap.set('n', '<leader>sl', ':ToggleTermSendCurrentLine<CR>', opts)
+vim.keymap.set('v', '<leader>ss', ":'<,'>ToggleTermSendVisualLines<CR>", opts)
+
+
+-- fzf-lua keymaps
+vim.keymap.set('n', '<leader>f', ':FzfLua files<CR>', opts)
+
+-- nvim-tree keymaps
+vim.keymap.set('n', '<leader>t', ':NvimTreeFindFileToggle<CR>')

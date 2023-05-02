@@ -44,6 +44,3 @@ local function setup_bindings(buf_id)
   end
 end
 
--- nvim-tree keymaps
-
-vim.keymap.set('n', '<leader>n', ':NvimTreeFindFileToggle<CR>')

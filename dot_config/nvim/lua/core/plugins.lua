@@ -23,7 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 
   -- Maps <Tab> to <C-p> 
-  'ervandew/supertab',
+  -- 'ervandew/supertab',
 
   'akinsho/toggleterm.nvim', 
 
@@ -72,11 +72,19 @@ local plugins = {
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
-  -- LSP config (also consider lspsaga for better UI)
+  -- LSP config 
   "williamboman/mason.nvim",
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
+  "glepnir/lspsaga.nvim",
+  'nvim-lua/plenary.nvim',  -- required by lspsaga
 
+  -- completion
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
+  "rafamadriz/friendly-snippets",
 
 }
 

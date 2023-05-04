@@ -1,15 +1,12 @@
 
+-- My init, largely based on https://github.com/cpow/cpow-dotfiles
+
 require('core.options')
 require('core.keymaps')
 require('core.plugins')
 require('core.plugin_config')
 require('core.colorscheme')
 
-
--- the following helps reload nvim configs as discussed in
--- https://stackoverflow.com/questions/72412720/how-to-source-init-lua-without-restarting-neovim
--- It is paired with
--- vim.api.nvim_set_keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", opts)
 
 -- Add modules here
 local modules = {

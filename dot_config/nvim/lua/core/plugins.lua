@@ -76,8 +76,8 @@ local plugins = {
   "williamboman/mason.nvim",
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
-  "glepnir/lspsaga.nvim",
-  'nvim-lua/plenary.nvim',  -- required by lspsaga
+  -- "glepnir/lspsaga.nvim",
+  'nvim-lua/plenary.nvim',  -- required by some lsps (asyc programming)
 
   -- completion
   'hrsh7th/nvim-cmp',

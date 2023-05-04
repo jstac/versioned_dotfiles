@@ -22,20 +22,32 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+  -- Maps <Tab> to <C-p> 
   'ervandew/supertab',
+
   'akinsho/toggleterm.nvim', 
+
   'nvim-tree/nvim-tree.lua',
+
   'nvim-treesitter/nvim-treesitter',  -- syntax highlighting
-  'ellisonleao/gruvbox.nvim',
-  'folke/tokyonight.nvim',
+
   'lervag/vimtex',
 
+  -- Unify tmux and vim split motion.  The set of mappings is visible
+  -- in the relevant section of the tmux config file.
+  'christoomey/vim-tmux-navigator',  
+
+
+  -- fzf!
   { 'junegunn/fzf', run = './install --bin', },
   { 'ibhagwan/fzf-lua',
   -- optional for icon support
-  requires = { 'nvim-tree/nvim-web-devicons' }
+      requires = { 'nvim-tree/nvim-web-devicons' }
   },
 
+  -- colors
+  'ellisonleao/gruvbox.nvim',
+  'folke/tokyonight.nvim',
   { 
     'michalbachowski/vim-wombat256mod', 
     priority = 1000,
@@ -59,6 +71,12 @@ local plugins = {
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
+  -- LSP config (also consider lspsaga for better UI)
+  "williamboman/mason.nvim",
+  "neovim/nvim-lspconfig",
+  "williamboman/mason-lspconfig.nvim",
+
 
 }
 

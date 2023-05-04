@@ -23,9 +23,9 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 
   -- Maps <Tab> to <C-p> 
-  -- 'ervandew/supertab',
+  'ervandew/supertab',
 
-  'akinsho/toggleterm.nvim', 
+  'akinsho/toggleterm.nvim',
 
   'nvim-tree/nvim-tree.lua',
 
@@ -35,7 +35,7 @@ local plugins = {
 
   -- Unify tmux and vim split motion.  The set of mappings is visible
   -- in the relevant section of the tmux config file.
-  'christoomey/vim-tmux-navigator',  
+  'christoomey/vim-tmux-navigator',
 
 
   -- fzf!
@@ -48,15 +48,15 @@ local plugins = {
   -- colors
   'ellisonleao/gruvbox.nvim',
   'folke/tokyonight.nvim',
-  { 
-    'michalbachowski/vim-wombat256mod', 
+  {
+    'michalbachowski/vim-wombat256mod',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
   },
-    
-  { 
+
+  {
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
@@ -76,15 +76,9 @@ local plugins = {
   "williamboman/mason.nvim",
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
-  -- "glepnir/lspsaga.nvim",
-  'nvim-lua/plenary.nvim',  -- required by some lsps (asyc programming)
 
-  -- completion
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp',
-  'L3MON4D3/LuaSnip',
-  'saadparwaiz1/cmp_luasnip',
-  "rafamadriz/friendly-snippets",
+  -- Simple completion engine
+  'dcampos/nvim-snippy'
 
 }
 

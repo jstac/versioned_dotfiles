@@ -8,8 +8,6 @@ require("nvim-tree").setup({
   }
 })
 
-local M = {}
-
 local bindings = {
   a = 'create',
   d = 'remove',
@@ -30,6 +28,7 @@ local bindings = {
   ['h'] = 'toggle_help',
   ['<bs>'] = 'close_node',
 }
+
 
 local function setup_bindings(buf_id)
   local cb = require('nvim-tree.config').nvim_tree_callback

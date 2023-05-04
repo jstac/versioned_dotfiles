@@ -2,7 +2,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- servers
 
@@ -14,7 +14,6 @@ require("mason-lspconfig").setup({
 
 -- lua
 require("lspconfig").lua_ls.setup {
-  capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {

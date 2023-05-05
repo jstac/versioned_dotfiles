@@ -37,6 +37,12 @@ vim.keymap.set('n', '<C-n>', ':bnext<CR>', opts)
 -- terminal escape
 vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>', opts)
 
+-- Terminal motion across splits.  These motions allow for C-l, C-h type motions
+-- even when in terminal mode in a given split.  They coincide with similar
+-- motions for other modes (and in tmux) implemented by 'christoomey/vim-tmux-navigator'.
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w><C-l>', opts)
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w><C-h>', opts)
+
 
 ----- leader maps ------
 

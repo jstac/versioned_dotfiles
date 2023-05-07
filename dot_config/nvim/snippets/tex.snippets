@@ -1,0 +1,248 @@
+
+snippet begin \begin{} ... \end{} block
+	\\begin{${1:env}}
+		${0:${VISUAL}}
+	\\end{$1}
+
+snippet theorem theorem
+	\\begin{theorem}\\label{t:${2}}
+		${0:${VISUAL}}
+	\\end{theorem}
+
+snippet lemma lemma
+	\\begin{lemma}\\label{l:${2}}
+		${0:${VISUAL}}
+	\\end{lemma}
+
+snippet proposition proposition
+	\\begin{proposition}\\label{p:${2}}
+		${0:${VISUAL}}
+	\\end{proposition}
+
+snippet corollary corollary
+	\\begin{corollary}\\label{c:${2}}
+		${0:${VISUAL}}
+	\\end{corollary}
+
+snippet frame frame
+	\\begin{frame}
+		${0:${VISUAL}}
+	\\end{frame}
+
+snippet center center environment
+	\\begin{center}
+		${0:${VISUAL}}
+	\\end{center}
+
+snippet align align environment
+	\\begin{align}\\label{eq:${2}}
+		${0:${VISUAL}}
+	\\end{align}
+
+snippet aligns align* environment
+	\\begin{align}
+		${0:${VISUAL}}
+	\\end{align}
+
+snippet eqs equation environment
+	\\begin{equation}
+		${0:${VISUAL}}
+	\\end{equation}
+
+snippet eq labeled equation environment
+	\\begin{equation}\\label{eq:${2}}
+		${0:${VISUAL}}
+	\\end{equation}
+
+snippet enum enumerate environment
+	\\begin{enumerate}
+		\\item ${0}
+	\\end{enumerate}
+
+snippet item itemize environment
+	\\begin{itemize}
+		\\item ${0}
+	\\end{itemize}
+
+snippet mat smart matrix environment
+	\\begin{${1:p/b/v/V/B/small}matrix}
+		${0:${VISUAL}}
+	\\end{$1matrix}
+
+snippet cas cases environment
+	\\begin{cases}
+		${1:equation}, &\\text{ if }${2:case}\\
+		${0:${VISUAL}}
+	\\end{cases}
+
+snippet cha \chapter
+	\\chapter{${1:chapter name}}%
+	\\label{cha:${2:$1}}
+	${0}
+
+snippet sec \section
+	\\section{${1:section name}}%
+	\\label{sec:${2:$1}}
+	${0}
+
+# Sub Section
+snippet sub \subsection
+	\\subsection{${1:subsection name}}%
+	\\label{sub:${2:$1}}
+	${0}
+
+snippet ssub \subsubsection
+	\\subsubsection{${1:subsubsection name}}%
+	\\label{ssub:${2:$1}}
+	${0}
+
+snippet figref reference to a figure
+	${1:Figure}~\\ref{${2:fig:}}
+
+snippet section reference to a section
+	${1:Section}~\\ref{sec:${2}} ${0}
+
+snippet page reference to a page
+	${1:page}~\\pageref{${2}} ${0}
+
+snippet cite \cite[]{}
+	\\cite[${1}]{${2}} ${0}
+
+snippet ita italic text
+	\\textit{${1:${VISUAL:text}}}${0}
+
+snippet bf bold face text
+	\\textbf{${1:${VISUAL:text}}}${0}
+
+snippet emph emphasize text
+	\\emph{${1:${VISUAL:text}}}${0}
+
+snippet sc small caps text
+	\\textsc{${1:${VISUAL:text}}}${0}
+
+snippet ft \footnote
+	\\footnote{${1:${VISUAL:text}}}${0}
+
+snippet fig figure environment (includegraphics)
+	\\begin{figure}
+	\\centering
+		\\includegraphics[scale=${1}]{Figures/${2}}
+	\\caption{${3}}
+	\\label{fig:${4}}
+	\\end{figure}
+	${0}
+
+snippet tikz figure environment (tikzpicture)
+	\\begin{figure}[htpb]
+	\\begin{center}
+	\\begin{tikzpicture}[scale=${1:1}, transform shape]
+		${2}
+	\\end{tikzpicture}
+	\\end{center}
+	\\caption{${3}}%
+	\\label{fig:${4}}
+	\\end{figure}
+	${0}
+
+snippet subfig subfigure environment
+	\\begin{subfigure}[${1}]{${2:\\textwidth}}
+	\\begin{center}
+		${3}
+	\\end{center}
+	\\caption{${4}}
+	\\label{fig:${5}}
+	\\end{subfigure}
+	${0}
+
+snippet tikzcd tikzcd environment in equation
+	\\begin{equation}
+	\\begin{tikzcd}
+		${1}
+	\\end{tikzcd}
+	\\end{equation}
+	${0}
+
+snippet tikzcd* tikzcd environment in equation*
+	\\begin{equation*}
+	\\begin{tikzcd}
+		${1}
+	\\end{tikzcd}
+	\\end{equation*}
+	${0}
+#math
+snippet frac \frac{}{}
+	\\frac{${1:num}}{${2:denom}} ${0}
+
+snippet sum \sum^{}_{}
+	\\sum^{${1:n}}_{${2:i=1}} ${0}
+
+snippet lim \lim_{}
+	\\lim_{${1:n \\to \\infty}} ${0}
+
+snippet example example environment
+	\\begin{example}
+		${0:${VISUAL}}
+	\\end{example}
+
+#delimiter
+snippet lr left right
+	\\left${1} ${0:${VISUAL}} \\right$1
+
+snippet lr( left( right)
+	\\left( ${0:${VISUAL}} \\right)
+
+snippet lr| left| right|
+	\\left| ${0:${VISUAL}} \\right|
+
+snippet lr{ left\{ right\}
+	\\left\\{ ${0:${VISUAL}} \\right\\}
+
+snippet lr[ left[ right]
+	\\left[ ${0:${VISUAL}} \\right]
+
+snippet lra langle rangle
+	\\langle ${0:${VISUAL}} \\rangle
+
+# Code listings
+snippet lst
+	\\begin{listing}[language=${1:language}]
+		${0:${VISUAL}}
+	\\end{listing}
+
+snippet lsi
+	\\lstinline|${1}| ${0}
+
+# Hyperlinks
+snippet url
+	\\url{${1}} ${0}
+
+snippet href
+	\\href{${1}}{${2}} ${0}
+
+snippet lim limit
+	\\lim_{{$1}} {{$2}} {$0}
+
+# Partial derivative
+snippet pdv partial derivation
+	\\frac{\\partial {$1}}{\\partial {$2}} {$0}
+
+snippet dv derivative
+	\\frac{d {$1}}{d {$2}} {$0}
+
+# Summation
+snippet summ summation
+	\\sum_{{$1}} {$0}
+
+snippet dot dot
+	\\dot{{$1}} {$0}
+
+snippet int integral
+	\\int_{{$1}}^{{$2}} {$3} \\: d{$4} {$0}
+
+# Right arrow
+snippet ra rightarrow
+	\\rightarrow {$0}
+
+# Long right arrow
+snippet lra longrightarrow
+	\\longrightarrow {$0}

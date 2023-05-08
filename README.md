@@ -10,15 +10,17 @@ Install latest Ubuntu and then the budgie desktop via apt.
 
 Clone `versioned_dotfiles`
 
+The following steps are detailed in `install_log.txt`.  Here is the outline:
+
 * files in `top_level` should be linked to from `~`
-* files in top level of `dot_config` should be linked to from `.config`
-* where possible, folders in `dot_config/xxx` should be linked to from `.config/xxx`
-* if not (because of generated binaries), files in `dot_config/xxx` should be linked to from `.config/xxx`
+* files `dot_config/zsh` should be linked to from `.config/zsh`
+* other folders in `dot_config/xxx` should be linked to from `.config/xxx`
 
 
 ## Neovim
 
-Note that neovim is currently installed from snap --- until default ubuntu version is around 0.6
+Neovim is installed from snap --- until default ubuntu version is around 0.6
+
 
 ## Examine your set up
 
@@ -27,7 +29,7 @@ Note that neovim is currently installed from snap --- until default ubuntu versi
 
 ### Map Caps to CTRL
 
-The remap is in `.profile` and consider `ln -s .profile .xprofile`
+Use `gnome-tweaks` 
 
 The command is `setxkbmap -option "ctrl:nocaps"` 
 

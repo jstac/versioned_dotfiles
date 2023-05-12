@@ -110,6 +110,7 @@ unset __conda_setup
 # first install the starship binary at https://starship.rs/
 
 # This must be added to the end of .zshrc
+
 eval "$(starship init zsh)"
 
 # Config file is ~/.config/starship.toml

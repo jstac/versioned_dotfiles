@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y rofi, tmux, kitty, suckless-tools, bat, zsh, git, chromium, fd-find, fzf
+sudo apt install -y rofi tmux kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks
 
 
 ## ==== Key maps ==== ##
@@ -11,24 +11,6 @@ sudo apt install -y rofi, tmux, kitty, suckless-tools, bat, zsh, git, chromium, 
 setxkbmap -option "ctrl:nocaps"
 # Also change in gnome tweaks! 
 
-
-## === starship prompt  === ##
-
-# --- follow instructions on site or
-curl -sS https://starship.rs/install.sh | sh
-
-
-## =====  zoxide ==== ##
-
-# (cd with z)  --- follow instructions on site or
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-
-
-## =========== Configure git ========== ##
-
-git config --global user.email "john.stachurski@gmail.com"
-git config --global user.name "John Stachurski"
-git config --global credential.helper "cache --timeout=8640000"
 
 
 ## =========== Clean dirs ========== ##
@@ -74,12 +56,32 @@ cd ..
 source .zshrc
 
 
-## ========== Top level dotfiles ============ ##
+## ========== Other top level dotfiles ============ ##
 
-ln -s gh_synced/versioned_dotfiles/top_level/.zprofile .
-ln -s gh_synced/versioned_dotfiles/top_level/.Xmodmap .
 ln -s gh_synced/versioned_dotfiles/top_level/.latexmkrc .
 ln -s gh_synced/versioned_dotfiles/top_level/.inputrc .
+etc.
+
+## === Starship prompt  === ##
+
+# --- follow instructions on site or
+curl -sS https://starship.rs/install.sh | sh
+cd
+cd .config
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/starship.toml .
+
+
+## =====  zoxide ==== ##
+
+# (cd with z)  --- follow instructions on site or
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+
+
+## =========== Configure git ========== ##
+
+git config --global user.email "john.stachurski@gmail.com"
+git config --global user.name "John Stachurski"
+git config --global credential.helper "cache --timeout=8640000"
 
 
 ## Fonts ============ ##
@@ -97,7 +99,7 @@ ln -s ~/gh_synced/versioned_dotfiles/dot_config/kitty .
 
 # Install via snap (until version moves to about v0.6)
 
-sudo snap install --beta nvim --classic
+sudo snap install nvim --classic
 
 # Go to /junegunn/vim-plug/ and follow instructions for neovim install
 

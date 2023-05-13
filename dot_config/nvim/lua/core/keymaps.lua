@@ -20,12 +20,8 @@ local opts = { noremap = true, silent = true }
 
 -- ## General maps (not plugin related) 
 
--- set leader and local leader
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- jj to escape in insert model
-vim.keymap.set('i', "jj", "<Esc>", options)
+vim.keymap.set('i', "jj", "<Esc>", opts)
 
 -- working with text
 vim.keymap.set('n', 'Q', '{gq}', opts)
@@ -44,7 +40,11 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w><C-l>', opts)
 vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w><C-h>', opts)
 
 
------ leader maps ------
+----- Leader maps ------
+
+-- set leader and local leader
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- basic editing
 vim.keymap.set('n', '<leader>w', ':w<CR>', opts)

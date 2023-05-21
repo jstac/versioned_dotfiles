@@ -148,6 +148,11 @@ snippet begin \begin{} ... \end{} block
 		${0:${VISUAL}}
 	\\end{$1}
 
+snippet proof proof
+	\\begin{proof}
+		${0:${VISUAL}}
+	\\end{proof}
+
 snippet theorem theorem
 	\\begin{theorem}\\label{t:${2}}
 		${0:${VISUAL}}
@@ -184,14 +189,14 @@ snippet align align environment
 	\\end{align}
 
 snippet aligns align* environment
-	\\begin{align}
+	\\begin{align*}
 		${0:${VISUAL}}
-	\\end{align}
+	\\end{align*}
 
 snippet eqs equation environment
-	\\begin{equation}
+	\\begin{equation*}
 		${0:${VISUAL}}
-	\\end{equation}
+	\\end{equation*}
 
 snippet eq labeled equation environment
 	\\begin{equation}\\label{eq:${2}}

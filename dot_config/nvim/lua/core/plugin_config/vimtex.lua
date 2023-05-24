@@ -1,4 +1,4 @@
-vim.g.vimtex_quickfix_mode = true
+vim.g.vimtex_quickfix_mode = false
 vim.g.vimtex_view_method = 'zathura'
 vim.g.tex_flavor = 'latex'
 

@@ -69,6 +69,8 @@ Install Nerd Fonts according to [these instructions](https://gist.github.com/mat
 * Unzip and copy to `~/.local/share/fonts`
 * Run the command `fc-cache -fv` to manually rebuild the font cache
 
+* To see the list of fonts visible to kitty use `kitty +list-fonts`
+
 
 ### SSH
 

@@ -1,4 +1,14 @@
 # Put in ~/.config
+format = """
+$status \
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$character"""
 
 add_newline=true
 command_timeout=3000 #ms
@@ -20,8 +30,12 @@ truncation_symbol = "…/"
 [git_status]
 modified = "➜"
 
-[hostname]
-disabled = true
+[hostname] 
+ssh_only = false 
+format = 'on [$hostname](bold purple) ' 
+trim_at = "." 
+disabled = false
+
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -43,3 +57,4 @@ symbol = "β "
 truncation_length = 50
 truncation_symbol = "…"
 style="bold purple"
+

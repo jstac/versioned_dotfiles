@@ -17,7 +17,7 @@ command_timeout=3000 #ms
 disabled = true
 
 [character]
-format = "❯❯ "
+format = "\n❯❯ "
 success_symbol = "❯❯(bold green) "
 error_symbol = "❯❯(bold red) "
 

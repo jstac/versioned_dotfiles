@@ -94,6 +94,11 @@ eval `ssh-agent -s`
 ssh-add
 ```
 
+To set up a reverse tunnel for Jupyter use
+
+* `ssh -L 8080:localhost:8080 john@server_ip`
+
+
 ### Versioned Tools
 
 * `git clone https://github.com/jstac/versioned_tools`

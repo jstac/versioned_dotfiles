@@ -42,7 +42,7 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 export PATH=/home/john/.codon/bin:$PATH
 export PATH="/home/john/anaconda3/bin:$PATH"  # commented out by conda initialize
 
-export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
+#export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # =========== editor ==========  # 

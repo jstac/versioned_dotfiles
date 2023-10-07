@@ -76,6 +76,7 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias n="nnn"
+alias c="clear"
 alias mu="zathura"
 alias bat="batcat"
 alias cat="batcat"     # map cat to bat

@@ -104,6 +104,28 @@ To set up a reverse tunnel for Jupyter use
 * `git clone https://github.com/jstac/versioned_tools`
 * `ch ~` and `mkdir bin` and `cd bin`.
 * `ln -s gh_synced/versioned_tools/*.py .`
+
+
+### LaTeX
+
+Install "vanilla" texlive for latest packages rather than Ubuntu package.
+
+* sudo apt install perl wget fontconfig xzdec
+* wget --no-check-certificate https://ctan.math.illinois.edu/systems/texlive/tlnet/install-tl-unx.tar.gz
+* tar -xf install-tl-unx.tar.gz
+* cd install-tl-*/
+* sudo ./install-tl
+
+
+Useful references for the install:
+
+* https://linux.how2shout.com/installing-vanilla-tex-live-on-debian-12-or-11-linux/
+* https://www.tug.org/texlive/quickinstall.html
+
+TeXlive package manager:
+
+* https://www.tug.org/texlive/doc/tlmgr.html#EXAMPLES
+
 * `mkdir ~/texmf/bibtex/bst` and add ecta.bst, etc.
 * do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 

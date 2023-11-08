@@ -5,12 +5,10 @@ sudo apt update
 sudo apt upgrade
 sudo apt install -y rofi tmux kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide
 
-
 ## ==== Key maps ==== ##
 
 setxkbmap -option "ctrl:nocaps"
 # Also change in gnome tweaks! 
-
 
 
 ## =========== Clean dirs ========== ##
@@ -116,10 +114,10 @@ ln -s ~/gh_synced/versioned_dotfiles/dot_config/zathura .
 
 ## ========== Tmux ============ ##
 
-cd ~
-ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf ./.tmux.conf
+cd ~/.config/
+mkdir tmux
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf .
 source .tmux.conf
-# Note that the tmux config can be moved soon --- see ~/.tmux.conf instructions
 
 
 

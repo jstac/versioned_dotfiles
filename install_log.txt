@@ -3,14 +3,12 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y rofi tmux kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep
-
+sudo apt install -y rofi tmux kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essentials zathura
 
 ## ==== Key maps ==== ##
 
 setxkbmap -option "ctrl:nocaps"
 # Also change in gnome tweaks! 
-
 
 
 ## =========== Clean dirs ========== ##
@@ -27,10 +25,25 @@ mv Documents /tmp
 wget   https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 cd Downloads
 bash ./Anaconda3-2021.11-Linux-x86_64.sh
-jupyter notebook --generate-config  # set browser to `chomium`
+jupyter notebook --generate-config  # set browser to `chromium`
 ipython profile create
 pip install -U pip
 pip install neovim
+
+## === Starship prompt  === ##
+
+# --- follow instructions on site or
+curl -sS https://starship.rs/install.sh | sh
+cd
+cd .config
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/starship.toml .
+
+
+## =====  zoxide ==== ##
+
+# (cd with z)  --- follow instructions on site or
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+
 
 ## =========== Zsh ========== ##
 
@@ -62,19 +75,6 @@ ln -s gh_synced/versioned_dotfiles/top_level/.latexmkrc .
 ln -s gh_synced/versioned_dotfiles/top_level/.inputrc .
 etc.
 
-## === Starship prompt  === ##
-
-# --- follow instructions on site or
-curl -sS https://starship.rs/install.sh | sh
-cd
-cd .config
-ln -s ~/gh_synced/versioned_dotfiles/dot_config/starship.toml .
-
-
-## =====  zoxide ==== ##
-
-# (cd with z)  --- follow instructions on site or
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 
 ## =========== Configure git ========== ##
@@ -114,10 +114,10 @@ ln -s ~/gh_synced/versioned_dotfiles/dot_config/zathura .
 
 ## ========== Tmux ============ ##
 
-cd ~
-ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf ./.tmux.conf
+cd ~/.config/
+mkdir tmux
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf .
 source .tmux.conf
-# Note that the tmux config can be moved soon --- see ~/.tmux.conf instructions
 
 
 

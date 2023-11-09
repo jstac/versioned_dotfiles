@@ -21,6 +21,11 @@ The following steps are detailed in `install_log.txt`.  Here is the outline:
 
 Neovim is installed from snap --- until default ubuntu version is around 0.6
 
+Note that treesitter often has problems after install.  Try
+`:TSUpdate`
+`:TSInstall vim`
+`:TSInstall latex`
+`:TSInstall julia`
 
 ## Examine your set up
 
@@ -143,12 +148,6 @@ https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tok
 * Install JAX via pip 
 
 
-
-## For Japanese
-
-Just use Google Japanese input
-
-Or see https://confluence.jaytaala.com/display/TKB/Japanese+input+with+i3+and+Arch+based+distros
 
 
 ## Notes on AWS

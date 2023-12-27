@@ -3,7 +3,11 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y rofi tmux kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essentials zathura
+sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essentials zathura
+
+## ========== Tmux install ============ ##
+
+# installed from source --- see GH page (needed until Ubuntu has at least v3.1)
 
 ## ==== Key maps ==== ##
 

@@ -27,6 +27,10 @@ Note that treesitter often has problems after install.  Try
 `:TSInstall latex`
 `:TSInstall julia`
 
+## Tmux is installed from source
+
+See GH page
+
 ## Examine your set up
 
 * `inxi -Gxx` gives information on your graphics drivers

@@ -105,10 +105,9 @@ ln -s ~/gh_synced/versioned_dotfiles/dot_config/kitty .
 
 sudo snap install nvim --classic
 
-# Go to /junegunn/vim-plug/ and follow instructions for neovim install
-
 cd ~/.config/
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/nvim .
+
 
 ## ========== Zathura ============ ##
 

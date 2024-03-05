@@ -1,3 +1,4 @@
+require('core.plugin_config.leap')
 require('core.plugin_config.snippy')
 require('core.plugin_config.lsp_config')
 require('core.plugin_config.vimtex')

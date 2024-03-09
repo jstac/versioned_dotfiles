@@ -144,7 +144,8 @@ https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tok
 
 * Select the latest nvidia driver in "additional drivers" hardware setting
 * pip install --upgrade "jax[cuda11_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-* build `nvtop` from source
+* Build `nvtop` from source
+* Disable Wayland by editing `/etc/gdm3/custom.conf` and uncommenting `WaylandEnable=false`
 
 Notes: 
 
@@ -158,7 +159,7 @@ installed via one of the graphical software installers and I guess it installed
 via snap (since the installed version is newer than what's in the Ubuntu apt
 repo).
 
-
+See also https://manual.quantecon.org/tools/gpu.html#using-egpu-with-ubuntu
 
 ## Notes on AWS
 

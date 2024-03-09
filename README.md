@@ -31,10 +31,6 @@ Note that treesitter often has problems after install.  Try
 
 See GH page
 
-## Examine your set up
-
-* `inxi -Gxx` gives information on your graphics drivers
-
 
 ### Map Caps to CTRL
 
@@ -144,13 +140,23 @@ TeXlive package manager:
 https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tokens
 
 
-## Notes on the GPU
+## Local External GPU + JAX
 
-* If necessary, `sudo apt install nvidia-driver-xxx` (not needed on Ubuntu 22.x LTS)
-* install CUDA toolkit from nvidia website (currently https://developer.nvidia.com/cuda-downloads, follow Ubuntu instructions)
+* Select the latest nvidia driver in "additional drivers" hardware setting
+* pip install --upgrade "jax[cuda11_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 * build `nvtop` from source
-* Install JAX via pip 
 
+Notes: 
+
+* `cudaXX_pip` installs CUDA via pip
+* `cuda11_pip` can be replaced with version 12 if the nvidia driver is new enough
+* `inxi -Gxx` gives information on your graphics drivers
+
+
+Also, building nvtop from source required a recent version of cmake, which I
+installed via one of the graphical software installers and I guess it installed
+via snap (since the installed version is newer than what's in the Ubuntu apt
+repo).
 
 
 

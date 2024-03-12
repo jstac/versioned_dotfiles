@@ -25,8 +25,6 @@ local plugins = {
   -- Maps <Tab> to <C-p> 
   'ervandew/supertab',
 
-  'ggandor/leap.nvim',
-
   'akinsho/toggleterm.nvim',
 
   'nvim-tree/nvim-tree.lua',
@@ -39,16 +37,22 @@ local plugins = {
   -- in the relevant section of the tmux config file.
   'christoomey/vim-tmux-navigator',
 
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+
 
   -- fzf!
-  { 'junegunn/fzf', run = './install --bin', },
-  { 'ibhagwan/fzf-lua',
+  -- { 'junegunn/fzf', run = './install --bin', },
+  -- { 'ibhagwan/fzf-lua',
   -- optional for icon support
-      requires = { 'nvim-tree/nvim-web-devicons' }
-  },
+  --     requires = { 'nvim-tree/nvim-web-devicons' }
+  -- },
 
   -- colors
   'ellisonleao/gruvbox.nvim',
+
   'folke/tokyonight.nvim',
   {
     'michalbachowski/vim-wombat256mod',

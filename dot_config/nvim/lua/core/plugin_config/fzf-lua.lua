@@ -1,4 +1,0 @@
-require('fzf-lua').setup{}
-
-
-

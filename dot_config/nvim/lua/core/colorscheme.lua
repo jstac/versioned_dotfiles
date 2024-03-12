@@ -1,3 +1,1 @@
-vim.cmd [[ colorscheme gruvbox ]]
-vim.cmd [[ colorscheme tokyonight ]]
--- vim.cmd [[ colorscheme wombat256mod ]]
+vim.cmd [[ colorscheme tokyonight-storm ]]

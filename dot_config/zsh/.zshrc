@@ -78,6 +78,7 @@ alias vim="nvim"
 alias n="nnn"
 alias c="clear"
 alias mu="zathura"
+alias tm="tmux"
 alias bat="batcat"
 alias cat="batcat"     # map cat to bat
 alias pip='noglob pip' # stop zsh from screwing up pip extras

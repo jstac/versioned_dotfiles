@@ -50,26 +50,6 @@ local plugins = {
   --     requires = { 'nvim-tree/nvim-web-devicons' }
   -- },
 
-  -- colors
-  'ellisonleao/gruvbox.nvim',
-
-  'folke/tokyonight.nvim',
-  {
-    'michalbachowski/vim-wombat256mod',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-
-  {
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -84,8 +64,27 @@ local plugins = {
   "williamboman/mason-lspconfig.nvim",
 
   -- Simple completion engine
-  'dcampos/nvim-snippy'
+  'dcampos/nvim-snippy',
 
+
+  -- colors
+  'ellisonleao/gruvbox.nvim',
+  'rebelot/kanagawa.nvim',
+  'folke/tokyonight.nvim',
+  {
+    'michalbachowski/vim-wombat256mod',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+  },
+  {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+  }
 }
 
 local opts = {}

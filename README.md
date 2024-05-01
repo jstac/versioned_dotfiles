@@ -90,6 +90,7 @@ Now `ssh-add` when you start your machine.  To copy it to the server, use
 To start the server
 
 * `sudo apt install openssh-server`
+* `sudo systemctl start ssh`
 * `sudo systemctl status ssh`
 
 If `ssh-add` does not start, try 

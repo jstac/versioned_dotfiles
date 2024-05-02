@@ -107,10 +107,6 @@ eval `ssh-agent -s`
 ssh-add
 ```
 
-To set up a reverse tunnel for Jupyter use
-
-* `ssh -L 8080:localhost:8080 john@server_ip`
-
 
 ### Versioned Tools
 
@@ -151,23 +147,31 @@ https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tok
 ## Local External GPU + JAX
 
 * Select the latest nvidia driver in "additional drivers" hardware setting
-* pip install --upgrade "jax[cuda11_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+* follow latest instructions for installing JAX
 * Build `nvtop` from source
 * Disable Wayland by editing `/etc/gdm3/custom.conf` and uncommenting `WaylandEnable=false`
 
 Notes: 
 
-* `cudaXX_pip` installs CUDA via pip
-* `cuda11_pip` can be replaced with version 12 if the nvidia driver is new enough
 * `inxi -Gxx` gives information on your graphics drivers
 
-
-Also, building nvtop from source required a recent version of cmake, which I
+(Building nvtop from source required a recent version of cmake, which I
 installed via one of the graphical software installers and I guess it installed
 via snap (since the installed version is newer than what's in the Ubuntu apt
-repo).
+repo).)
 
 See also https://manual.quantecon.org/tools/gpu.html#using-egpu-with-ubuntu
+
+
+## Running Jupyter on a Remote Machine
+
+1. On the local machine, set up reverse tunnel to remote via `ssh -L 8080:localhost:8080 john@remote`
+1. `ssh remote` and 
+    1. navigate to where md / ipynb files are
+    1. run `jupyter notebook --no-browser --port=8080`
+    1. cp `http://localhost:8080/?token=XXX` into local browser
+
+
 
 ## Notes on AWS
 

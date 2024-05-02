@@ -27,6 +27,13 @@ Note that treesitter often has problems after install.  Try
 `:TSInstall latex`
 `:TSInstall julia`
 
+Sometimes treesitter wants to you install tree-sitter-cli.
+
+I followed these instructions
+
+* https://linuxize.com/post/how-to-install-node-js-on-ubuntu-22-04/  (for npm from nodejs)
+* https://www.reddit.com/r/neovim/comments/1741i6m/treesitter_executable_not_found/
+
 ## Tmux is installed from source
 
 See GH page

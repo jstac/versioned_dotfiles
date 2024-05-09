@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essentials zathura
+sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essential zathura tmux neovim
 
 ## ========== Tmux install ============ ##
 
@@ -26,18 +26,19 @@ mv Documents /tmp
 
 ## =========== Python ========== ##
 
-wget   https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+Download Anaconda from browser or wget https://repo.anaconda.com/archive/Anaconda3-XXX.sh
 cd Downloads
-bash ./Anaconda3-2021.11-Linux-x86_64.sh
+bash ./Anaconda3-XXX.sh
 jupyter notebook --generate-config  # set browser to `chromium`
 ipython profile create
 pip install -U pip
 pip install neovim
 
+
 ## === Starship prompt  === ##
 
 # --- follow instructions on site or
-curl -sS https://starship.rs/install.sh | sh
+curl -sS https://starship.rs/install.sh | sh  (might need sudo)
 cd
 cd .config
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/starship.toml .
@@ -76,9 +77,8 @@ source .zshrc
 ## ========== Other top level dotfiles ============ ##
 
 ln -s gh_synced/versioned_dotfiles/top_level/.latexmkrc .
-ln -s gh_synced/versioned_dotfiles/top_level/.inputrc .
-etc.
 
+* And other files from here --- or delete?
 
 
 ## =========== Configure git ========== ##
@@ -101,10 +101,6 @@ ln -s ~/gh_synced/versioned_dotfiles/dot_config/kitty .
 
 ## ========== Neovim ============ ##
 
-# Install via snap (until version moves to about v0.6)
-
-sudo snap install nvim --classic
-
 cd ~/.config/
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/nvim .
 
@@ -121,6 +117,4 @@ cd ~/.config/
 mkdir tmux
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf .
 source .tmux.conf
-
-
 

@@ -4,7 +4,7 @@ See also `install_log.txt`, which automates some of these steps
 
 ## Computer Set Up
 
-Install latest Ubuntu and then the budgie desktop via apt.
+Install latest Ubuntu via apt.
 
 ## Dotfiles
 
@@ -19,8 +19,6 @@ The following steps are detailed in `install_log.txt`.  Here is the outline:
 
 ## Neovim
 
-Neovim is installed from snap --- until default ubuntu version is around 0.6
-
 Note that treesitter often has problems after install.  Try
 `:TSUpdate`
 `:TSInstall vim`
@@ -34,15 +32,11 @@ I followed these instructions
 * https://linuxize.com/post/how-to-install-node-js-on-ubuntu-22-04/  (for npm from nodejs)
 * https://www.reddit.com/r/neovim/comments/1741i6m/treesitter_executable_not_found/
 
-## Tmux is installed from source
-
-See GH page
 
 
 ### Map Caps to CTRL
 
 Use `gnome-tweaks` 
-
 The command is `setxkbmap -option "ctrl:nocaps"` 
 
 

@@ -6,6 +6,12 @@ See also `install_log.txt`, which automates some of these steps
 
 Install latest Ubuntu via apt.
 
+## Wayland
+
+Disable Wayland by editing `/etc/gdm3/custom.conf` and uncommenting `WaylandEnable=false`
+
+It messes with rofi and GPU set up.
+
 ## Dotfiles
 
 Clone `versioned_dotfiles`
@@ -143,7 +149,7 @@ https://docs.github.com/en/github/extending-github/git-automation-with-oauth-tok
 * Select the latest nvidia driver in "additional drivers" hardware setting
 * follow latest instructions for installing JAX
 * Build `nvtop` from source
-* Disable Wayland by editing `/etc/gdm3/custom.conf` and uncommenting `WaylandEnable=false`
+* Disable Wayland -- see above 
 
 Notes: 
 

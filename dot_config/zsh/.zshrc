@@ -75,21 +75,20 @@ alias xo="xdg-open"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
-alias n="nnn"
 alias c="clear"
 alias mu="zathura"
 alias tm="tmux"
 alias bat="batcat"
 alias cat="batcat"     # map cat to bat
 alias pip='noglob pip' # stop zsh from screwing up pip extras
-alias wezterm="flatpack run org.wezfurlong.wezterm"
-
 alias gls='git log --stat'
 alias gs='git status'
 alias ga='git add -A'
 alias gc='git commit -am misc'
 alias gp='git push'
 alias gr='git remote show origin'
+alias gr='git remote show origin'
+alias ssh-gpu='ssh 100.90.220.42'
 
 
 # == conda initialize (for setting up environments) == # 

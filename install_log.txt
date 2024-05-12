@@ -72,7 +72,11 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting
 git clone https://github.com/jeffreytse/zsh-vi-mode
 cd ..
 source .zshrc
+# make ~/.cache/zsh for .zsh_history
+mkdir ~/.cache/zsh
+mkdir ~/.local/share/zsh
 
+# IMPORTANT: run mkdir  and mkdir ~/.cache/zsh
 
 ## ========== Other top level dotfiles ============ ##
 

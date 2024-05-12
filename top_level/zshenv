@@ -2,7 +2,6 @@
 # point zsh to the location of config and other files (history, 
 # plugins, etc.)
 #
-# IMPORTANT: run mkdir ~/.local/share/zsh and mkdir ~/.cache/zsh
 # 
 
 # Set XDG

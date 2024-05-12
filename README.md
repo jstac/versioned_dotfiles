@@ -18,6 +18,7 @@ Clone `versioned_dotfiles`
 
 The following steps are detailed in `install_log.txt`.  Here is the outline:
 
+* dotfiles such as `.zshrc` appear as `zshrc` in this repo (so they are not hidden)
 * files in `top_level` should be linked to from `~`
 * files `dot_config/zsh` should be linked to from `.config/zsh`
 * other folders in `dot_config/xxx` should be linked to from `.config/xxx`

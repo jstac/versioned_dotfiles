@@ -61,10 +61,10 @@ chsh -s /bin/zsh
 # Set up config files
 cd ~
 mv .zshrc /tmp
-ln -s gh_synced/versioned_dotfiles/top_level/.zshenv .
+ln -s gh_synced/versioned_dotfiles/top_level/zshenv ./.zshenv
 mkdir .config/zsh
 cd .config/zsh
-ln -s ~/gh_synced/versioned_dotfiles/dot_config/zsh/.zshrc .
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/zsh/zshrc ./.zshrc
 # Set up plugins, managed manually
 mkdir plugins
 cd plugins
@@ -76,9 +76,8 @@ source .zshrc
 
 ## ========== Other top level dotfiles ============ ##
 
-ln -s gh_synced/versioned_dotfiles/top_level/.latexmkrc .
+ln -s gh_synced/versioned_dotfiles/top_level/latexmkrc ./.latexmkrc
 
-* And other files from here --- or delete?
 
 
 ## =========== Configure git ========== ##

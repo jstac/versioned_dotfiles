@@ -65,6 +65,7 @@ export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,_minted} --type f"
 
 # =========== aliases =========== #
 
+# general
 alias l='ls --color'
 alias ls='ls --color'
 alias ll='ls -la --color'
@@ -81,6 +82,7 @@ alias tm="tmux"
 alias bat="batcat"
 alias cat="batcat"     # map cat to bat
 alias pip='noglob pip' # stop zsh from screwing up pip extras
+# git commands
 alias gls='git log --stat'
 alias gs='git status'
 alias ga='git add -A'
@@ -88,7 +90,10 @@ alias gc='git commit -am misc'
 alias gp='git push'
 alias gr='git remote show origin'
 alias gr='git remote show origin'
+# ssh via tailscale
 alias ssh-gpu='ssh 100.90.220.42'
+alias ssh-nuc='ssh 100.111.86.156'
+alias ssh-tower='ssh 100.105.72.13'
 
 
 # == conda initialize (for setting up environments) == # 

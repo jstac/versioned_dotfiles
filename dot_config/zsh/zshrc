@@ -92,6 +92,7 @@ alias gr='git remote show origin'
 alias gr='git remote show origin'
 # ssh via tailscale
 alias ssh-gpu='ssh 100.90.220.42'
+alias ssh-tunnel='ssh -L 8080:localhost:8080 100.90.220.42'
 alias ssh-nuc='ssh 100.111.86.156'
 alias ssh-tower='ssh 100.105.72.13'
 

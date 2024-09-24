@@ -22,12 +22,12 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+  'stevearc/oil.nvim',
+
   -- Maps <Tab> to <C-p> 
   'ervandew/supertab',
 
   'akinsho/toggleterm.nvim',
-
-  'nvim-tree/nvim-tree.lua',
 
   'nvim-treesitter/nvim-treesitter',  -- syntax highlighting
 

@@ -79,6 +79,6 @@ vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>')
 vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>')
 vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>')
 
--- nvim-tree keymaps
-vim.keymap.set('n', '<leader>t', ':NvimTreeFindFileToggle<CR>')
+-- oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 

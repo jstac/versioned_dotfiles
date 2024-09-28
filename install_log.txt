@@ -3,7 +3,13 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essential zathura tmux neovim
+sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essential zathura tmux 
+
+## =========== Neovim ================= ##
+
+Install from source:
+
+https://github.com/neovim/neovim/blob/master/BUILD.md
 
 ## ========== Tmux install ============ ##
 
@@ -13,6 +19,7 @@ sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf g
 
 setxkbmap -option "ctrl:nocaps"
 # Also change in gnome tweaks! 
+
 
 
 ## =========== Clean dirs ========== ##

@@ -26,6 +26,10 @@ The following steps are detailed in `install_log.txt`.  Here is the outline:
 
 ## Neovim
 
+Install from source!
+
+https://github.com/neovim/neovim/blob/master/BUILD.md
+
 Note that treesitter often has problems after install.  Try
 `:TSUpdate`
 `:TSInstall vim`

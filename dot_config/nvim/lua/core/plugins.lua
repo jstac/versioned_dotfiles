@@ -22,6 +22,10 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+  'nvim-tree/nvim-web-devicons',
+
+  'jonarrien/telescope-cmdline.nvim',
+
   'stevearc/oil.nvim',
 
   -- Maps <Tab> to <C-p> 

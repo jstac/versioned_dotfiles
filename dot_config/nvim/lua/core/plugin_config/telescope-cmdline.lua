@@ -1,0 +1,1 @@
+require("telescope-cmdline").setup {}

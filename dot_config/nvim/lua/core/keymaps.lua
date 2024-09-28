@@ -82,3 +82,7 @@ vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>')
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+-- telescope-cmdline extension --- always cmdline when typing :
+vim.api.nvim_set_keymap('n', ':', ':Telescope cmdline<CR>', { noremap = true, desc = "Cmdline" })
+-- alternative below
+--vim.api.nvim_set_keymap('n', '<leader><leader>', ':Telescope cmdline<CR>', { noremap = true, desc = "Cmdline" })

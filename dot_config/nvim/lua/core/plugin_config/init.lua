@@ -1,4 +1,5 @@
 require('core.plugin_config.oil')
+require('core.plugin_config.nvim-web-devicons')
 require('core.plugin_config.telescope')
 require('core.plugin_config.snippy')
 require('core.plugin_config.lsp_config')

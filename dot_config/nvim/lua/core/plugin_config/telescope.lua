@@ -26,20 +26,6 @@ require('telescope').setup{
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-    cmdline = {
-      picker = {
-        layout_config = {
-          width  = 120,
-          height = 25,
-        }
-      },
-      mappings    = {
-        complete      = '<Tab>',
-        run_selection = '<C-CR>',
-        run_input     = '<CR>',
-      },
-    },
-  }
+  },
 }
 
-require("telescope").load_extension "cmdline"

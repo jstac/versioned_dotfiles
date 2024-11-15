@@ -31,6 +31,8 @@ local plugins = {
 
   'akinsho/toggleterm.nvim',
 
+  'nvim-tree/nvim-tree.lua',
+
   'nvim-treesitter/nvim-treesitter',  -- syntax highlighting
 
   'lervag/vimtex',
@@ -42,6 +44,13 @@ local plugins = {
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
       dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+
+  -- fzf!
+  { 'junegunn/fzf', run = './install --bin', },
+  { 'ibhagwan/fzf-lua',
+  -- optional for icon support
+      requires = { 'nvim-tree/nvim-web-devicons' }
   },
 
 

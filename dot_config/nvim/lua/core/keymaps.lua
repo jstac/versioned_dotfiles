@@ -63,7 +63,7 @@ vim.keymap.set('n', '<leader>st',':setlocal spell! spelllang=en_us<CR>', opts)
 
 
 -- ToggleTerm keymaps (s stands for 'send', a stands for 'add')
-vim.keymap.set('n', '<leader>av', ':ToggleTerm size=72 direction=vertical<CR>', opts)
+vim.keymap.set('n', '<leader>av', ':ToggleTerm size=68 direction=vertical<CR>', opts)
 vim.keymap.set('n', '<leader>ah', ':ToggleTerm size=8 direction=horizontal<CR>', opts)
 vim.keymap.set('n', '<leader>af', ':ToggleTerm direction=float<CR>', opts)
 vim.keymap.set('n', '<leader>sl', ':ToggleTermSendCurrentLine<CR>', opts)

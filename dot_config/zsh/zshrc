@@ -43,6 +43,9 @@ export PATH="/home/john/anaconda3/bin:$PATH"
 export PATH="/usr/local/texlive/2025/bin/x86_64-linux:$PATH"  
 export PATH="/home/john/.juliaup/bin:$PATH"  
 
+# This is for jax on the local GPU 
+# export LD_LIBRARY_PATH="/usr/local/cuda-12.2/lib64:$LD_LIBRARY_PATH"
+
 #export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/home/john/anaconda3/lib"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 

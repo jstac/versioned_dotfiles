@@ -90,6 +90,15 @@ Install from source using these instructions:
 
 https://yazi-rs.github.io/docs/installation#source
 
+For pdf, SVG and zip support, might need
+
+`sudo apt install p7zip librsvg2-bin poppler-util`
+
+Currently on precision the pdf preview is not working because poppler is
+failing.  This is due to a library mismatch -- trying running `pdftoppm`
+to see the issue.  Consider `conda install -c conda-forge poppler`
+
+
 
 ### Install and Set Fonts
 

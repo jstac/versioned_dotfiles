@@ -53,10 +53,11 @@ export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
 # This path determines where to search for shared libraries 
 # (dynamic libraries) at runtime
 #
-export LD_LIBRARY_PATH=/usr/local/cuda-12.2/lib64:$LD_LIBRARY_PATH
+# I think this is standard -- use usual libs rather than anaconda
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 # Next is for jax on the local GPU 
-export LD_LIBRARY_PATH=$HOME/anaconda3/lib:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-12.2/lib64:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$HOME/anaconda3/lib:$LD_LIBRARY_PATH
 
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 

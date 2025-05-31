@@ -55,7 +55,9 @@ export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
 #
 # I think this is standard -- use usual libs rather than anaconda
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-# Next is for jax on the local GPU 
+# The next steps are for jax on the local GPU.  Be cautious about
+# these changes because they mean that other programs that need Python end up
+# using Anaconda-based shared libraries, which can mess them up
 # export LD_LIBRARY_PATH=/usr/local/cuda-12.2/lib64:$LD_LIBRARY_PATH
 # export LD_LIBRARY_PATH=$HOME/anaconda3/lib:$LD_LIBRARY_PATH
 

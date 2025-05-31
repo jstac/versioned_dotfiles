@@ -84,6 +84,12 @@ Follow website instructions (curl)
 
 Follow the instructions on zoom website
 
+### Yazi
+
+Install from source using these instructions: 
+
+https://yazi-rs.github.io/docs/installation#source
+
 
 ### Install and Set Fonts
 

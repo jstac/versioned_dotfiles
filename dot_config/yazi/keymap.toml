@@ -1,0 +1,85 @@
+# =============================================================================
+# YAZI KEYMAP CONFIGURATION
+# =============================================================================
+#
+# BASIC NAVIGATION:
+# h/j/k/l     - Move left/down/up/right (vim-like)
+# <Enter>     - Enter directory or open file
+# <Esc>       - Go back/cancel
+# q           - Quit yazi
+# Q           - Quit all yazi instances
+#
+# FILE OPERATIONS:
+# <Space>     - Select/deselect files
+# v           - Visual mode (select multiple)
+# V           - Visual mode (select all)
+# <C-a>       - Select all
+# <C-r>       - Reverse selection
+# y           - Yank/copy selected files
+# x           - Cut selected files  
+# p           - Paste files
+# d           - Delete selected files
+# D           - Permanently delete (skip trash)
+# r           - Rename file/directory
+# c           - Create file
+# a           - Create new file or dir (use dir_name/ to create a directory)
+# o           - Open file with default application
+# O           - Open file with specific application
+#
+# NAVIGATION SHORTCUTS:
+# g + g       - Go to top of list
+# G           - Go to bottom of list  
+# g + h       - Go to home directory
+# g + /       - Go to root directory
+# g + .       - Go to config directory
+# g + t       - Go to trash directory
+# ~           - Go to home directory
+# /           - Search forward
+# ?           - Search backward
+# n           - Next search result
+# N           - Previous search result
+#
+# VIEW OPTIONS:
+# <Tab>       - Switch between panes
+# <C-h>       - Toggle hidden files
+# t           - Toggle preview pane
+# T           - Toggle maximize preview (custom)
+# s           - Sort files menu
+# S           - Set sort method permanently
+# z           - Toggle zoom
+#
+# BOOKMARKS & TABS:
+# m           - Create bookmark
+# '           - Jump to bookmark
+# <C-t>       - Create new tab
+# 1-9         - Switch to tab number
+# [           - Previous tab
+# ]           - Next tab
+# <C-w>       - Close current tab
+#
+# SEARCH & FILTER:
+# <C-s>       - Search files by name using fd (custom)
+# <C-f>       - Search file contents using ripgrep (custom)
+# f           - Filter files in current directory
+# F           - Clear filter
+#
+# OPERATIONS:
+# u           - Undo last operation
+# <C-r>       - Redo last operation
+# w           - Open shell in current directory
+# ;           - Run shell command
+# :           - Command mode
+# <C-z>       - Suspend yazi
+#
+# =============================================================================
+
+
+[mgr]
+prepend_keymap = [
+  { on = [ "T" ], run = "plugin --sync max-preview", desc = "Maximize or restore preview" },
+]
+
+[input]
+prepend_keymap = [
+  { on = [ "<C-q>" ], run = "close", desc = "Cancel input" },
+]

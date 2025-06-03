@@ -1,0 +1,12 @@
+[flavor]
+use = "dark"
+
+[mgr]
+cwd = { fg = "cyan" }
+
+[status]
+separator_open = ""
+separator_close = ""
+
+[which]
+cols = 3

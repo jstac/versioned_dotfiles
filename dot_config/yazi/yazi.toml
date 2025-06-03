@@ -1,0 +1,35 @@
+[mgr]
+ratio = [1, 2, 5]
+sort_by = "alphabetical"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
+linemode = "none"
+show_hidden = false
+show_symlink = true
+
+[preview]
+tab_size = 2
+max_width = 600
+max_height = 900
+
+[opener]
+edit = [
+  { run = '$EDITOR "$@"', desc = "Edit", block = true, for = "unix" },
+]
+open = [
+  { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
+]
+
+[open]
+rules = [
+  { name = "*/", use = [ "edit", "open", "reveal" ] },
+  { mime = "text/*", use = [ "edit", "reveal" ] },
+  { mime = "image/*", use = [ "open", "reveal" ] },
+  { mime = "video/*", use = [ "open", "reveal" ] },
+  { mime = "audio/*", use = [ "open", "reveal" ] },
+  { mime = "inode/x-empty", use = [ "edit", "reveal" ] },
+  { mime = "application/json", use = [ "edit", "reveal" ] },
+  { mime = "*/javascript", use = [ "edit", "reveal" ] },
+  { name = "*", use = [ "open", "reveal" ] },
+]

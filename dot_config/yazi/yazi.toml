@@ -21,15 +21,15 @@ open = [
   { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
 ]
 
-[open]
-rules = [
-  { name = "*/", use = [ "edit", "open", "reveal" ] },
-  { mime = "text/*", use = [ "edit", "reveal" ] },
-  { mime = "image/*", use = [ "open", "reveal" ] },
-  { mime = "video/*", use = [ "open", "reveal" ] },
-  { mime = "audio/*", use = [ "open", "reveal" ] },
-  { mime = "inode/x-empty", use = [ "edit", "reveal" ] },
-  { mime = "application/json", use = [ "edit", "reveal" ] },
-  { mime = "*/javascript", use = [ "edit", "reveal" ] },
-  { name = "*", use = [ "open", "reveal" ] },
-]
+# [open]
+# rules = [
+#   { name = "*/", use = [ "edit", "open", "reveal" ] },
+#   { mime = "text/*", use = [ "edit", "reveal" ] },
+#   { mime = "image/*", use = [ "open", "reveal" ] },
+#   { mime = "video/*", use = [ "open", "reveal" ] },
+#   { mime = "audio/*", use = [ "open", "reveal" ] },
+#   { mime = "inode/x-empty", use = [ "edit", "reveal" ] },
+#   { mime = "application/json", use = [ "edit", "reveal" ] },
+#   { mime = "*/javascript", use = [ "edit", "reveal" ] },
+#   { name = "*", use = [ "open", "reveal" ] },
+# ]

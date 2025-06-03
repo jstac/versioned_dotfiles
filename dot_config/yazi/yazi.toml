@@ -12,6 +12,11 @@ show_symlink = true
 tab_size = 2
 max_width = 600
 max_height = 900
+# Command for previewing text files
+text_previewer = "bat --color=always --paging=never {}"
+# Command for image previews (might require ueberzug or similar)
+image_previewer = "chafa {}"
+
 
 [opener]
 edit = [

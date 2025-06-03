@@ -84,17 +84,6 @@ Follow website instructions (curl)
 
 Follow the instructions on zoom website
 
-### Yazi
-
-Install from source using these instructions: 
-
-https://yazi-rs.github.io/docs/installation#source
-
-For pdf, SVG and zip support:
-
-`sudo apt install p7zip librsvg2-bin poppler-util`
-
-
 
 
 ### Install and Set Fonts

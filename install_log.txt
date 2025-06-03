@@ -15,11 +15,23 @@ https://github.com/neovim/neovim/blob/master/BUILD.md
 
 # installed from source --- see GH page (needed until Ubuntu has at least v3.1)
 
+## ========== Yazi install ============ ##
+
+# Install from source using these instructions: 
+
+https://yazi-rs.github.io/docs/installation#source
+
+# For pdf, SVG and zip support:
+
+sudo apt install p7zip librsvg2-bin poppler-util
+
+
+
+
 ## ==== Key maps ==== ##
 
 setxkbmap -option "ctrl:nocaps"
 # Also change in gnome tweaks! 
-
 
 
 ## =========== Clean dirs ========== ##
@@ -42,13 +54,10 @@ pip install -U pip
 pip install neovim
 
 
-## === Starship prompt  === ##
+## =============== Starship prompt =============== ##
 
 # --- follow instructions on site or
 curl -sS https://starship.rs/install.sh | sh  (might need sudo)
-cd
-cd .config
-ln -s ~/gh_synced/versioned_dotfiles/dot_config/starship.toml .
 
 
 ## =====  zoxide ==== ##
@@ -78,7 +87,7 @@ cd plugins
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting
 git clone https://github.com/jeffreytse/zsh-vi-mode
 cd ..
-source .zshrc
+source zshrc
 # make ~/.cache/zsh for .zsh_history
 mkdir ~/.cache/zsh
 mkdir ~/.local/share/zsh
@@ -103,28 +112,16 @@ git config --global credential.helper "cache --timeout=8640000"
 See README
 
 
-## ========== Kitty ============ ##
+## ========== Symbolic links from ~/.config ============ ##
 
 cd ~/.config
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/starship.toml .
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/kitty .
-
-
-## ========== Neovim ============ ##
-
-cd ~/.config/
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/nvim .
-
-
-## ========== Zathura ============ ##
-
-cd ~/.config/
+ln -s ~/gh_synced/versioned_dotfiles/dot_config/yazi .
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/zathura .
-
-
-## ========== Tmux ============ ##
-
-cd ~/.config/
-mkdir tmux
 ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf .
+
+source zshrc
 source .tmux.conf
 

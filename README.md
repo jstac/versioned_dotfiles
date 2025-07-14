@@ -97,35 +97,11 @@ Install Nerd Fonts according to [these instructions](https://gist.github.com/mat
 * To see the list of fonts visible to kitty use `kitty +list-fonts`
 
 
-### SSH
-
-To generate a key, use
-
-* `ssh-keygen -t rsa` and then your ssh passphrase
-
-Now `ssh-add` when you start your machine.  To copy it to the server, use
-
-* `ssh-copy-id -i ~/.ssh/mykey user@host`
-
-To start the server
-
-* `sudo apt install openssh-server`
-* `sudo systemctl start ssh`
-* `sudo systemctl status ssh`
-
-If `ssh-add` does not start, try 
-
-```
-eval `ssh-agent -s`  
-ssh-add
-```
 
 
 ### Versioned Tools
 
-* `git clone https://github.com/jstac/versioned_tools`
-* `ch ~` and `mkdir bin` and `cd bin`.
-* `ln -s gh_synced/versioned_tools/*.py .`
+See install_log.txt
 
 
 ### LaTeX

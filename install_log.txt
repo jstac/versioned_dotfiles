@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essential zathura 
+sudo apt install -y rofi kitty suckless-tools bat zsh git chromium fd-find fzf gnome-tweaks ripgrep zoxide build-essential zathura tmux
 
 ## =========== Neovim ================= ##
 
@@ -11,9 +11,6 @@ Install from source:
 
 https://github.com/neovim/neovim/blob/master/BUILD.md
 
-## ========== Tmux install ============ ##
-
-# installed from source --- see GH page (needed until Ubuntu has at least v3.1)
 
 ## ========== Yazi install ============ ##
 
@@ -125,3 +122,38 @@ ln -s ~/gh_synced/versioned_dotfiles/dot_config/tmux/tmux.conf .
 source zshrc
 source .tmux.conf
 
+
+## ========== SSH ============ ##
+
+To generate a key, use
+
+ssh-keygen -t rsa  # then ssh passphrase
+ssh-add
+ssh-copy-id -i ~/.ssh/id_rsa user@host
+
+# Optionally, to start the server
+sudo apt install openssh-server
+sudo systemctl start ssh
+sudo systemctl status ssh
+
+# If ssh-add does not start, try 
+
+eval `ssh-agent -s`  
+ssh-add
+
+
+## ========== Versioned tools ============ ##
+
+git clone https://github.com/jstac/versioned_tools`
+ch ~
+mkdir bin 
+cd bin
+ln -s gh_synced/versioned_tools/*.py .
+mkdir backups
+mkdir backups/rsync_dir_backup
+
+## ========== transfer rsync_dir ============ ##
+
+pullsync
+
+# now set up wallpaper from rsync_dir/misc/wallpapers

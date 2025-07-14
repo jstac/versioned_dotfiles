@@ -90,7 +90,7 @@ Follow the instructions on zoom website
 
 Install Nerd Fonts according to [these instructions](https://gist.github.com/matthewjberger/7dd7e079f282f8138a9dc3b045ebefa0)
 
-* Download a Nerd Font
+* Download a Nerd Font from https://www.nerdfonts.com/font-downloads (include Fira)
 * Unzip and copy to `~/.local/share/fonts`
 * Run the command `fc-cache -fv` to manually rebuild the font cache
 

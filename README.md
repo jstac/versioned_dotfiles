@@ -127,6 +127,15 @@ TeXlive package manager:
 * `mkdir ~/texmf/bibtex/bst` and add ecta.bst, etc.
 * do `texhash ~/texmf`, check with `kpsewhich ecta.bst`
 
+### Treesitter
+
+Install cargo
+
+* curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+Then install tree sitter CLI
+
+cargo install tree-sitter-cli
 
 ### GH Credentials
 

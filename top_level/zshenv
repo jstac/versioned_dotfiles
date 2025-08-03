@@ -17,3 +17,4 @@ export ZCACHEDIR=$XDG_CACHE_HOME/zsh
 
 
 
+. "$HOME/.cargo/env"

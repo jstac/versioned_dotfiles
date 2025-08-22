@@ -95,7 +95,17 @@ local plugins = {
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
-  }
+  },
+  {
+  'QuantEcon/myst-markdown-tree-sitter.nvim',
+  dependencies = {'nvim-treesitter/nvim-treesitter'},
+  config = function()
+    -- Your MyST setup here
+    -- Ensure this runs after treesitter is loaded
+    require('myst-markdown').setup()
+  end,
+  priority = 1000, -- Load after other markdown plugins
+}
 }
 
 local opts = {}

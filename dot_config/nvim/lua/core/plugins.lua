@@ -96,16 +96,17 @@ local plugins = {
       vim.cmd.colorscheme 'onedark'
     end,
   },
+
   {
-  'QuantEcon/myst-markdown-tree-sitter.nvim',
-  dependencies = {'nvim-treesitter/nvim-treesitter'},
-  config = function()
-    -- Your MyST setup here
-    -- Ensure this runs after treesitter is loaded
-    require('myst-markdown').setup()
-  end,
-  priority = 1000, -- Load after other markdown plugins
-}
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+  },
+
 }
 
 local opts = {}

@@ -26,10 +26,13 @@ The following steps are detailed in `install_log.txt`.  Here is the outline:
 
 ## Firefox
 
-It's usually installed but on nuc-zilla I had to remove it via both apt and snap, and then
-manually install the deb file via https://askubuntu.com/questions/1502031/how-to-install-firefox-directly-from-mozilla-with-apt
+Don't use snap.  Either add the mozilla repo to apt and then apt update and apt
+install, or obtain and manually install the deb fire.
 
-(This won't update so needs to be managed)
+On nuc-zilla I had to remove it via both apt and snap, and then manually install
+the deb file via https://askubuntu.com/questions/1502031/how-to-install-firefox-directly-from-mozilla-with-apt
+
+(This won't update so needs to be managed.)
 
 ## Neovim
 

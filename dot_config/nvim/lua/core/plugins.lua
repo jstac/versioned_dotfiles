@@ -22,6 +22,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+  'tpope/vim-fugitive',
+
   'nvim-tree/nvim-web-devicons',
 
   'stevearc/oil.nvim',

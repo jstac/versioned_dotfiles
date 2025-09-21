@@ -104,6 +104,7 @@ export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,_minted} --type f"
 
 # general
 alias y='yazi'
+alias cd='z'          # map cd to z -- make sure zoxide installed!
 alias l='ls --color'
 alias ls='ls --color'
 alias ll='ls -la --color'

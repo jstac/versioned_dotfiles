@@ -13,23 +13,20 @@ require("mason-lspconfig").setup({
 -- individual server configs
 
 -- lua
-require("lspconfig").lua_ls.setup {
+vim.lsp.config.lua_ls = {
+  cmd = { 'lua-language-server' },
+  root_markers = { '.luarc.json', '.luarc.jsonc' },
   settings = {
     Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.stdpath "config" .. "/lua"] = true,
-        },
-      },
-    },
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = {'vim'} },
+    }
   }
 }
 
 -- latex
-require("lspconfig").texlab.setup {}
+vim.lsp.config.texlab = {
+  cmd = { 'texlab' },
+}
 
 

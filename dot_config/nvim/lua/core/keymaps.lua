@@ -82,3 +82,24 @@ vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>')
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+-- Tab completion (replaces supertab functionality)
+-- Tab: Navigate down completion menu if visible, or trigger completion after word characters, else normal tab
+vim.keymap.set('i', '<Tab>', function()
+  if vim.fn.pumvisible() == 1 then
+    return '<C-n>'  -- Navigate down completion menu
+  elseif vim.fn.col('.') > 1 and vim.fn.getline('.'):sub(vim.fn.col('.')-1, vim.fn.col('.')-1):match('%w') then
+    return '<C-n>'  -- Trigger completion after word characters
+  else
+    return '<Tab>'  -- Normal tab behavior for indentation
+  end
+end, { expr = true })
+
+-- Shift-Tab: Navigate up completion menu if visible, else normal shift-tab
+vim.keymap.set('i', '<S-Tab>', function()
+  if vim.fn.pumvisible() == 1 then
+    return '<C-p>'  -- Navigate up completion menu
+  else
+    return '<S-Tab>'  -- Normal shift-tab behavior
+  end
+end, { expr = true })
+

@@ -21,7 +21,8 @@ local options = {
     hidden = true,                  -- can open new files w/o saving existing
     foldmethod = "indent",
     foldlevel = 99,                 -- tell nvim not to initial folds
-    formatoptions = "tqn"
+    formatoptions = "tqn",
+    completeopt = {"menu", "menuone", "noselect"} -- Enable built-in completion menu (replaces supertab)
 }
 
 for k, v in pairs(options) do

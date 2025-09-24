@@ -28,8 +28,8 @@ local plugins = {
 
   'stevearc/oil.nvim',
 
-  -- Maps <Tab> to <C-p> 
-  'ervandew/supertab',
+  -- Maps <Tab> to <C-p>
+  -- 'ervandew/supertab',  -- Disabled: was causing E129 function name errors on startup
 
   'akinsho/toggleterm.nvim',
 
@@ -44,7 +44,7 @@ local plugins = {
   'christoomey/vim-tmux-navigator',
 
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',  -- Updated to fix vim.tbl_islist deprecation warning
       dependencies = { 'nvim-lua/plenary.nvim' }
   },
 

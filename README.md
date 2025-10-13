@@ -6,6 +6,10 @@ See also `install_log.txt`, which automates some of these steps
 
 Install latest Ubuntu via apt.
 
+## Bitwarden
+
+`sudo snap install bitwarden` and then install firefox extension
+
 ## Wayland
 
 Disable Wayland by editing `/etc/gdm3/custom.conf` and uncommenting `WaylandEnable=false`

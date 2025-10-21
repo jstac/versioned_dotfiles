@@ -133,7 +133,8 @@ alias gr='git remote show origin'
 alias ssh-gpu='ssh 100.90.220.42'
 alias ssh-tunnel='ssh -L 8080:localhost:8080 100.90.220.42'
 alias ssh-nuc='ssh 100.111.86.156'
-alias ssh-tower='ssh 100.105.72.13'
+alias ssh-precision='ssh 100.67.158.77'
+alias ssh-xps='ssh 100.110.168.124'
 
 
 # == conda initialize (for setting up environments) == # 

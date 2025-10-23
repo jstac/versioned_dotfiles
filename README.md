@@ -2,6 +2,16 @@
 
 See also `install_log.txt`, which automates some of these steps
 
+## Node.js and npm
+
+Look it up and install it.  Now you can run installs with `npm`
+
+(Verify: `node --version` and `npm --version`)
+
+## Bitwarden CLI
+
+` sudo npm install -g @bitwarden/cli`
+
 ## Computer Set Up
 
 Install latest Ubuntu via apt.
@@ -54,7 +64,6 @@ Sometimes treesitter wants to you install tree-sitter-cli.
 
 I followed these instructions
 
-* https://linuxize.com/post/how-to-install-node-js-on-ubuntu-22-04/  (for npm from nodejs)
 * https://www.reddit.com/r/neovim/comments/1741i6m/treesitter_executable_not_found/
 
 

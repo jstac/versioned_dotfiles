@@ -139,6 +139,7 @@ alias ssh-xps='ssh 100.110.168.124'
 alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='bw lock && unset BW_SESSION'
 alias bwpass='bw get password'
+alias bwgh='bw get password "GHO" | xclip -selection clipboard'
 
 # == conda initialize (for setting up environments) == # 
 

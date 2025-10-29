@@ -90,7 +90,7 @@ export VISUAL="nvim"
 
 # ========== bat =============== #
 
-export BAT_THEME="TwoDark"
+export BAT_THEME="Nord"
 
 
 # ========== fzf ================ #
@@ -100,14 +100,26 @@ export BAT_THEME="TwoDark"
 export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,_minted} --type f"
 
 
+# ========== eza ================ #
+
+export LS_COLORS="$(vivid generate nord)"
+
+# Tone down bright permission colors
+# ur/uw/ux = user read/write/exec, gr/gw/gx = group, tr/tw/tx = other
+# uu/gu = user/group names, da = timestamp
+export EZA_COLORS="ur=0:uw=0:ux=0:ue=0:gr=0:gw=0:gx=0:tr=0:tw=0:tx=0:uu=0:gu=0:da=0"
+
+
 # =========== aliases =========== #
 
 # general
 alias y='yazi'
 alias cd='z'          # map cd to z -- make sure zoxide installed!
-alias l='ls --color'
-alias ls='ls --color'
-alias ll='ls -la --color'
+alias ls='eza --icons'
+alias l='eza --icons'
+alias ll='eza -l --icons --git'
+alias la='eza -la --icons --git'
+alias lt='eza --tree --icons'
 alias fd="fdfind"
 alias jp="jupyter notebook"
 alias jl="jupyter lab"

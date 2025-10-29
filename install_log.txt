@@ -157,3 +157,11 @@ mkdir backups/rsync_dir_backup
 pullsync
 
 # now set up wallpaper from rsync_dir/misc/wallpapers
+
+
+## ========== cargo installs (Rust) ======== ##
+
+cargo install eza git-delta vivid
+
+# Here vivid is installed to control LS_COLORS --- see zshrc
+

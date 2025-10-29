@@ -1,0 +1,23 @@
+[user]
+	email = john.stachurski@gmail.com
+	name = John Stachurski
+[credential]
+	helper = cache --timeout=8640000
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	light = false
+	line-numbers = true
+	syntax-theme = Nord
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default

@@ -102,7 +102,7 @@ export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,_minted} --type f"
 
 # ========== eza ================ #
 
-export LS_COLORS="$(vivid generate nord)"
+export LS_COLORS="$(vivid generate tokyonight-night)"
 
 # Tone down bright permission colors
 # ur/uw/ux = user read/write/exec, gr/gw/gx = group, tr/tw/tx = other

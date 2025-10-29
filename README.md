@@ -1,6 +1,8 @@
 # Versioned Dotfiles
 
-See also `install_log.txt`, which automates some of these steps
+See also `install_log.txt`, which automates some of these steps.
+
+(TODO -- make a proper script.)
 
 ## Node.js and npm
 

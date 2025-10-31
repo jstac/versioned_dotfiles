@@ -370,7 +370,7 @@ setup_ssh_keys() {
     log_info "Phase 11: SSH key setup"
 
     # Check if SSH key already exists
-    if [ -f "$HOME/.ssh/id_rsa" ] || [ -f "$HOME/.ssh/id_ed25519" ]; then
+    if [ -f "$HOME/.ssh/id_rsa" ]; then
         log_success "SSH key already exists"
         return
     fi

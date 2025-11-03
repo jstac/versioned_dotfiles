@@ -119,7 +119,7 @@ setxkbmap -option "ctrl:nocaps"
 
 2. **Install the native version:**
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/anthropics/claude-code/main/install.sh | sh
+   curl -fsSL https://claude.ai/install.sh | bash
    ```
 
 3. **Restart your shell** (or run `source ~/.bashrc` or `source ~/.zshrc` depending on your shell)
@@ -128,6 +128,11 @@ setxkbmap -option "ctrl:nocaps"
    ```bash
    claude --version
    ```
+5. Log in
+   ```bash
+    claude /login
+   ```
+
 
 The native installer will handle everything automatically, including setting up the PATH.
 

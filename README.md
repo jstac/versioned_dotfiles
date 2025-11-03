@@ -122,6 +122,8 @@ setxkbmap -option "ctrl:nocaps"
    curl -fsSL https://claude.ai/install.sh | bash
    ```
 
+**Note** You might also need to run `sudo rm /usr/local/bin/claude` to purge the global version.
+
 3. **Restart your shell** (or run `source ~/.bashrc` or `source ~/.zshrc` depending on your shell)
 
 4. **Verify the installation:**
@@ -134,7 +136,7 @@ setxkbmap -option "ctrl:nocaps"
    ```
 
 
-The native installer will handle everything automatically, including setting up the PATH.
+The native installer will set up the PATH.
 
 ---
 

@@ -101,6 +101,38 @@ setxkbmap -option "ctrl:nocaps"
 
 ---
 
+## Claude Code Installation
+
+### Migrating from npm to Native Installation
+
+**Problem:** If you installed Claude Code via npm (`npm install -g @anthropic-ai/claude-code`), you may experience auto-update failures due to npm permission issues. The native installation is recommended because it:
+- Provides a single self-contained executable with no Node.js dependency
+- Offers improved auto-updater stability
+- Avoids npm permission problems
+
+**Solution - Switch to Native Installation:**
+
+1. **Uninstall the npm version:**
+   ```bash
+   sudo npm uninstall -g @anthropic-ai/claude-code
+   ```
+
+2. **Install the native version:**
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/anthropics/claude-code/main/install.sh | sh
+   ```
+
+3. **Restart your shell** (or run `source ~/.bashrc` or `source ~/.zshrc` depending on your shell)
+
+4. **Verify the installation:**
+   ```bash
+   claude --version
+   ```
+
+The native installer will handle everything automatically, including setting up the PATH.
+
+---
+
 ## Optional Components
 
 ### Neovim (Install from Source)

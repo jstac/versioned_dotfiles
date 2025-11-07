@@ -227,6 +227,10 @@ Install bitwarden Firefox extension if necessary
 # Follow instructions at https://tailscale.com/download/linux
 ```
 
+### GH CLI
+
+Follow instructions at https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian
+
 ### Zoom
 
 Download and install from https://zoom.us/download

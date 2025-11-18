@@ -140,6 +140,17 @@ The native installer will set up the PATH.
 
 ---
 
+## Xorg
+
+Some tools seem to work better with xorg than Wayland.
+
+You can disable Wayland in GDM completely by editing /etc/gdm/custom.conf or
+/etc/gdm3/custom.conf and uncommenting: WaylandEnable=false
+
+You'll need to log out and back in for the change to take effect.
+
+After logging in, you can verify with echo $XDG_SESSION_TYPE - it should say x11
+
 ## Optional Components
 
 ### Neovim (Install from Source)

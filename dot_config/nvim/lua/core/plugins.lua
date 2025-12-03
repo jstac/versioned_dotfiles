@@ -37,6 +37,8 @@ local plugins = {
 
   'nvim-treesitter/nvim-treesitter',  -- syntax highlighting
 
+  'QuantEcon/myst-markdown-tree-sitter.nvim',
+
   'lervag/vimtex',
 
   -- Unify tmux and vim split motion.  The set of mappings is visible

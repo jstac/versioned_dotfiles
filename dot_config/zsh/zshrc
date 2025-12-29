@@ -77,6 +77,8 @@ export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
 #
 # I think this is standard -- use usual libs rather than anaconda
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+# LibreOffice fix: needed for libreglo.so to load properly
+export LD_LIBRARY_PATH=/usr/lib/libreoffice/program:$LD_LIBRARY_PATH
 # The next steps are for jax on the local GPU.  Be cautious about
 # these changes because they mean that other programs that need Python end up
 # using Anaconda-based shared libraries, which can mess them up

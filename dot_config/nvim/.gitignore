@@ -1,0 +1,5 @@
+# Lazy.nvim lockfile (regenerated on each machine)
+lazy-lock.json
+
+# Plugin directory (managed by lazy.nvim)
+lazy/

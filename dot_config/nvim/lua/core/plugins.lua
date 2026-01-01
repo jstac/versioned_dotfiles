@@ -26,14 +26,12 @@ local plugins = {
 
   'nvim-tree/nvim-web-devicons',
 
-  'stevearc/oil.nvim',
-
-  -- Maps <Tab> to <C-p>
-  -- 'ervandew/supertab',  -- Disabled: was causing E129 function name errors on startup
+  {
+    'stevearc/oil.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
 
   'akinsho/toggleterm.nvim',
-
-  'nvim-tree/nvim-tree.lua',
 
   'nvim-treesitter/nvim-treesitter',  -- syntax highlighting
 
@@ -50,21 +48,6 @@ local plugins = {
       dependencies = { 'nvim-lua/plenary.nvim' }
   },
 
-  -- fzf!
-  { 'junegunn/fzf', run = './install --bin', },
-  { 'ibhagwan/fzf-lua',
-  -- optional for icon support
-      requires = { 'nvim-tree/nvim-web-devicons' }
-  },
-
-
-  -- fzf!
-  -- { 'junegunn/fzf', run = './install --bin', },
-  -- { 'ibhagwan/fzf-lua',
-  -- optional for icon support
-  --     requires = { 'nvim-tree/nvim-web-devicons' }
-  -- },
-
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -73,42 +56,26 @@ local plugins = {
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
-  -- LSP config 
+  -- LSP config
   "williamboman/mason.nvim",
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
 
-  -- Simple completion engine
-  'dcampos/nvim-snippy',
+  -- Completion
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
 
 
-  -- colors
-  'ellisonleao/gruvbox.nvim',
-  'rebelot/kanagawa.nvim',
-  'folke/tokyonight.nvim',
-  {
-    'michalbachowski/vim-wombat256mod',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-  {
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-
+  -- colorscheme
   {
     "neanias/everforest-nvim",
     version = false,
     lazy = false,
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+    priority = 1000,
   },
 
 }

@@ -22,5 +22,4 @@ require("oil").setup {
   },
 }
 
--- Open parent directory in floating window
-vim.keymap.set("n", "<space>-", require("oil").toggle_float)
+-- NOTE: Oil keybindings are configured in lua/core/keymaps.lua

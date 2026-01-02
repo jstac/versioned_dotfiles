@@ -1,6 +1,8 @@
 # Neovim Configuration
 
-Personal Neovim configuration based on [cpow-dotfiles](https://github.com/cpow/cpow-dotfiles).
+Personal Neovim configuration built by me and Claude.
+
+Claude used [cpow-dotfiles](https://github.com/cpow/cpow-dotfiles) for inspiration.
 
 ## Plugin Manager
 
@@ -9,14 +11,16 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 ## Installed Plugins
 
 ### Core Functionality
+
 - **vim-fugitive** - Git integration
 - **telescope.nvim** - Fuzzy finder for files, buffers, etc.
 - **oil.nvim** - File explorer (edit filesystem like a buffer)
 - **toggleterm.nvim** - Terminal integration
-- **Comment.nvim** - Easy commenting with `gc` operator
-- **vim-tmux-navigator** - Seamless navigation between tmux panes and vim splits
+- **Comment.nvim** - Commenting with `gc` operator
+- **vim-tmux-navigator** - Navigation between tmux panes and vim splits
 
 ### LSP & Completion
+
 - **mason.nvim** - LSP server manager
 - **nvim-lspconfig** - LSP configuration
 - **mason-lspconfig.nvim** - Bridge between mason and lspconfig
@@ -28,6 +32,7 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
   - **cmp_luasnip** - LuaSnip completion source
 
 ### Syntax & Appearance
+
 - **nvim-treesitter** - Advanced syntax highlighting
 - **myst-markdown-tree-sitter.nvim** - MyST markdown support
 - **vimtex** - LaTeX support
@@ -42,16 +47,10 @@ Using Neovim 0.11+ built-in LSP API (`vim.lsp.config`).
 Configured LSP servers (auto-installed via mason):
 - **texlab** - LaTeX
 - **lua_ls** - Lua (with Neovim API support)
-
-### LSP Features
-- Autocompletion via nvim-cmp
-- Hover documentation
-- Go to definition/declaration
-- Find references
-- Rename symbols
-- Code actions
+- **pyright** - Python (type checking and analysis)
 
 ### LSP Keybindings
+
 These keybindings are available when an LSP server is attached to a buffer:
 
 - `K` - Show hover documentation
@@ -61,8 +60,10 @@ These keybindings are available when an LSP server is attached to a buffer:
 - `gr` - Show references
 - `<leader>rn` - Rename symbol under cursor
 - `<leader>ca` - Show code actions
+- `<leader>e` - Show diagnostic error details in floating window
 
 **Useful commands:**
+
 - `:LspInfo` - Show LSP server status
 - `:Mason` - Manage LSP servers and other tools
 
@@ -71,6 +72,7 @@ These keybindings are available when an LSP server is attached to a buffer:
 Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 
 ### Available Snippet Files
+
 - `tex.snippets` - LaTeX snippets (Greek letters, environments, etc.)
 - `python.snippets` - Python snippets
 - `julia.snippets` - Julia snippets
@@ -80,21 +82,20 @@ Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 ### Using Snippets
 
 **Basic Usage:**
+
 1. In insert mode, type a snippet trigger (e.g., `alpha`)
 2. Press **Tab** to expand the snippet
 3. For snippets with placeholders, press **Tab** to jump to the next placeholder
 
-**Example - Greek Letters (LaTeX):**
-- Type `alpha` + Tab → `α`
-- Type `beta` + Tab → `β`
-- Type `lambda` + Tab → `λ`
+**Examples - LaTeX Environments:**
 
-**Example - LaTeX Environments:**
+- Type `alpha` + Tab → `α`
 - Type `begin` + Tab → `\begin{env}...\end{env}` (cursor at `env`)
 - Type environment name (e.g., `theorem`)
 - Tab → jump to content area
 
 ### Completion Keybindings
+
 - **Tab** - Select next completion item / expand or jump in snippet
 - **Shift-Tab** - Select previous completion item / jump back in snippet
 - **Enter** - Confirm completion selection
@@ -105,15 +106,18 @@ Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 ## Key Mappings
 
 ### Leader Keys
+
 - Leader: `Space`
 - Local leader: `\`
 
 ### General
+
 - `jj` - Exit insert mode (alternative to Esc)
 - `Q` - Format paragraph
 - `Ctrl-n` - Next buffer
 
 ### Leader Mappings
+
 - `<leader>w` - Save file
 - `<leader>d` - Delete buffer
 - `<leader><CR>` - Reload config
@@ -122,16 +126,19 @@ Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 - `<leader>ca` - Code actions (LSP)
 
 ### Telescope (Fuzzy Finder)
+
 - `<leader>ff` - Find files
 - `<leader>fg` - Live grep (search in files)
 - `<leader>fb` - Browse buffers
 - `<leader>fh` - Help tags
 
 ### Oil (File Explorer)
+
 - `-` - Open parent directory
 - `<space>-` - Open parent directory in floating window
 
 ### ToggleTerm (Terminal)
+
 - `<leader>av` - Open vertical terminal (68 columns)
 - `<leader>ah` - Open horizontal terminal (8 rows)
 - `<leader>af` - Open floating terminal
@@ -139,10 +146,12 @@ Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 - `<leader>ss` - Send visual selection to terminal (visual mode)
 
 ### Terminal Mode
+
 - `Ctrl-\ Ctrl-\` - Exit terminal mode to normal mode
 - `Ctrl-h` / `Ctrl-l` - Navigate between splits (even in terminal mode)
 
 ### Tmux Integration
+
 - `Ctrl-h` / `Ctrl-j` / `Ctrl-k` / `Ctrl-l` - Navigate between vim splits and tmux panes
 
 ## Configuration Structure
@@ -187,7 +196,7 @@ nvim/
 
 ## Installation
 
-1. Clone this config to `~/.config/nvim/`
+1. Add a symlink from `~/.config/nvim/` to this dir
 2. Open Neovim
 3. lazy.nvim will auto-install on first run
 4. Run `:Lazy sync` to install all plugins
@@ -197,3 +206,4 @@ nvim/
 
 - `:Lazy sync` - Update all plugins
 - `:Mason` - Manage LSP servers
+

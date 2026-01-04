@@ -3,3 +3,6 @@ lazy-lock.json
 
 # Plugin directory (managed by lazy.nvim)
 lazy/
+
+# Compiled spell files (auto-generated from .add files)
+spell/*.add.spl

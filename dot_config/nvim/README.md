@@ -18,6 +18,7 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 - **toggleterm.nvim** - Terminal integration
 - **Comment.nvim** - Commenting with `gc` operator
 - **vim-tmux-navigator** - Navigation between tmux panes and vim splits
+- **flash.nvim** - Fast motion plugin (jump to any visible location with minimal keystrokes)
 
 ### LSP & Completion
 
@@ -137,6 +138,13 @@ Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 - `-` - Open parent directory
 - `<space>-` - Open parent directory in floating window
 
+### Flash (Fast Motion)
+
+- `s` - Jump by 2-character search (most common usage)
+- `S` - Jump by treesitter node (semantic jumping to functions, classes, etc.)
+- `r` - Remote Flash (in operator-pending mode, e.g., `d` + `r` + search to delete to distant location)
+- `R` - Treesitter search (search and select treesitter nodes in visual/operator mode)
+
 ### ToggleTerm (Terminal)
 
 - `<leader>av` - Open vertical terminal (68 columns)
@@ -167,6 +175,7 @@ nvim/
 │   └── plugin_config/         # Plugin-specific configurations
 │       ├── init.lua           # Loads all plugin configs
 │       ├── cmp.lua            # Completion setup
+│       ├── flash.lua          # Fast motion
 │       ├── lsp_config.lua     # LSP configuration
 │       ├── lualine.lua        # Statusline
 │       ├── oil.lua            # File explorer

@@ -116,6 +116,23 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<space>-", function() require("oil").toggle_float() end, { desc = "Open parent directory in floating window" })
 
 
+-- === Flash - Fast Motion ===
+-- Jump to any visible location with minimal keystrokes
+
+-- Jump by 2-character search (most common usage)
+vim.keymap.set({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash jump" })
+
+-- Jump by treesitter node (semantic jumping - functions, classes, etc.)
+vim.keymap.set({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, { desc = "Flash treesitter" })
+
+-- Remote Flash: use Flash in operator-pending mode to operate on distant text
+-- Example: d + r + <search> to delete to a distant location
+vim.keymap.set("o", "r", function() require("flash").remote() end, { desc = "Remote Flash" })
+
+-- Treesitter search: search and select treesitter nodes in operator-pending mode
+vim.keymap.set({ "o", "x" }, "R", function() require("flash").treesitter_search() end, { desc = "Treesitter search" })
+
+
 -- === LSP - Language Server Protocol ===
 -- These keybindings are automatically set when an LSP attaches to a buffer
 -- (e.g., when you open a Python file with pyright installed)

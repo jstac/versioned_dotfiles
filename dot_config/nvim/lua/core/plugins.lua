@@ -43,6 +43,9 @@ local plugins = {
   -- in the relevant section of the tmux config file.
   'christoomey/vim-tmux-navigator',
 
+  -- Fast motion plugin - jump to any visible location with minimal keystrokes
+  'folke/flash.nvim',
+
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',  -- Updated to fix vim.tbl_islist deprecation warning
       dependencies = { 'nvim-lua/plenary.nvim' }

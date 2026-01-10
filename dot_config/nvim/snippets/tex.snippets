@@ -189,45 +189,15 @@ snippet remark remark
 		${0:${VISUAL}}
 	\\end{remark}
 
-snippet conjecture conjecture
-	\\begin{conjecture}\\label{conj:${2}}
-		${0:${VISUAL}}
-	\\end{conjecture}
-
-snippet claim claim
-	\\begin{claim}\\label{cl:${2}}
-		${0:${VISUAL}}
-	\\end{claim}
-
-snippet notation notation
-	\\begin{notation}\\label{n:${2}}
-		${0:${VISUAL}}
-	\\end{notation}
-
-snippet observation observation
-	\\begin{observation}\\label{o:${2}}
-		${0:${VISUAL}}
-	\\end{observation}
-
 snippet Exercise Exercise
 	\\begin{Exercise}\\label{ex:${2}}
 		${0:${VISUAL}}
 	\\end{Exercise}
 
 snippet Answer Answer
-	\\begin{Answer}\\label{ans:${2}}
+	\\begin{Answer}
 		${0:${VISUAL}}
 	\\end{Answer}
-
-snippet problem problem
-	\\begin{problem}\\label{prob:${2}}
-		${0:${VISUAL}}
-	\\end{problem}
-
-snippet solution solution
-	\\begin{solution}
-		${0:${VISUAL}}
-	\\end{solution}
 
 snippet frame frame
 	\\begin{frame}
@@ -238,44 +208,6 @@ snippet framet frame with title
 	\\begin{frame}{${1:title}}
 		${0:${VISUAL}}
 	\\end{frame}
-
-snippet framets frame with title and subtitle
-	\\begin{frame}{${1:title}}{${2:subtitle}}
-		${0:${VISUAL}}
-	\\end{frame}
-
-snippet block block environment
-	\\begin{block}{${1:title}}
-		${0:${VISUAL}}
-	\\end{block}
-
-snippet alertblock alertblock environment
-	\\begin{alertblock}{${1:title}}
-		${0:${VISUAL}}
-	\\end{alertblock}
-
-snippet exampleblock exampleblock environment
-	\\begin{exampleblock}{${1:title}}
-		${0:${VISUAL}}
-	\\end{exampleblock}
-
-snippet columns columns environment
-	\\begin{columns}
-		\\begin{column}{${1:0.5}\\textwidth}
-			${2}
-		\\end{column}
-		\\begin{column}{${3:0.5}\\textwidth}
-			${0:${VISUAL}}
-		\\end{column}
-	\\end{columns}
-
-snippet column column environment
-	\\begin{column}{${1:0.5}\\textwidth}
-		${0:${VISUAL}}
-	\\end{column}
-
-snippet pause pause
-	\\pause
 
 snippet center center environment
 	\\begin{center}
@@ -316,33 +248,6 @@ snippet mat smart matrix environment
 	\\begin{${1:p/b/v/V/B/small}matrix}
 		${0:${VISUAL}}
 	\\end{$1matrix}
-
-snippet cas cases environment
-	\\begin{cases}
-		${1:equation}, &\\text{ if }${2:case}\\
-		${0:${VISUAL}}
-	\\end{cases}
-
-snippet cha \chapter
-	\\chapter{${1:chapter name}}%
-	\\label{cha:${2:$1}}
-	${0}
-
-snippet sec \section
-	\\section{${1:section name}}%
-	\\label{sec:${2:$1}}
-	${0}
-
-# Sub Section
-snippet sub \subsection
-	\\subsection{${1:subsection name}}%
-	\\label{sub:${2:$1}}
-	${0}
-
-snippet ssub \subsubsection
-	\\subsubsection{${1:subsubsection name}}%
-	\\label{ssub:${2:$1}}
-	${0}
 
 snippet figref reference to a figure
 	${1:Figure}~\\ref{${2:fig:}}

@@ -40,8 +40,14 @@ snippet Zeta
 snippet eta
 	η
 
-snippet Eta 
+snippet Eta
 	Η
+
+snippet iota
+	ι
+
+snippet Iota
+	Ι
 
 snippet theta
 	θ
@@ -173,8 +179,33 @@ snippet corollary corollary
 		${0:${VISUAL}}
 	\\end{corollary}
 
+snippet definition definition
+	\\begin{definition}\\label{d:${2}}
+		${0:${VISUAL}}
+	\\end{definition}
+
+snippet remark remark
+	\\begin{remark}\\label{r:${2}}
+		${0:${VISUAL}}
+	\\end{remark}
+
+snippet Exercise Exercise
+	\\begin{Exercise}\\label{ex:${2}}
+		${0:${VISUAL}}
+	\\end{Exercise}
+
+snippet Answer Answer
+	\\begin{Answer}
+		${0:${VISUAL}}
+	\\end{Answer}
+
 snippet frame frame
 	\\begin{frame}
+		${0:${VISUAL}}
+	\\end{frame}
+
+snippet framet frame with title
+	\\begin{frame}{${1:title}}
 		${0:${VISUAL}}
 	\\end{frame}
 
@@ -217,33 +248,6 @@ snippet mat smart matrix environment
 	\\begin{${1:p/b/v/V/B/small}matrix}
 		${0:${VISUAL}}
 	\\end{$1matrix}
-
-snippet cas cases environment
-	\\begin{cases}
-		${1:equation}, &\\text{ if }${2:case}\\
-		${0:${VISUAL}}
-	\\end{cases}
-
-snippet cha \chapter
-	\\chapter{${1:chapter name}}%
-	\\label{cha:${2:$1}}
-	${0}
-
-snippet sec \section
-	\\section{${1:section name}}%
-	\\label{sec:${2:$1}}
-	${0}
-
-# Sub Section
-snippet sub \subsection
-	\\subsection{${1:subsection name}}%
-	\\label{sub:${2:$1}}
-	${0}
-
-snippet ssub \subsubsection
-	\\subsubsection{${1:subsubsection name}}%
-	\\label{ssub:${2:$1}}
-	${0}
 
 snippet figref reference to a figure
 	${1:Figure}~\\ref{${2:fig:}}
@@ -395,3 +399,135 @@ snippet ra rightarrow
 # Long right arrow
 snippet lra longrightarrow
 	\\longrightarrow {$0}
+
+# Left arrow
+snippet la leftarrow
+	\\leftarrow {$0}
+
+# Long left arrow
+snippet lla longleftarrow
+	\\longleftarrow {$0}
+
+# Iff (double arrow)
+snippet iff iff
+	\\iff {$0}
+
+# Implies
+snippet imp implies
+	\\implies {$0}
+
+# Product
+snippet prod product
+	\\prod_{{$1}}^{{$2}} {$0}
+
+# Infinity
+snippet inf infty
+	\\infty {$0}
+
+# Sup
+snippet sup supremum
+	\\sup_{{$1}} {$0}
+
+# Inf
+snippet inff infimum
+	\\inf_{{$1}} {$0}
+
+# Max
+snippet max max
+	\\max_{{$1}} {$0}
+
+# Min
+snippet min min
+	\\min_{{$1}} {$0}
+
+# Arg max
+snippet argmax argmax
+	\\argmax_{{$1}} {$0}
+
+# Arg min
+snippet argmin argmin
+	\\argmin_{{$1}} {$0}
+
+# For all
+snippet forall for all
+	\\forall {$0}
+
+# Exists
+snippet exists exists
+	\\exists {$0}
+
+# Cup (union)
+snippet cup cup
+	\\cup {$0}
+
+# Cap (intersection)
+snippet cap cap
+	\\cap {$0}
+
+# Setminus
+snippet setm setminus
+	\\setminus {$0}
+
+# Empty set
+snippet empty emptyset
+	\\emptyset {$0}
+
+# Binomial coefficient
+snippet binom binomial
+	\\binom{{$1}}{{$2}} {$0}
+
+# Norm
+snippet norm norm
+	\\left\\| {$1} \\right\\| {$0}
+
+# Absolute value
+snippet abs absolute value
+	\\left| {$1} \\right| {$0}
+
+# Floor
+snippet floor floor
+	\\left\\lfloor {$1} \\right\\rfloor {$0}
+
+# Ceiling
+snippet ceil ceiling
+	\\left\\lceil {$1} \\right\\rceil {$0}
+
+# Math blackboard bold
+snippet bb mathbb
+	\\mathbb{{$1}} {$0}
+
+# Math calligraphic
+snippet cal mathcal
+	\\mathcal{{$1}} {$0}
+
+# Math roman
+snippet rm mathrm
+	\\mathrm{{$1}} {$0}
+
+# Math fraktur
+snippet frak mathfrak
+	\\mathfrak{{$1}} {$0}
+
+# Overline
+snippet ol overline
+	\\overline{{$1}} {$0}
+
+# Underline
+snippet ul underline
+	\\underline{{$1}} {$0}
+
+# Widetilde
+snippet wt widetilde
+	\\widetilde{{$1}} {$0}
+
+# Widehat
+snippet wh widehat
+	\\widehat{{$1}} {$0}
+
+# Overbrace
+snippet obr overbrace
+	\\overbrace{{$1}}^{{$2}} {$0}
+
+# Underbrace
+snippet ubr underbrace
+	\\underbrace{{$1}}_{{$2}} {$0}

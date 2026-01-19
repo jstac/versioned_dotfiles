@@ -9,6 +9,7 @@ vim.g.vimtex_compiler_latexmk = {
     "-pdfxe",
     "-shell-escape",
     "-synctex=1",
+    "-g",
   },
 }
 

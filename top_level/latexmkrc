@@ -1,3 +1,4 @@
 $latex = 'xelatex  %O  --shell-escape %S';
 $pdflatex = 'xelatex  -synctex=1 %O --shell-escape %S';
+$xelatex = 'xelatex -synctex=1 %O --shell-escape %S';
 $bibtex_use = 2;

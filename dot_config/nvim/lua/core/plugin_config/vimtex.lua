@@ -6,10 +6,13 @@ vim.g.vimtex_compiler_latexmk = {
     executable = 'latexmk',
     continuous = 0,
     options = {
-    "-pdfxe",
-    "-shell-escape",
-    "-synctex=1",
-    "-g",
-  },
+        "-f",
+        "-shell-escape",
+        "-synctex=1",
+        "-g",
+    },
+    engines = {
+        ["_"] = "-xelatex",
+    },
 }
 

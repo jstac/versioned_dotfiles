@@ -1,2 +1,0 @@
-  require('myst-markdown').setup()
-

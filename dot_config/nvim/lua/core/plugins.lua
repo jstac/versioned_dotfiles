@@ -35,7 +35,13 @@ local plugins = {
 
   'nvim-treesitter/nvim-treesitter',  -- syntax highlighting
 
-  'QuantEcon/myst-markdown-tree-sitter.nvim',
+  {
+    'QuantEcon/myst-markdown-tree-sitter.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('myst-markdown').setup()
+    end,
+  },
 
   'lervag/vimtex',
 

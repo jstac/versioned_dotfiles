@@ -2,7 +2,6 @@ local options = {
     showmode = false,               -- show da mode (not necessary when using status line)
     bs = [[indent,eol,start]],      -- backspace over everything
     incsearch = false,              -- incremental search (sucks)
-    syntax = "on",                  -- syntax highlighting
     hlsearch = true,                -- highlight search matches
     textwidth = 80,
     autoread = true,                -- refresh buffers that changed on disk

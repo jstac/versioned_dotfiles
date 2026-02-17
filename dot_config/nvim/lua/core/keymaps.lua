@@ -60,7 +60,7 @@ vim.keymap.set('n', '<leader>d', ':bd<CR>', opts)
 
 -- Reload Neovim configuration
 -- Usage: Space-Enter to reload init.lua (useful after config changes)
-vim.api.nvim_set_keymap("n", "<leader><CR>", ":luafile $MYVIMRC<CR>", opts)
+vim.keymap.set('n', '<leader><CR>', ':luafile $MYVIMRC<CR>', opts)
 
 -- Toggle spell checking on/off
 -- Usage: Space-st to enable/disable spell checking (US English)
@@ -165,6 +165,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Show diagnostic error/warning details in floating window
     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, buf_opts)
+
+    -- Jump to next/previous diagnostic
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, buf_opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, buf_opts)
   end,
 })
 

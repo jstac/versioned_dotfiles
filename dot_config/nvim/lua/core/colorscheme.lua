@@ -1,1 +1,5 @@
-vim.cmd [[ colorscheme everforest ]]
+require("catppuccin").setup({
+  flavour = "macchiato",
+})
+
+vim.cmd.colorscheme "catppuccin"

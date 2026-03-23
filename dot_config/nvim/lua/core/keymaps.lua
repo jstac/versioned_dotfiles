@@ -37,11 +37,25 @@ vim.keymap.set('n', '<C-n>', ':bnext<CR>', opts)
 -- Usage: In terminal, press Ctrl-\ twice to get back to normal mode
 vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>', opts)
 
--- Navigate between vim splits from terminal mode
--- These allow Ctrl-h/l navigation even when cursor is in a terminal split
--- Works seamlessly with tmux pane navigation via vim-tmux-navigator
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w><C-l>', opts)  -- Move right
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w><C-h>', opts)  -- Move left
+-- === vim-tmux-navigator ===
+-- Default plugin mappings are disabled (see plugins.lua) because the
+-- plugin's tnoremap uses <C-w> which doesn't work in Neovim terminal
+-- mode — it leaks literal command text into the shell.
+-- We define all mappings manually here instead.
+
+-- Normal mode: navigate vim splits or forward to tmux panes at edges
+vim.keymap.set('n', '<C-h>', '<cmd>TmuxNavigateLeft<CR>', opts)
+vim.keymap.set('n', '<C-j>', '<cmd>TmuxNavigateDown<CR>', opts)
+vim.keymap.set('n', '<C-k>', '<cmd>TmuxNavigateUp<CR>', opts)
+vim.keymap.set('n', '<C-l>', '<cmd>TmuxNavigateRight<CR>', opts)
+
+-- Terminal mode: exit terminal insert mode, then navigate.
+-- Uses <C-\><C-n> (Neovim's terminal escape) instead of <C-w>.
+-- Also triggers WinLeave, which auto-closes toggleterm floats.
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><cmd>TmuxNavigateLeft<CR>', opts)
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><cmd>TmuxNavigateDown<CR>', opts)
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><cmd>TmuxNavigateUp<CR>', opts)
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><cmd>TmuxNavigateRight<CR>', opts)
 
 
 ----- Leader maps ------

@@ -47,7 +47,17 @@ local plugins = {
 
   -- Unify tmux and vim split motion.  The set of mappings is visible
   -- in the relevant section of the tmux config file.
-  'christoomey/vim-tmux-navigator',
+  --
+  -- As of Feb 2025 (commit 05fa2b1), the plugin adds tnoremap mappings
+  -- that use Vim's <C-w> to escape terminal mode. This doesn't work in
+  -- Neovim — the command string leaks into the shell as literal text.
+  -- We disable all default mappings here and define our own in keymaps.lua.
+  {
+    'christoomey/vim-tmux-navigator',
+    init = function()
+      vim.g.tmux_navigator_no_mappings = true
+    end,
+  },
 
   -- Fast motion plugin - jump to any visible location with minimal keystrokes
   'folke/flash.nvim',

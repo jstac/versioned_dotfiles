@@ -9,7 +9,6 @@ vim.g.vimtex_compiler_latexmk = {
         "-f",
         "-shell-escape",
         "-synctex=1",
-        "-g",
     },
     engines = {
         ["_"] = "-xelatex",

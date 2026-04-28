@@ -305,9 +305,16 @@ setup_versioned_tools() {
     if [ ! -d "$TOOLS_DIR" ]; then
         log_info "Cloning versioned_tools..."
         cd ~/gh_synced
-        if ! git clone https://github.com/jstac/versioned_tools; then
-            log_warn "Failed to clone versioned_tools (may require GitHub auth)"
-            log_warn "Please clone manually: cd ~/gh_synced && git clone https://github.com/jstac/versioned_tools"
+        # versioned_tools is private — needs GitHub auth. Try gh first if available.
+        if check_command gh && gh auth status &>/dev/null; then
+            gh repo clone jstac/versioned_tools || true
+        else
+            git clone https://github.com/jstac/versioned_tools || true
+        fi
+        if [ ! -d "$TOOLS_DIR" ]; then
+            log_warn "Failed to clone versioned_tools (private repo — needs GitHub auth)"
+            log_warn "Install gh and authenticate, then re-run this script:"
+            log_warn "  sudo apt install -y gh && gh auth login && gh auth setup-git"
             return
         fi
     fi

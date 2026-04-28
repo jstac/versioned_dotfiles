@@ -402,10 +402,9 @@ Access: `http://<PUBLIC-IP>:8000`
 - `delta` - Better git diff
 
 **Custom Tools** (in ~/bin after install):
-- `check_sync` - Check rsync directory status
-- `pull_sync` - Pull from rsync directory
-- `push_sync` - Push to rsync directory
 - `photoresize` - Resize images
+
+(Earlier versions also installed `check_sync`/`pull_sync`/`push_sync` symlinks. These were retired once `~/rsync_dir` moved to a git repo at `github.com/jstac/rsync_dir`.)
 
 ---
 

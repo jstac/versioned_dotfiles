@@ -314,11 +314,10 @@ setup_versioned_tools() {
 
     # Create bin directory and symlinks
     mkdir -p ~/bin
-    mkdir -p ~/backups/rsync_dir_backup
 
     log_info "Creating symlinks in ~/bin..."
     cd ~/bin
-    for script in check_sync photoresize pull_sync push_sync; do
+    for script in photoresize; do
         if [ -f "$TOOLS_DIR/$script" ]; then
             ln -sf "$TOOLS_DIR/$script" .
         fi

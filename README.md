@@ -2,6 +2,31 @@
 
 Configuration files for Ubuntu development environment with zsh, neovim, yazi, and modern CLI tools.
 
+## Machines
+
+Inventory of machines running this setup. Update as machines are added/retired.
+
+### `xps` — laptop (primary)
+- **OS:** Ubuntu 24.04 LTS
+- **CPU:** Intel i7-1165G7 (8 logical cores)
+- **RAM:** 16 GB
+- **GPU:** Intel Iris Xe (integrated)
+- **Storage:** 512 GB NVMe (KIOXIA)
+- **Tailscale:** `ssh-xps` → `100.110.168.124`
+
+### `grips-zilla` — workstation (set up 2026-04-27)
+- **OS:** Ubuntu 26.04 LTS
+- **Mobo:** MSI PRO Z790-P (MS-7E06), MSI Click BIOS 5
+- **CPU:** Intel i7-13700KF (16c/24t)
+- **RAM:** 64 GB
+- **GPU:** NVIDIA RTX 4080 (16 GB) — install proprietary driver post-install (Software & Updates → Additional Drivers)
+- **Storage:** 1 TB NVMe (WD_BLACK SN770) for system + 4 TB HDD (WDC WD40EZAZ) ext4 mounted at `/data` (UUID-based fstab entry)
+- **Tailscale:** `ssh-grips` → `100.91.249.128`
+- **BIOS quirk:** Secure Boot toggle not exposed in this firmware revision. Left enabled; Ubuntu signs its own kernel and NVIDIA driver install handles MOK enrollment.
+
+### Other reachable hosts (via Tailscale, see `dot_config/zsh/zshrc` aliases)
+- `ssh-gpu`, `ssh-nuc`, `ssh-precision` — additional remote machines
+
 ## TL;DR - Fresh Install
 
 ```bash
@@ -21,8 +46,9 @@ cd versioned_dotfiles
 
 # 5. Complete post-install steps (shown by script):
 #    - chsh -s /bin/zsh (then logout/login)
-#    - Configure keyboard shortcuts in gnome-tweaks
-#    - setxkbmap -option "ctrl:nocaps"
+#    - gnome-tweaks: Caps Lock → Ctrl
+#    - Settings → Keyboard: bind Alt+d (wofi/rofi launcher) and Alt+Enter (kitty)
+#    - Software & Updates → Additional Drivers (NVIDIA, if applicable)
 ```
 
 ---
@@ -83,21 +109,22 @@ chsh -s /bin/zsh
 
 Then **log out and log back in**.
 
-#### 2. Configure Keyboard Shortcuts (gnome-tweaks)
+#### 2. Configure Caps Lock → Ctrl
 
-Open gnome-tweaks and configure:
+In **gnome-tweaks → Keyboard → Additional Layout Options → Caps Lock behavior**, tick "Caps Lock is also a Ctrl". This is Wayland-safe and persists across logins.
 
-**Keyboard → Additional Layout Options:**
-- Caps Lock behavior → "Caps Lock is also a Ctrl"
+(Older docs suggested `setxkbmap -option "ctrl:nocaps"` — that only works on X11 and is deprecated for this setup.)
 
-**Keyboard → Customize Shortcuts → Custom shortcuts:**
-- Add: `rofi -show drun` → `Alt+d`
-- Add: `/usr/bin/kitty` → `Alt+Enter`
+#### 3. Configure Custom Shortcuts
 
-**Or run this after each login:**
-```bash
-setxkbmap -option "ctrl:nocaps"
-```
+**Settings → Keyboard → Keyboard Shortcuts → View and Customize Shortcuts → Custom Shortcuts**, add:
+
+- **Launcher** → `Alt+d`
+  - Wayland: `wofi --show drun`
+  - X11: `rofi -show drun`
+- **Terminal** → `Alt+Return` → `/usr/bin/kitty`
+
+`rofi` doesn't run natively on Wayland (uses XWayland with degraded behavior); `wofi` is a Wayland-native equivalent that uses the same `--show drun` mode.
 
 ---
 
@@ -140,16 +167,20 @@ The native installer will set up the PATH.
 
 ---
 
-## Xorg
+## Display Server (X11 vs Wayland)
 
-Some tools seem to work better with xorg than Wayland.
+**Ubuntu 26.04+: Wayland only.** Upstream GNOME removed the X11 session in GNOME 47, and Ubuntu 26.04 ships GNOME without it — `/usr/share/xsessions/` is empty and there's no `gnome-session-xsession` package. `WaylandEnable=false` in `/etc/gdm3/custom.conf` is a no-op there.
 
-You can disable Wayland in GDM completely by editing /etc/gdm/custom.conf or
-/etc/gdm3/custom.conf and uncommenting: WaylandEnable=false
+**Ubuntu 24.04 and earlier: both available.** Pick at the GDM login screen via the gear icon: "Ubuntu" (Wayland) or "Ubuntu on Xorg" (X11). To force X11 for all logins on these versions, uncomment `WaylandEnable=false` in `/etc/gdm3/custom.conf`.
 
-You'll need to log out and back in for the change to take effect.
+If you actually need an X11 desktop on 26.04+ (e.g., for a tool with no Wayland equivalent), switch desktop environments rather than fighting GNOME: XFCE (`xubuntu-desktop`), MATE (`ubuntu-mate-desktop`), Cinnamon, or KDE Plasma all retain X11 sessions.
 
-After logging in, you can verify with echo $XDG_SESSION_TYPE - it should say x11
+Verify session: `echo $XDG_SESSION_TYPE` (`wayland` or `x11`).
+
+### Wayland-related package swaps
+- `rofi` → `wofi` (rofi can't init under Wayland; install.sh installs both — pick at the shortcut binding)
+- `xdotool` → `wtype` or `ydotool`
+- `xclip` → `wl-clipboard` (`wl-copy` / `wl-paste`)
 
 ## Optional Components
 
@@ -250,21 +281,20 @@ Download and install from https://zoom.us/download
 
 ## Machine-Specific Configuration
 
-### Disable Wayland (for Rofi and GPU)
+### NVIDIA GPU + JAX
 
-Edit `/etc/gdm3/custom.conf` and uncomment:
-```
-WaylandEnable=false
-```
-
-Restart display manager or reboot.
-
-### External GPU + JAX
-
-1. Select latest nvidia driver in "Additional Drivers" settings
-2. Install JAX: https://jax.readthedocs.io/en/latest/installation.html
-3. Build `nvtop` from source for GPU monitoring
-4. Disable Wayland (see above)
+1. Install the recommended driver:
+   ```bash
+   ubuntu-drivers devices              # confirm what's recommended
+   sudo ubuntu-drivers install         # auto-installs the recommended one
+   ```
+   For RTX 20-series and newer, prefer the `-open` variant (NVIDIA Open GPU Kernel Modules) — recommended by NVIDIA, signed by Canonical so no MOK enrollment needed under Secure Boot.
+2. Reboot, then verify with `nvidia-smi` (driver + GPU listed).
+3. Install JAX: https://jax.readthedocs.io/en/latest/installation.html
+   ```bash
+   pip install -U "jax[cuda12]"
+   ```
+4. Build `nvtop` from source for GPU monitoring (or `sudo apt install nvtop`).
 
 **Check GPU status:**
 ```bash
@@ -406,6 +436,33 @@ source ~/.config/zsh/.zshrc
 ```bash
 git config --global credential.helper "cache --timeout=8640000"
 ```
+
+### `cargo install tree-sitter-cli` fails with `'stdbool.h' file not found`
+
+The `rquickjs-sys` build (a transitive dep of recent tree-sitter-cli) uses bindgen, which needs a full clang toolchain to find C standard headers. The apt list in `install.sh` now installs `clang` and `libclang-dev` to prevent this. If you hit it on an existing system:
+
+```bash
+sudo apt install -y clang libclang-dev
+cargo install tree-sitter-cli
+```
+
+### Large 4 TB HDD partitioning (workstation pattern)
+
+For an additional secondary HDD (mounted at `/data`):
+
+```bash
+sudo wipefs -a /dev/sdX
+sudo sgdisk --zap-all /dev/sdX
+sudo parted -a optimal /dev/sdX mklabel gpt
+sudo parted -a optimal /dev/sdX mkpart data ext4 0% 100%
+sudo mkfs.ext4 -L data /dev/sdX1
+sudo mkdir /data
+echo "UUID=$(sudo blkid -s UUID -o value /dev/sdX1)  /data  ext4  defaults,noatime  0  2" | sudo tee -a /etc/fstab
+sudo mount -a
+sudo chown $USER:$USER /data
+```
+
+**Always verify `findmnt /` shows the OS disk (`nvme...`) before running `wipefs` or `sgdisk` on a different device.**
 
 ---
 

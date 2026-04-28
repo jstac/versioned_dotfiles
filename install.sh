@@ -67,9 +67,9 @@ install_apt_packages() {
     if prompt_sudo "Install apt packages (rofi, kitty, zsh, git, etc.)"; then
         sudo apt update
         sudo apt install -y \
-            rofi kitty suckless-tools bat zsh git chromium \
+            rofi wofi kitty suckless-tools bat zsh git chromium \
             fd-find fzf gnome-tweaks ripgrep zoxide \
-            build-essential zathura tmux \
+            build-essential clang libclang-dev zathura tmux \
             p7zip-full librsvg2-bin poppler-utils \
             curl wget
         log_success "System packages installed"
@@ -410,13 +410,13 @@ show_post_install_instructions() {
     echo "   $ chsh -s /bin/zsh"
     echo "   Then log out and log back in."
     echo
-    echo "2. Configure keyboard shortcuts in gnome-tweaks:"
-    echo "   - Caps Lock → Ctrl (Keyboard → Additional Layout Options)"
-    echo "   - Alt+d → rofi -show drun"
-    echo "   - Alt+Enter → /usr/bin/kitty"
+    echo "2. Configure Caps Lock → Ctrl in gnome-tweaks:"
+    echo "   Keyboard → Additional Layout Options → Caps Lock behavior"
+    echo "   (Wayland-safe; replaces the old setxkbmap approach.)"
     echo
-    echo "3. Set keyboard mapping (run after login):"
-    echo "   $ setxkbmap -option \"ctrl:nocaps\""
+    echo "3. Configure custom shortcuts in Settings → Keyboard → Keyboard Shortcuts:"
+    echo "   - Alt+d  → 'wofi --show drun'  (use 'rofi -show drun' if on X11)"
+    echo "   - Alt+Enter → '/usr/bin/kitty'"
     echo
     echo "4. Optional: Install Anaconda for Python development"
     echo "   See README.md for instructions"

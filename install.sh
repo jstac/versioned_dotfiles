@@ -68,7 +68,7 @@ install_apt_packages() {
         sudo apt update
         sudo apt install -y \
             rofi wofi kitty suckless-tools bat zsh git chromium \
-            fd-find fzf gnome-tweaks ripgrep zoxide \
+            fd-find fzf gnome-tweaks ripgrep zoxide neovim \
             build-essential clang libclang-dev zathura tmux \
             p7zip-full librsvg2-bin poppler-utils \
             curl wget
@@ -95,8 +95,13 @@ install_rust() {
     # Ensure cargo is in PATH for this session
     export PATH="$HOME/.cargo/bin:$PATH"
 
-    log_info "Installing cargo packages: eza, git-delta, vivid, tree-sitter-cli"
-    cargo install eza git-delta vivid tree-sitter-cli
+    log_info "Installing cargo packages: eza, git-delta, vivid, tree-sitter-cli@0.24.7"
+    # tree-sitter-cli pinned: nvim-treesitter master branch (which our config uses)
+    # passes --no-bindings, removed in tree-sitter-cli 0.25+. 0.24.7 still accepts it.
+    # Note: 0.24.x maxes at parser ABI 14, so latex parser (ABI 15) won't compile —
+    # acceptable trade-off until we migrate the nvim config to nvim-treesitter main.
+    cargo install eza git-delta vivid
+    cargo install tree-sitter-cli@0.24.7
     log_success "Cargo tools installed"
 }
 

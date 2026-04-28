@@ -33,11 +33,13 @@ local plugins = {
 
   'akinsho/toggleterm.nvim',
 
-  'nvim-treesitter/nvim-treesitter',  -- syntax highlighting
+  -- Pin to master branch: the new "main" branch removed the
+  -- nvim-treesitter.configs API our config uses (would need a rewrite).
+  { 'nvim-treesitter/nvim-treesitter', branch = 'master' },
 
   {
     'QuantEcon/myst-markdown-tree-sitter.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = { { 'nvim-treesitter/nvim-treesitter', branch = 'master' } },
     config = function()
       require('myst-markdown').setup()
     end,

@@ -85,7 +85,6 @@ export LD_LIBRARY_PATH=/usr/lib/libreoffice/program:$LD_LIBRARY_PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda-12.2/lib64:$LD_LIBRARY_PATH
 # export LD_LIBRARY_PATH=$HOME/anaconda3/lib:$LD_LIBRARY_PATH
 
-export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 
 # =========== editor ==========  # 
@@ -146,13 +145,13 @@ alias ga='git add -A'
 alias gc='git commit -am misc'
 alias gp='git push'
 alias gr='git remote show origin'
-alias gr='git remote show origin'
 # ssh via tailscale
 alias ssh-gpu='ssh 100.90.220.42'
 alias ssh-tunnel='ssh -L 8080:localhost:8080 100.90.220.42'
 alias ssh-nuc='ssh 100.111.86.156'
 alias ssh-precision='ssh 100.111.103.110'
 alias ssh-xps='ssh 100.110.168.124'
+alias ssh-grips='ssh 100.91.249.128'
 # bitwarden
 alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='bw lock && unset BW_SESSION'

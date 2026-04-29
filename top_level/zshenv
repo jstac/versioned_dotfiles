@@ -18,3 +18,9 @@ export ZCACHEDIR=$XDG_CACHE_HOME/zsh
 
 
 . "$HOME/.cargo/env"
+
+# TeXlive — pick up the most recent installed year automatically. Lives in
+# zshenv (not zshrc) so non-interactive nvim sessions etc. find latexmk.
+_texlive_bin=$(ls -d /usr/local/texlive/[0-9]*/bin/x86_64-linux 2>/dev/null | sort -V | tail -1)
+[ -n "$_texlive_bin" ] && export PATH=$_texlive_bin:$PATH
+unset _texlive_bin

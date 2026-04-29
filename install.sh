@@ -95,13 +95,9 @@ install_rust() {
     # Ensure cargo is in PATH for this session
     export PATH="$HOME/.cargo/bin:$PATH"
 
-    log_info "Installing cargo packages: eza, git-delta, vivid, tree-sitter-cli@0.24.7"
-    # tree-sitter-cli pinned: nvim-treesitter master branch (which our config uses)
-    # passes --no-bindings, removed in tree-sitter-cli 0.25+. 0.24.7 still accepts it.
-    # Note: 0.24.x maxes at parser ABI 14, so latex parser (ABI 15) won't compile —
-    # acceptable trade-off until we migrate the nvim config to nvim-treesitter main.
-    cargo install eza git-delta vivid
-    cargo install tree-sitter-cli@0.24.7
+    log_info "Installing cargo packages: eza, git-delta, vivid, tree-sitter-cli"
+    # nvim-treesitter main branch requires tree-sitter-cli 0.26.1+; latest is fine.
+    cargo install eza git-delta vivid tree-sitter-cli
     log_success "Cargo tools installed"
 }
 

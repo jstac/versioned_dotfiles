@@ -33,13 +33,19 @@ local plugins = {
 
   'akinsho/toggleterm.nvim',
 
-  -- Pin to master branch: the new "main" branch removed the
-  -- nvim-treesitter.configs API our config uses (would need a rewrite).
-  { 'nvim-treesitter/nvim-treesitter', branch = 'master' },
+  -- Migrated to nvim-treesitter main branch. Requires Neovim 0.12+ and
+  -- tree-sitter-cli 0.26.1+ (installed via package manager, not npm).
+  -- main is a "full incompatible rewrite" — see treesitter.lua for setup.
+  {
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
+    build = ':TSUpdate',
+  },
 
   {
     'QuantEcon/myst-markdown-tree-sitter.nvim',
-    dependencies = { { 'nvim-treesitter/nvim-treesitter', branch = 'master' } },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('myst-markdown').setup()
     end,

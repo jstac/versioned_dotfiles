@@ -24,6 +24,10 @@ This repo is the canonical config for two machines: `xps` (laptop, Ubuntu 24.04)
 - **`install.sh` is idempotent** — phase-by-phase "already installed?" checks. Safe to re-run after a partial failure.
 - **The `cmu_2026` repo name appears under both `gh_synced/teaching/` (jstac/cmu_2026) and `gh_synced/quantecon/workshops/upcoming/` (QuantEcon/cmu_2026).** Different orgs, different content. Don't confuse them.
 
+## LaTeX
+
+LaTeX engine, standard preamble, and known traps live in `LATEX.md`. Apply those conventions when fixing, reviewing, or scaffolding `.tex` files.
+
 ## Pending / queued work
 
 - Decommission `nuc-zilla` (`100.111.86.156`) and `ssh-gpu` (`100.90.220.42`) — see `~/.claude/projects/.../memory/project_decommission_old_machines.md` for the 6-step plan.

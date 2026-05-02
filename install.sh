@@ -206,6 +206,37 @@ install_nerd_fonts() {
 }
 
 # ============================================================================
+# Phase 6b: Register TeX Live fonts with fontconfig
+# ============================================================================
+# Without this, xelatex can't resolve TeX Live-only fonts (TeX Gyre family,
+# STIX, Latin Modern, etc.) by name and silently falls back -- e.g. mathpazo
+# silently drops bold under xelatex because TU/ppl/b/n is undefined. See
+# LATEX.md for the full backstory.
+
+register_texlive_fonts() {
+    log_info "Phase 6b: Registering TeX Live fonts with fontconfig"
+
+    local target=/etc/fonts/conf.d/09-texlive-fonts.conf
+    if [ -e "$target" ]; then
+        log_success "TeX Live fontconfig already registered"
+        return
+    fi
+
+    local source
+    source=$(kpsewhich --var-value TEXMFSYSVAR 2>/dev/null)/fonts/conf/texlive-fontconfig.conf
+    if [ ! -f "$source" ]; then
+        log_warn "TeX Live fontconfig source not found at $source -- is TeX Live installed?"
+        return
+    fi
+
+    if prompt_sudo "Symlink $source to $target and rebuild font cache"; then
+        sudo cp "$source" "$target"
+        sudo fc-cache -fsv > /dev/null 2>&1
+        log_success "TeX Live fonts now visible to fontconfig"
+    fi
+}
+
+# ============================================================================
 # Phase 7: Git Configuration
 # ============================================================================
 
@@ -445,6 +476,7 @@ main() {
     install_starship
     install_bitwarden_cli
     install_nerd_fonts
+    register_texlive_fonts
     configure_git
     setup_dotfile_symlinks
     setup_versioned_tools

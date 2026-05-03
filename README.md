@@ -305,29 +305,57 @@ See also: https://manual.quantecon.org/tools/gpu.html#using-egpu-with-ubuntu
 
 ### Birthday reminder (grips-zilla)
 
-Daily systemd user timer that emails birthday reminders (10 days ahead and on the day) to `john.stachurski@gmail.com` and `emailcleo@gmail.com`. Lives in `~/gh_synced/versioned_tools/bdaychecker/`.
+A small Python script wired up as a daily systemd user timer. It emails birthday reminders to `john.stachurski@gmail.com` and `emailcleo@gmail.com`. Replaces the original Python 2 script in `older_scripts/bdaychecker.py`. Source lives at `~/gh_synced/versioned_tools/bdaychecker/`, version-controlled and synced via git so edits made on the laptop reach the workstation through `git pull`.
 
-**Components:**
-- `bdaychecker.py` — Python 3 script (stdlib + PyYAML, no other deps). Sends via Gmail SMTP on port 465.
-- `birthdays.yaml` — hand-editable list of `name` + `date` (DD-MM). Add/remove entries here.
-- `systemd/bdaychecker.{service,timer}` — version-controlled units. Symlinked into `~/.config/systemd/user/`.
-- `systemd/bdaychecker-failure.service` — `OnFailure` hook; writes `~/.local/state/bdaychecker/last_failure` if the main service fails.
-- `~/.config/bdaychecker/smtp_password` — Gmail app password, mode 600. **Not** in git.
+#### When it fires
 
-**Fresh install on a new machine:**
+The timer triggers `bdaychecker.service` once a day at **07:00 JST** on grips-zilla. The unit declares `Persistent=true`, so a run that gets missed because the machine was off or asleep is rescheduled for the next boot — at worst, a reminder lands about a day late instead of being lost. User lingering is on (`loginctl enable-linger john`), so the timer runs whether or not anyone is logged in.
+
+#### Reminder cadence
+
+For each entry in `birthdays.yaml` the script considers two trigger dates:
+
+- **10 days before the birthday** — a planning reminder.
+- **The birthday itself** — the day-of nudge.
+
+So each birthday produces two emails per year. The 10-day lead is the constant `LEAD_DAYS` at the top of `bdaychecker.py` — change it there and re-pull on grips-zilla if you want a different lead time.
+
+#### Dependencies
+
+Python 3 (any modern version) plus PyYAML. On Debian/Ubuntu, PyYAML ships as the apt package `python3-yaml` and is preinstalled on Ubuntu 24.04+. If a fresh install ever errors with `ModuleNotFoundError: No module named 'yaml'`, run `sudo apt install -y python3-yaml`.
+
+Everything else (`smtplib`, `ssl`, `email.message`, `pathlib`, `datetime`) is in the standard library.
+
+#### Components
+
+| Path | Role |
+|---|---|
+| `bdaychecker.py` | The script. Sends via Gmail SMTP on port 465 (implicit TLS). |
+| `birthdays.yaml` | Hand-editable list of `name` + `date` (DD-MM). |
+| `systemd/bdaychecker.service` | Runs the script. Symlinked into `~/.config/systemd/user/`. |
+| `systemd/bdaychecker.timer` | Fires the service daily at 07:00. |
+| `systemd/bdaychecker-failure.service` | `OnFailure=` hook; records a flag file on failure. |
+| `~/.config/bdaychecker/smtp_password` | Gmail app password, mode `600`. **Not in git.** |
+| `~/.local/state/bdaychecker/last_failure` | Created automatically when a run fails. Absence = no recent failure. |
+
+#### Fresh install on a new machine
+
 ```bash
-# 1. Create the app password at https://myaccount.google.com/apppasswords
-#    (requires 2FA on the Google account). Label it "bdaychecker".
+# 0. (If PyYAML is missing — preinstalled on Ubuntu 24.04+):
+sudo apt install -y python3-yaml
 
-# 2. Save the password (16 chars, spaces are OK — script strips them):
+# 1. Create a Gmail app password at https://myaccount.google.com/apppasswords
+#    Requires 2FA on the Google account. Label it "bdaychecker".
+
+# 2. Save the password (16 chars; spaces are OK — script strips them):
 mkdir -p ~/.config/bdaychecker && chmod 700 ~/.config/bdaychecker
 nano ~/.config/bdaychecker/smtp_password
 chmod 600 ~/.config/bdaychecker/smtp_password
 
-# 3. Smoke-test:
+# 3. Smoke-test (sends one real email to both recipients):
 python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --test-email
 
-# 4. Install systemd units (symlinks, so git pulls update them):
+# 4. Install systemd units (symlinks, so future git pulls update them):
 mkdir -p ~/.config/systemd/user
 ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.service         ~/.config/systemd/user/
 ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.timer           ~/.config/systemd/user/
@@ -339,18 +367,45 @@ systemctl --user enable --now bdaychecker.timer
 loginctl enable-linger $USER
 ```
 
-**Day-to-day:**
-- Add/remove birthdays: edit `bdaychecker/birthdays.yaml`, commit, push. Picked up on next run.
-- Check next fire time: `systemctl --user list-timers bdaychecker.timer`
-- View past runs: `journalctl --user -u bdaychecker.service`
-- Force a run: `systemctl --user start bdaychecker.service`
-- Test against a specific date: `python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --dry-run --date 2026-04-29`
+#### Editing the birthday list
 
-**Failure handling:** if `bdaychecker.service` exits non-zero (bad YAML, SMTP auth failure, network down at run time), systemd's `OnFailure=` triggers `bdaychecker-failure.service`, which writes a timestamp + the last 30 journal lines to `~/.local/state/bdaychecker/last_failure`. The file's *presence* is the alert — `cat` it for diagnostics, fix the cause, then `rm` it to acknowledge. (Email-as-alert isn't an option since email is the failing channel.)
+Open `bdaychecker/birthdays.yaml` in any editor. Each entry is a single-line YAML mapping with two keys:
 
-The shared `dot_config/zsh/zshrc` checks for that file on every interactive shell start and prints a red warning if it exists — so any new zsh on grips-zilla (or any local terminal) will surface the failure without having to remember to look. Snippet is gated on file existence, so it's a no-op on machines where bdaychecker doesn't run.
+```yaml
+- {name: Jane Doe,    date: 25-12}
+- {name: Robert Roe,  date: 03-07}
+```
 
-**Revoke / rotate the app password:** delete it at https://myaccount.google.com/apppasswords and create a new one; update `~/.config/bdaychecker/smtp_password` on grips-zilla.
+`date` is `DD-MM`, no year. The script reads the file fresh on every run, so commit, push, and `git pull` on grips-zilla is enough — no service restart needed. The next 07:00 run picks up the change.
+
+*Caveat: Feb 29 birthdays are silently skipped in non-leap years.* The match is exact `(day, month)` against today's date, and Feb 29 doesn't exist 3 years out of 4. None of the current entries are affected; if you ever add a Feb 29 person, treat them as 28-Feb to get yearly coverage.
+
+#### Day-to-day operations
+
+| Task | Command |
+|---|---|
+| When does the timer next fire? | `systemctl --user list-timers bdaychecker.timer` |
+| What happened in past runs? | `journalctl --user -u bdaychecker.service` |
+| Force a run right now | `systemctl --user start bdaychecker.service` |
+| Dry-run against a specific date | `python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --dry-run --date 2026-04-29` |
+| Send a one-off test email | `python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --test-email` |
+
+#### Failure handling
+
+If `bdaychecker.service` exits non-zero — bad YAML, SMTP auth failure, network down at run time, etc. — systemd's `OnFailure=` triggers `bdaychecker-failure.service`. That sibling unit writes a timestamp plus the last 30 lines of the bdaychecker journal to `~/.local/state/bdaychecker/last_failure`. The file is overwritten (not appended) on each failure, so its contents always reflect the most recent one. Full failure history lives in the journal.
+
+The shared `dot_config/zsh/zshrc` checks for that file on every interactive shell start and prints a red `bdaychecker failed:` warning if it exists. So the next time you `ssh-grips` (or open any local terminal), the failure will be in your face without you having to remember to look. The check is gated on file existence, so it's a no-op on machines where bdaychecker doesn't run — safe to keep in the shared zshrc.
+
+To resolve: read the file, fix the underlying cause (often a bad YAML edit or a revoked app password), then `rm ~/.local/state/bdaychecker/last_failure` to acknowledge.
+
+We deliberately don't email about failures because email is the failing channel.
+
+#### Rotating the Gmail app password
+
+1. Delete the current entry at https://myaccount.google.com/apppasswords.
+2. Create a new one labelled `bdaychecker`.
+3. On grips-zilla: `nano ~/.config/bdaychecker/smtp_password`, paste the new password, save. Then `chmod 600 ~/.config/bdaychecker/smtp_password` to be safe.
+4. Verify: `python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --test-email`.
 
 ---
 

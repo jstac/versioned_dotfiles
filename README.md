@@ -346,7 +346,9 @@ loginctl enable-linger $USER
 - Force a run: `systemctl --user start bdaychecker.service`
 - Test against a specific date: `python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --dry-run --date 2026-04-29`
 
-**Failure handling:** if `bdaychecker.service` exits non-zero (bad YAML, SMTP auth failure, network down at run time), systemd's `OnFailure=` triggers `bdaychecker-failure.service`, which writes a timestamp + the last 30 journal lines to `~/.local/state/bdaychecker/last_failure`. The file's *presence* is the alert — `cat` it for diagnostics, fix the cause, then `rm` it to acknowledge. Worth periodically checking `ls ~/.local/state/bdaychecker/` if you suspect something. (Email-as-alert isn't an option since email is the failing channel.)
+**Failure handling:** if `bdaychecker.service` exits non-zero (bad YAML, SMTP auth failure, network down at run time), systemd's `OnFailure=` triggers `bdaychecker-failure.service`, which writes a timestamp + the last 30 journal lines to `~/.local/state/bdaychecker/last_failure`. The file's *presence* is the alert — `cat` it for diagnostics, fix the cause, then `rm` it to acknowledge. (Email-as-alert isn't an option since email is the failing channel.)
+
+The shared `dot_config/zsh/zshrc` checks for that file on every interactive shell start and prints a red warning if it exists — so any new zsh on grips-zilla (or any local terminal) will surface the failure without having to remember to look. Snippet is gated on file existence, so it's a no-op on machines where bdaychecker doesn't run.
 
 **Revoke / rotate the app password:** delete it at https://myaccount.google.com/apppasswords and create a new one; update `~/.config/bdaychecker/smtp_password` on grips-zilla.
 

@@ -303,6 +303,49 @@ inxi -Gxx
 
 See also: https://manual.quantecon.org/tools/gpu.html#using-egpu-with-ubuntu
 
+### Birthday reminder (grips-zilla)
+
+Daily systemd user timer that emails birthday reminders (10 days ahead and on the day) to `john.stachurski@gmail.com` and `emailcleo@gmail.com`. Lives in `~/gh_synced/versioned_tools/bdaychecker/`.
+
+**Components:**
+- `bdaychecker.py` — Python 3 script (stdlib + PyYAML, no other deps). Sends via Gmail SMTP on port 465.
+- `birthdays.yaml` — hand-editable list of `name` + `date` (DD-MM). Add/remove entries here.
+- `systemd/bdaychecker.{service,timer}` — version-controlled units. Symlinked into `~/.config/systemd/user/`.
+- `~/.config/bdaychecker/smtp_password` — Gmail app password, mode 600. **Not** in git.
+
+**Fresh install on a new machine:**
+```bash
+# 1. Create the app password at https://myaccount.google.com/apppasswords
+#    (requires 2FA on the Google account). Label it "bdaychecker".
+
+# 2. Save the password (16 chars, spaces are OK — script strips them):
+mkdir -p ~/.config/bdaychecker && chmod 700 ~/.config/bdaychecker
+nano ~/.config/bdaychecker/smtp_password
+chmod 600 ~/.config/bdaychecker/smtp_password
+
+# 3. Smoke-test:
+python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --test-email
+
+# 4. Install systemd units (symlinks, so git pulls update them):
+mkdir -p ~/.config/systemd/user
+ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.service ~/.config/systemd/user/
+ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.timer   ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now bdaychecker.timer
+
+# 5. Enable lingering so the timer fires when no one is logged in:
+loginctl enable-linger $USER
+```
+
+**Day-to-day:**
+- Add/remove birthdays: edit `bdaychecker/birthdays.yaml`, commit, push. Picked up on next run.
+- Check next fire time: `systemctl --user list-timers bdaychecker.timer`
+- View past runs: `journalctl --user -u bdaychecker.service`
+- Force a run: `systemctl --user start bdaychecker.service`
+- Test against a specific date: `python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --dry-run --date 2026-04-29`
+
+**Revoke / rotate the app password:** delete it at https://myaccount.google.com/apppasswords and create a new one; update `~/.config/bdaychecker/smtp_password` on grips-zilla.
+
 ---
 
 ## Remote Development

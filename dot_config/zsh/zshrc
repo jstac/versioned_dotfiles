@@ -184,3 +184,14 @@ eval "$(starship init zsh)"
 
 # Config file is ~/.config/starship.toml
 
+
+# =========== bdaychecker failure check =========== #
+
+# bdaychecker (a systemd timer on grips-zilla — see versioned_dotfiles/README.md)
+# writes ~/.local/state/bdaychecker/last_failure when its service exits non-zero.
+# Harmless on other machines: file just won't exist.
+if [[ -e $HOME/.local/state/bdaychecker/last_failure ]]; then
+    print -P "%F{red}bdaychecker failed:%f $(head -n1 $HOME/.local/state/bdaychecker/last_failure)"
+    print -P "  cat $HOME/.local/state/bdaychecker/last_failure  %F{8}# diagnostics%f"
+    print -P "  rm  $HOME/.local/state/bdaychecker/last_failure  %F{8}# acknowledge%f"
+fi

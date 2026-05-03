@@ -311,6 +311,7 @@ Daily systemd user timer that emails birthday reminders (10 days ahead and on th
 - `bdaychecker.py` — Python 3 script (stdlib + PyYAML, no other deps). Sends via Gmail SMTP on port 465.
 - `birthdays.yaml` — hand-editable list of `name` + `date` (DD-MM). Add/remove entries here.
 - `systemd/bdaychecker.{service,timer}` — version-controlled units. Symlinked into `~/.config/systemd/user/`.
+- `systemd/bdaychecker-failure.service` — `OnFailure` hook; writes `~/.local/state/bdaychecker/last_failure` if the main service fails.
 - `~/.config/bdaychecker/smtp_password` — Gmail app password, mode 600. **Not** in git.
 
 **Fresh install on a new machine:**
@@ -328,8 +329,9 @@ python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --test-email
 
 # 4. Install systemd units (symlinks, so git pulls update them):
 mkdir -p ~/.config/systemd/user
-ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.service ~/.config/systemd/user/
-ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.timer   ~/.config/systemd/user/
+ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.service         ~/.config/systemd/user/
+ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker.timer           ~/.config/systemd/user/
+ln -sf ~/gh_synced/versioned_tools/bdaychecker/systemd/bdaychecker-failure.service ~/.config/systemd/user/
 systemctl --user daemon-reload
 systemctl --user enable --now bdaychecker.timer
 
@@ -343,6 +345,8 @@ loginctl enable-linger $USER
 - View past runs: `journalctl --user -u bdaychecker.service`
 - Force a run: `systemctl --user start bdaychecker.service`
 - Test against a specific date: `python3 ~/gh_synced/versioned_tools/bdaychecker/bdaychecker.py --dry-run --date 2026-04-29`
+
+**Failure handling:** if `bdaychecker.service` exits non-zero (bad YAML, SMTP auth failure, network down at run time), systemd's `OnFailure=` triggers `bdaychecker-failure.service`, which writes a timestamp + the last 30 journal lines to `~/.local/state/bdaychecker/last_failure`. The file's *presence* is the alert — `cat` it for diagnostics, fix the cause, then `rm` it to acknowledge. Worth periodically checking `ls ~/.local/state/bdaychecker/` if you suspect something. (Email-as-alert isn't an option since email is the failing channel.)
 
 **Revoke / rotate the app password:** delete it at https://myaccount.google.com/apppasswords and create a new one; update `~/.config/bdaychecker/smtp_password` on grips-zilla.
 

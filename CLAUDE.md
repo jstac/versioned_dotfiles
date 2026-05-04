@@ -30,6 +30,6 @@ LaTeX engine, standard preamble, and known traps live in `LATEX.md`. Apply those
 
 ## Pending / queued work
 
-- Decommission `nuc-zilla` (`100.111.86.156`) and `ssh-gpu` (`100.90.220.42`) — see `~/.claude/projects/.../memory/project_decommission_old_machines.md` for the 6-step plan.
+- Decommissioning of `nuc-zilla`, `ssh-gpu`, and `precision` is in progress / mostly complete — see `/data/archive/decommission-log.md` for the running record. Archive of nuc-zilla data lives at `/data/archive/nuc-zilla/` on grips.
 - Bitwarden CLI not yet logged in on the workstation; runtime task, do when needed.
 - Custom LaTeX `.bst` files (e.g. `ecta.bst`) not migrated to the workstation; see README's bibstyle recipe if needed.

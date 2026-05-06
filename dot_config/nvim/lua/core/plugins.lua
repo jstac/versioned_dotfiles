@@ -67,11 +67,8 @@ local plugins = {
     end,
   },
 
-  -- Fast motion plugin - jump to any visible location with minimal keystrokes
-  'folke/flash.nvim',
-
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',  -- Updated to fix vim.tbl_islist deprecation warning
+    'nvim-telescope/telescope.nvim',
       dependencies = { 'nvim-lua/plenary.nvim' }
   },
 
@@ -84,17 +81,25 @@ local plugins = {
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- LSP config
+  --
+  -- mason.nvim manages external tool installs (LSP servers, formatters, etc.).
+  -- mason-tool-installer keeps a declared list of those tools installed; it
+  -- replaces mason-lspconfig, which was a bridge to the old lspconfig setup
+  -- API and is unnecessary now that we configure servers via vim.lsp.config.
   "williamboman/mason.nvim",
   "neovim/nvim-lspconfig",
-  "williamboman/mason-lspconfig.nvim",
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+  },
 
-  -- Completion
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'L3MON4D3/LuaSnip',
-  'saadparwaiz1/cmp_luasnip',
+  -- Completion engine (async, multi-source). LuaSnip is pulled in as a dep
+  -- so blink can drive snippet expansion/jumping via its luasnip preset.
+  {
+    'saghen/blink.cmp',
+    dependencies = { 'L3MON4D3/LuaSnip' },
+    version = '1.*',
+  },
 
 
   -- colorscheme

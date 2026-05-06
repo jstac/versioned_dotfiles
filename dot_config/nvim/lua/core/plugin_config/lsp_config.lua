@@ -1,17 +1,25 @@
--- configs for mason, mason-lspconfig
+-- Mason: install/manage external LSP servers (and any other tools we add
+-- later — formatters, linters, DAP). mason-tool-installer reconciles the
+-- ensure_installed list against what's actually present on disk.
+--
+-- NOTE: names here are *mason package names* (see :Mason), not lspconfig
+-- server names. They mostly match, but a few differ — e.g. lspconfig's
+-- "lua_ls" is mason's "lua-language-server".
 require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = {"texlab", "lua_ls", "pyright"},
+require("mason-tool-installer").setup({
+  ensure_installed = { "texlab", "lua-language-server", "pyright" },
 })
 
--- Enable nvim-cmp LSP completion
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Advertise blink.cmp's completion capabilities to every server. The '*'
+-- entry merges into each server's per-name config below.
+vim.lsp.config('*', {
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+})
 
 -- Lua language server (using Neovim 0.11+ built-in API)
 vim.lsp.config.lua_ls = {
   cmd = { 'lua-language-server' },
   root_markers = { '.luarc.json', '.luarc.jsonc', '.git' },
-  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT' },
@@ -29,14 +37,12 @@ vim.lsp.config.lua_ls = {
 vim.lsp.config.texlab = {
   cmd = { 'texlab' },
   root_markers = { '.latexmkrc', '.git' },
-  capabilities = capabilities,
 }
 
 -- Python language server (using Neovim 0.11+ built-in API)
 vim.lsp.config.pyright = {
   cmd = { 'pyright-langserver', '--stdio' },
   root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
-  capabilities = capabilities,
   settings = {
     python = {
       analysis = {
@@ -54,5 +60,5 @@ vim.lsp.enable('texlab')
 vim.lsp.enable('pyright')
 
 -- NOTE: LSP keybindings are configured in lua/core/keymaps.lua
-
+-- NOTE: Completion popup is driven by blink.cmp (see plugin_config/completion.lua)
 

@@ -18,28 +18,24 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 - **toggleterm.nvim** - Terminal integration
 - **Comment.nvim** - Commenting with `gc` operator
 - **vim-tmux-navigator** - Navigation between tmux panes and vim splits
-- **flash.nvim** - Fast motion plugin (jump to any visible location with minimal keystrokes)
 
 ### LSP & Completion
 
-- **mason.nvim** - LSP server manager
-- **nvim-lspconfig** - LSP configuration
-- **mason-lspconfig.nvim** - Bridge between mason and lspconfig
-- **nvim-cmp** - Completion engine
-  - **cmp-nvim-lsp** - LSP completion source
-  - **cmp-buffer** - Buffer words completion
-  - **cmp-path** - Path completion
-- **LuaSnip** - Snippet engine
-  - **cmp_luasnip** - LuaSnip completion source
+- **mason.nvim** - LSP server / tool installer
+- **mason-tool-installer.nvim** - Declarative list of tools to keep installed (replaces mason-lspconfig now that LSPs are configured via Neovim 0.11's `vim.lsp.config`)
+- **nvim-lspconfig** - LSP configuration data
+- **blink.cmp** - Async completion engine. Sources (in order of preference): `lsp`, `snippets`, `buffer`, `path`
+- **LuaSnip** - Snippet engine, driven by blink via the `luasnip` preset; loads SnipMate-format snippets from `~/.config/nvim/snippets/`
 
 ### Syntax & Appearance
 
-- **nvim-treesitter** - Advanced syntax highlighting
+- **nvim-treesitter** - Advanced syntax highlighting (on the `main` branch; needs tree-sitter-cli ≥ 0.26.1)
 - **myst-markdown-tree-sitter.nvim** - MyST markdown support
 - **vimtex** - LaTeX support
 - **lualine.nvim** - Statusline
 - **nvim-web-devicons** - File icons
-- **everforest-nvim** - Colorscheme
+- **catppuccin** - Active colorscheme
+- **everforest-nvim** - Alternate colorscheme (installed but not active)
 
 ## Language Servers
 
@@ -97,12 +93,13 @@ Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 
 ### Completion Keybindings
 
-- **Tab** - Select next completion item / expand or jump in snippet
-- **Shift-Tab** - Select previous completion item / jump back in snippet
-- **Enter** - Confirm completion selection
-- **Ctrl-Space** - Trigger completion manually
-- **Ctrl-e** - Abort completion
-- **Ctrl-b** / **Ctrl-f** - Scroll documentation up/down
+Powered by blink.cmp. The popup uses `auto_insert = true`, so highlighting an item also previews it inline — continuing to type extends and commits the selection.
+
+- **Tab** - Highlight + preview the next item (or jump forward in a snippet, or literal Tab if neither applies)
+- **Shift-Tab** - Highlight + preview the previous item (or jump backward in a snippet)
+- **Enter** - Explicitly accept the highlighted item
+- **Ctrl-Space** - Trigger completion / toggle documentation
+- **Ctrl-e** - Hide the popup
 
 ## Key Mappings
 
@@ -138,13 +135,6 @@ Snippets are stored in `~/.config/nvim/snippets/` directory in SnipMate format.
 - `-` - Open parent directory
 - `<space>-` - Open parent directory in floating window
 
-### Flash (Fast Motion)
-
-- `s` - Jump by 2-character search (most common usage)
-- `S` - Jump by treesitter node (semantic jumping to functions, classes, etc.)
-- `r` - Remote Flash (in operator-pending mode, e.g., `d` + `r` + search to delete to distant location)
-- `R` - Treesitter search (search and select treesitter nodes in visual/operator mode)
-
 ### ToggleTerm (Terminal)
 
 - `<leader>av` - Open vertical terminal (68 columns)
@@ -174,8 +164,7 @@ nvim/
 │   ├── colorscheme.lua        # Colorscheme settings
 │   └── plugin_config/         # Plugin-specific configurations
 │       ├── init.lua           # Loads all plugin configs
-│       ├── cmp.lua            # Completion setup
-│       ├── flash.lua          # Fast motion
+│       ├── completion.lua     # blink.cmp + LuaSnip setup
 │       ├── lsp_config.lua     # LSP configuration
 │       ├── lualine.lua        # Statusline
 │       ├── oil.lua            # File explorer
@@ -183,7 +172,6 @@ nvim/
 │       ├── toggleterm.lua     # Terminal
 │       ├── treesitter.lua     # Syntax highlighting
 │       ├── vimtex.lua         # LaTeX support
-│       ├── myst-markdown.lua  # MyST markdown
 │       └── nvim-web-devicons.lua
 └── snippets/                  # Snippet files (SnipMate format)
     ├── tex.snippets

@@ -103,18 +103,13 @@ local plugins = {
 
   -- Jupyter notebooks (.ipynb) edited natively in nvim. Rust backend talks
   -- the Jupyter wire protocol directly; matplotlib plots render inline via
-  -- the kitty graphics protocol.
+  -- the kitty graphics protocol's Unicode-placeholder mode (default), which
+  -- anchors images to buffer text and works equally in plain kitty and inside
+  -- tmux (with allow-passthrough on, which our tmux.conf already sets).
   --
   -- Eager-loaded because the plugin's BufReadCmd hijack for *.ipynb needs to
   -- be registered before any :edit foo.ipynb runs — lazy-loading on
   -- ft='ipynb' is too late since the file is already read when ft is set.
-  --
-  -- Status (2026-05-10): works correctly when nvim is launched in plain
-  -- kitty. Inside tmux, the maintainer's DCS-passthrough fix (v0.2.3) gets
-  -- bytes through to kitty, but kitty falls back to direct placement
-  -- instead of honoring U=1 — so plots appear at the bottom of the screen
-  -- and persist after :qa. Tracked upstream at sheng-tse/jupynvim#5.
-  -- Workaround: edit notebooks in a kitty window outside tmux.
   {
     'sheng-tse/jupynvim',
     lazy = false,
@@ -125,7 +120,6 @@ local plugins = {
     config = function()
       require('jupynvim').setup({
         log_level = 'info',
-        image_renderer = 'kitty',
       })
     end,
   },

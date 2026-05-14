@@ -101,30 +101,6 @@ local plugins = {
     version = '1.*',
   },
 
-  -- Jupyter notebooks (.ipynb) edited natively in nvim. Rust backend talks
-  -- the Jupyter wire protocol directly; matplotlib plots render inline via
-  -- the kitty graphics protocol's Unicode-placeholder mode (default), which
-  -- anchors images to buffer text and works equally in plain kitty and inside
-  -- tmux (with allow-passthrough on, which our tmux.conf already sets).
-  --
-  -- Eager-loaded because the plugin's BufReadCmd hijack for *.ipynb needs to
-  -- be registered before any :edit foo.ipynb runs — lazy-loading on
-  -- ft='ipynb' is too late since the file is already read when ft is set.
-  {
-    'sheng-tse/jupynvim',
-    lazy = false,
-    build = function(plugin)
-      local install = loadfile(plugin.dir .. '/lua/jupynvim/install.lua')()
-      install.run(plugin)
-    end,
-    config = function()
-      require('jupynvim').setup({
-        log_level = 'info',
-      })
-    end,
-  },
-
-
   -- colorscheme
   {
     "neanias/everforest-nvim",

@@ -21,7 +21,8 @@ local options = {
     foldmethod = "indent",
     foldlevel = 99,                 -- tell nvim not to initial folds
     formatoptions = "tqn",
-    completeopt = {"menu", "menuone", "noselect"} -- Enable built-in completion menu (replaces supertab)
+    completeopt = {"menu", "menuone", "noselect"}, -- Enable built-in completion menu (replaces supertab)
+    conceallevel = 0,               -- show markdown link punctuation etc. literally
 }
 
 for k, v in pairs(options) do

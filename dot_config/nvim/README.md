@@ -34,8 +34,8 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 - **vimtex** - LaTeX support
 - **lualine.nvim** - Statusline
 - **nvim-web-devicons** - File icons
-- **catppuccin** - Active colorscheme
-- **everforest-nvim** - Alternate colorscheme (installed but not active)
+- **catppuccin** - colorscheme
+- **everforest-nvim** - colorscheme 
 
 ## Language Servers
 

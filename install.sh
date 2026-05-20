@@ -314,7 +314,8 @@ setup_dotfile_symlinks() {
     ln -sf "$DOTFILES_DIR/dot_config/nvim" .
     ln -sf "$DOTFILES_DIR/dot_config/yazi" .
     ln -sf "$DOTFILES_DIR/dot_config/zathura" .
-    ln -sf "$DOTFILES_DIR/dot_config/tmux/tmux.conf" .
+    mkdir -p tmux
+    ln -sf "$DOTFILES_DIR/dot_config/tmux/tmux.conf" tmux/tmux.conf
     cd - > /dev/null
 
     log_success "Dotfile symlinks created"

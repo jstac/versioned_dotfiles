@@ -495,6 +495,8 @@ Access: `http://<PUBLIC-IP>:8000`
 
 One kitty terminal + [`tmux-expose`](https://github.com/cesarferreira/tmux.expose) replaces the old "one tmux session per Ubuntu workspace, swap workspaces to switch" pattern. tmux sessions live in the tmux server independently of any terminal — `Alt+e` opens a Mission-Control-style grid of live thumbnails to jump between them.
 
+**Personal flow:** sessions-only. Switch with `Alt+e`. Split into panes (`prefix " / %`) inside a session when useful. Skip windows entirely — the three-layer session/window/pane model is more friction than it's worth here.
+
 ### Install
 
 ```bash

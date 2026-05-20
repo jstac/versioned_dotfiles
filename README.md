@@ -491,6 +491,66 @@ Access: `http://<PUBLIC-IP>:8000`
 
 ---
 
+## tmux Workflow
+
+One kitty terminal + [`tmux-expose`](https://github.com/cesarferreira/tmux.expose) replaces the old "one tmux session per Ubuntu workspace, swap workspaces to switch" pattern. tmux sessions live in the tmux server independently of any terminal — `Alt+e` opens a Mission-Control-style grid of live thumbnails to jump between them.
+
+### Install
+
+```bash
+cargo install tmux-expose
+```
+
+The `Alt+e` binding is already in `dot_config/tmux/tmux.conf`. To pick it up in an already-running tmux server:
+
+```bash
+tmux source-file ~/.config/tmux/tmux.conf
+```
+
+### Daily use
+
+| Key | Action |
+|---|---|
+| `Alt+e` | Open the session grid |
+| `←↑↓→` / `hjkl` | Move selection |
+| `/` | Fuzzy search by session name |
+| `Enter` | Switch to selected session |
+| `q` / `Esc` / `Ctrl-C` | Close without switching |
+
+Mouse click on a thumbnail also switches.
+
+### Managing sessions
+
+```bash
+# Create a new session from a plain shell
+tmux new -s notes
+
+# Create one in the background without leaving the current session
+tmux new-session -d -s notes
+
+# Detach (keeps running on the server) — from inside tmux:
+#   C-Space d
+
+# Re-attach
+tmux attach            # most recent
+tmux attach -t notes   # by name
+
+# Rename
+tmux rename-session -t 1 dotfiles   # or, inside tmux: C-Space $
+```
+
+Sessions persist across kitty closes; only `tmux kill-server` or a reboot ends them.
+
+### Tweaking the popup
+
+Edit the binding in `dot_config/tmux/tmux.conf`. Useful flags:
+
+- `--columns 2` — fixed two-column grid (bigger thumbnails)
+- `--thumbnail-width 48` — larger previews, auto-fit columns
+- `-w 80% -h 80%` on `display-popup` — leave the underlying pane visible around the popup
+
+---
+
 ## CLI Tools Reference
 
 **Navigation:**

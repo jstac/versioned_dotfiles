@@ -263,6 +263,49 @@ Note: Manual .deb installations don't auto-update.
 Install bitwarden Firefox extension if necessary
 
 
+### Yomitan (Japanese dictionary popup)
+
+Firefox extension for hover-lookup of Japanese on any page. The extension ships empty — dictionaries are imported as `.zip` archives.
+
+**Extension:** https://addons.mozilla.org/en-US/firefox/addon/yomitan/
+
+**Source dictionaries:** MarvNC's curated collection at https://github.com/MarvNC/yomitan-dictionaries documents what to install; the `.zip` archives live in a Google Drive folder.
+
+The cleanest path is the pre-bundled **Japanese Dictionaries Starter Pack** subfolder — 18 files numbered `01`–`18` in import-priority order, covering the README's recommended set (jitendex, 新和英, JMnedict, dojg grammar, JA-JA monolingual incl. 大辞泉 and 小学館例解学習, KANJIDIC, JPDB Kanji, NHK2016 pitch, several frequency dicts):
+
+```
+https://drive.google.com/drive/folders/16frMMOiqCtO-1cscRdjxuO5gUn_GmqVe
+```
+
+Open in Firefox, Ctrl+A → right-click → **Download** — Drive packages it as a single `.zip`. Unzip into a staging dir.
+
+**Don't use `gdown --folder`** for this collection — Drive's per-file rate limit on popular dicts trips it reliably, and gdown 6.0.0 has no skip-on-error mode (one failure kills the whole folder traversal). Browser download uses a different code path and works.
+
+Optional extras from the main folder (https://drive.google.com/drive/folders/1LXMIOoaWASIntlx1w08njNU005lS5lez) worth grabbing one-by-one:
+
+| Dict | Why |
+|---|---|
+| `[JA-EN Grammar] Bunpro` | Grammar explanations, different style from dojg |
+| `[JA-EN Grammar] どんなときどう使う` | JLPT-style pattern dict with example sentences |
+| `[JA-EN Onomatopoeia] Onomatoproject` | Mainline dicts cover onomatopoeia poorly |
+| `[JA-EN] Living Japanese Slang` | Modern slang for manga / casual web JP |
+| `[JA Freq] Novels`, `Wikipedia v2`, `YoutubeFreqV3` | Extra frequency signals — no popup clutter, just better ranking |
+
+**Import in Yomitan:**
+
+1. Toolbar icon → cog → **Settings** → **Dictionaries** → **Configure installed and enabled dictionaries…** → **Import**.
+2. Navigate to the staging dir, Ctrl+A to multi-select, Open.
+3. Yomitan imports serially. ~5–10 min for the starter pack; 大辞泉 第二版 (~380 MB) is the slowest single file. Don't close the tab during import.
+4. Enable each dict and verify priority matches the `01`–`18` numbering.
+5. Staging dir can be deleted afterwards — parsed data lives in the Firefox profile's IndexedDB.
+
+**Polish (optional):**
+
+- Auto-sort: copy https://raw.githubusercontent.com/MarvNC/yomichan-dictionaries/master/sort-dictionaries.js, open DevTools (F12) on the Yomitan settings tab, paste in the console, press Enter.
+- Per-dictionary color coding: paste the CSS from https://github.com/themoeway/yomichan-dict-css into Yomitan **Appearance → Custom CSS**.
+- Audio: **Settings → Audio**, enable JapanesePod101, Jisho, Wiktionary.
+
+
 ### Tailscale
 
 ```bash

@@ -645,6 +645,35 @@ source ~/.config/zsh/.zshrc
 git config --global credential.helper "cache --timeout=8640000"
 ```
 
+### Bluetooth keyboard pairing (Logitech MX Keys)
+
+The MX Keys has Bluetooth built in — no USB dongle needed. Each Easy-Switch channel (1/2/3) advertises a different BLE address (last byte increments: `...42`, `...43`, `...44`).
+
+```bash
+# 1. Long-press an Easy-Switch key (1/2/3) for ~3 seconds until its LED blinks fast
+
+# 2. Scan and find the address
+bluetoothctl scan on
+# Wait for "MX Keys" to appear, note the address (e.g. C1:C1:C2:E0:AB:43)
+bluetoothctl scan off
+
+# 3. Pair — this MUST be interactive (non-interactive shells can't handle the passkey prompt)
+bluetoothctl
+  agent DisplayOnly
+  default-agent
+  pair <ADDRESS>
+  # A 6-digit passkey appears — type it on the MX Keys and press Enter immediately
+  trust <ADDRESS>
+  connect <ADDRESS>
+  exit
+```
+
+**Gotchas:**
+- If pairing fails with `AuthenticationFailed` without showing a passkey, the agent capability is wrong. Run `agent off` then `agent DisplayOnly` before retrying.
+- If the device shows "not available", it left pairing mode — long-press the Easy-Switch key again.
+- If you previously paired on a different channel, `remove <OLD_ADDRESS>` first to avoid stale state.
+- The address changes per channel, so if you switch from channel 1 to 2, scan again for the new address.
+
 ### `cargo install tree-sitter-cli` fails with `'stdbool.h' file not found`
 
 The `rquickjs-sys` build (a transitive dep of recent tree-sitter-cli) uses bindgen, which needs a full clang toolchain to find C standard headers. The apt list in `install.sh` now installs `clang` and `libclang-dev` to prevent this. If you hit it on an existing system:

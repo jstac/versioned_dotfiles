@@ -158,8 +158,11 @@ alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='bw lock && unset BW_SESSION'
 alias bwpass='bw get password'
 alias bwgh='bw get password "GHO" | xclip -selection clipboard'
+# laptop screen brightness (xrandr software gamma, safe in mirror mode)
+alias dim='xrandr --output eDP-1 --brightness 0.15'
+alias bright='xrandr --output eDP-1 --brightness 1.0'
 
-# == conda initialize (for setting up environments) == # 
+# == conda initialize (for setting up environments) == #
 
 __conda_setup="$('/home/john/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then

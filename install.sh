@@ -178,6 +178,34 @@ install_bitwarden_cli() {
 }
 
 # ============================================================================
+# Phase 5b: Prefer IPv4 in getaddrinfo (Tailscale / no-public-IPv6 workaround)
+# ============================================================================
+
+configure_ipv4_preference() {
+    log_info "Phase 5b: Configuring IPv4 address-selection preference"
+
+    # Tailscale assigns a global-scope IPv6 address (fd7a:115c:a1e0::/48) on
+    # tailscale0 even when it's only used for SSH. With no public IPv6 route,
+    # RFC 6724 still makes the kernel prefer IPv6 for any AAAA-publishing site,
+    # so non-Happy-Eyeballs clients (e.g. bw's bundled node-fetch) try a dead
+    # IPv6 path and fail. Preferring IPv4 in /etc/gai.conf fixes it system-wide
+    # and is harmless to Tailscale (nodes are reached via 100.x IPv4). See the
+    # "Bitwarden CLI / CLI tools fail to connect" entry in README Troubleshooting.
+    local gai=/etc/gai.conf
+    local line='precedence ::ffff:0:0/96  100'
+
+    if grep -qE '^[[:space:]]*precedence[[:space:]]+::ffff:0:0/96[[:space:]]+100' "$gai" 2>/dev/null; then
+        log_success "IPv4 preference already set in $gai"
+        return
+    fi
+
+    if prompt_sudo "Append IPv4-preference line to $gai"; then
+        echo "$line" | sudo tee -a "$gai" >/dev/null
+        log_success "IPv4 preference added to $gai"
+    fi
+}
+
+# ============================================================================
 # Phase 6: Nerd Fonts Installation
 # ============================================================================
 
@@ -476,6 +504,7 @@ main() {
     build_yazi
     install_starship
     install_bitwarden_cli
+    configure_ipv4_preference
     install_nerd_fonts
     register_texlive_fonts
     configure_git

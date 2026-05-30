@@ -701,6 +701,24 @@ sudo chown $USER:$USER /data
 
 **Always verify `findmnt /` shows the OS disk (`nvme...`) before running `wipefs` or `sgdisk` on a different device.**
 
+### Bitwarden CLI (or other CLI tools) fail to connect — `FetchError` / connect timeouts
+
+**Symptom:** `bw login` / `bw sync` fail with `FetchError: request to https://... failed, reason:` (empty reason), or some CLI tool hangs ~1–2s before each connection. Browsers, `git`, `ssh`, and `curl` all work fine.
+
+**Cause:** Tailscale assigns this machine a *global-scope* IPv6 address (`fd7a:115c:a1e0::/48`) on `tailscale0`, even when Tailscale is only used for SSH. There is **no public IPv6 route** here, but the presence of that global IPv6 address makes Linux's RFC 6724 address selection prefer IPv6 for any site that publishes an AAAA record. Clients with Happy Eyeballs (browsers, `git`, `curl`, Node's built-in `fetch`) race v4/v6 and fall back instantly; clients without it (e.g. `bw`'s bundled `node-fetch`) try the dead IPv6 path and fail.
+
+**Diagnosis:** `ip -6 route show default` is empty, the only global IPv6 address is the `fd7a:` Tailscale one, and `curl -6 <host>` fails while `curl -4 <host>` succeeds.
+
+**Fix (system-wide, applied by `install.sh` Phase 5b):** prefer IPv4 in `getaddrinfo`. Harmless to Tailscale — tailnet nodes are reached via their `100.x` IPv4 addresses anyway.
+
+```bash
+# idempotent; takes effect immediately for new processes, no reboot
+grep -qE '^[[:space:]]*precedence[[:space:]]+::ffff:0:0/96[[:space:]]+100' /etc/gai.conf \
+  || echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
+```
+
+A narrower per-tool alternative (no system change) is to force IPv4 DNS for just the offending command via `NODE_OPTIONS=--dns-result-order=ipv4first`; the `bw()` wrapper in `dot_config/zsh/zshrc` does exactly this so Bitwarden works even on a machine without the `gai.conf` change.
+
 ---
 
 ## Repository Structure

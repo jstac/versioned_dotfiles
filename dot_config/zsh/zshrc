@@ -154,10 +154,44 @@ alias ssh-precision='ssh 100.111.103.110'
 alias ssh-xps='ssh 100.110.168.124'
 alias ssh-grips='ssh 100.91.249.128'
 # bitwarden
+# bw's bundled node-fetch has no IPv6->IPv4 fallback, and Tailscale gives this
+# box a global-scope IPv6 with no public IPv6 route, so getaddrinfo prefers a
+# dead IPv6 address -> FetchError. Force IPv4 resolution for every bw call.
+bw() {
+    # auto-fill the email on `bw login` so it never prompts for it
+    if [[ "$1" == login && ( -z "$2" || "$2" == -* ) ]]; then
+        shift; set -- login john.stachurski@gmail.com "$@"
+    fi
+    NODE_OPTIONS="--dns-result-order=ipv4first ${NODE_OPTIONS}" NODE_NO_WARNINGS=1 command bw "$@"
+}
 alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='bw lock && unset BW_SESSION'
 alias bwpass='bw get password'
 alias bwgh='bw get password "GHO" | xclip -selection clipboard'
+# bs foo: case-insensitive substring match on login name; prints user+pass of
+# every match and copies the *last* match's password to the clipboard.
+bs() {
+    local sess q=${1:l} items
+    # get to an unlocked session: log in if needed, else unlock if needed
+    case "$(bw status 2>/dev/null | jq -r '.status')" in
+        unlocked) ;;                                        # session already valid
+        locked)   sess=$(bw unlock --raw) || return 1 ;;    # logged in, just unlock
+        *)        sess=$(bw login  --raw) || return 1 ;;    # not logged in (email auto-filled)
+    esac
+    [[ -n "$sess" ]] && export BW_SESSION=$sess
+    items=$(bw list items --session "$BW_SESSION" | jq -c --arg q "$q" \
+        '[ .[] | select(.login) | select(.name | ascii_downcase | contains($q)) ]') || return 1
+    if [[ -z "$items" || "$items" == "[]" ]]; then
+        print -P "%F{red}no login matching '$1'%f"; return 1
+    fi
+    print -r -- "$items" | jq -r '.[] | (.notes // "") as $n |
+        "\(.name)\n  user: \(.login.username)\n  pass: \(.login.password)"
+        + (if ($n|length) > 0 then "\n  notes: " + ($n | gsub("\n"; "\n         ")) else "" end)
+        + "\n"'
+    print -r -- "$items" | jq -r 'last | .login.password // empty' \
+        | tr -d '\n' | xclip -selection clipboard
+    print -P "%F{8}password of last match copied to clipboard%f"
+}
 # laptop screen brightness (xrandr software gamma, safe in mirror mode)
 alias dim='xrandr --output eDP-1 --brightness 0.15'
 alias bright='xrandr --output eDP-1 --brightness 1.0'

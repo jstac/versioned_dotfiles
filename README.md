@@ -586,6 +586,23 @@ tmux rename-session -t 1 dotfiles   # or, inside tmux: C-Space $
 
 Sessions persist across kitty closes; only `tmux kill-server` or a reboot ends them.
 
+### Closing sessions
+
+tmux-expose has **no kill binding** — it only switches between sessions. Close them with tmux itself:
+
+```bash
+# From inside the session you want gone:
+tmux kill-session            # (or just `exit` out of all its panes)
+
+# By name, from any session (Tab-completes names):
+tmux kill-session -t notes
+
+# Kill every session except the one you're in:
+tmux kill-session -a
+```
+
+The config sets **`set -g detach-on-destroy off`**. Without it, killing the session you're attached to detaches the client to a bare kitty shell — where `Alt+e` (a tmux binding) is dead and you can't get back to the surviving sessions. With it off, tmux switches you to another live session instead, so `Alt+e` keeps working. The client only detaches to the shell when you kill the *last* remaining session.
+
 ### Tweaking the popup
 
 Edit the binding in `dot_config/tmux/tmux.conf`. Useful flags:

@@ -691,6 +691,36 @@ bluetoothctl
 - If you previously paired on a different channel, `remove <OLD_ADDRESS>` first to avoid stale state.
 - The address changes per channel, so if you switch from channel 1 to 2, scan again for the new address.
 
+### Network printer (HP LaserJet M209dw) silent Wi-Fi drop / CUPS queue disabled
+
+**Symptom:** `lpstat -p` shows no destinations, or shows the queue as `disabled, reason unknown`. HP Smart says "Not Connected" and `http://192.168.0.210` times out — but the printer's own display shows Wi-Fi connected with a solid blue light.
+
+**Cause:** The printer's Wi-Fi stack silently dropped the connection without updating its on-device display. The next failed print job then trips CUPS into marking the auto-discovered queue `disabled` so it stops retrying.
+
+**Fix:**
+
+1. Power-cycle the **printer** (not the router): hold power off, unplug 10s, plug back. Watch for it to rejoin:
+   ```bash
+   ip neigh flush 192.168.0.210
+   until ping -c1 -W2 192.168.0.210 >/dev/null 2>&1; do sleep 5; done; echo back
+   ```
+2. Re-enable the CUPS queue (it survives reboots; `cups-browsed` reuses the same name across drops because it's keyed on the printer's mDNS service id):
+   ```bash
+   cupsenable HP_LaserJet_M209dw_AB6081
+   ```
+3. If after ~60s the printer is still off the LAN (ARP `FAILED`, ping fails), power-cycle the **router** too. Observed once in May 2026 in a "joined SSID but all TCP filtered" state where a router reboot was the only thing that cleared it.
+
+**Configuring the printer via its web interface (EWS):**
+
+Open `http://192.168.0.210` in any browser on the household Wi-Fi. Login is `admin` / password stored in `~/gh_synced/household/printer/README.md`. Useful pages:
+
+- *Tools → Printer Updates* — firmware update (often fixes Wi-Fi keepalive bugs; first thing to try if the drop recurs)
+- *Network → Wireless* — Wi-Fi credentials, fixed channel (try 1, 6, or 11 on 2.4 GHz instead of auto if drops are frequent)
+- *Network → Wi-Fi Direct* — left enabled deliberately so HP Smart can recover the printer via the `DIRECT-78-HP M209 LaserJet` SSID if it ever loses the main Wi-Fi entirely
+- *Supplies* — toner level
+
+Device-level details (MAC, DHCP reservation, EWS password, recovery via HP Smart) live in `~/gh_synced/household/printer/README.md`.
+
 ### `cargo install tree-sitter-cli` fails with `'stdbool.h' file not found`
 
 The `rquickjs-sys` build (a transitive dep of recent tree-sitter-cli) uses bindgen, which needs a full clang toolchain to find C standard headers. The apt list in `install.sh` now installs `clang` and `libclang-dev` to prevent this. If you hit it on an existing system:

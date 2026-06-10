@@ -492,6 +492,74 @@ jupyter notebook --no-browser --port=8080
 
 ---
 
+## Backups
+
+### Photo / data archive (nuc-zilla legacy archive)
+
+The old `nuc-zilla` machine's data was consolidated into a single archive when it
+was decommissioned. That archive now lives on two machines:
+
+| Host | Role | Path |
+|------|------|------|
+| `grips-zilla` (workstation) | **master / source of truth** | `/data/archive/nuc-zilla/` |
+| `xps` (laptop) | **backup copy** | `~/archive/nuc-zilla/` |
+
+`grips-zilla` holds the master (it has the 4 TB `/data` HDD). The laptop keeps a
+backup, but it's sometimes convenient to *add* new content on the laptop first
+(e.g. dropping a folder of old photos into `~/archive/nuc-zilla/pics/`), so syncs
+run in **both directions**.
+
+> [!WARNING]
+> `rsync --delete` is **not** two-way sync — it makes the destination match the
+> source exactly, deleting anything on the destination that isn't on the source.
+> The laptop is often a *partial* backup (it can lack folders the master has), so
+> a laptop→grips push with `--delete` would wipe those folders off the master.
+> **Discipline:** only ever use `--delete` in the canonical **grips→laptop**
+> direction. The laptop→grips "promote" direction is **additive (no `--delete`)**.
+> Always `--dry-run` first, whichever way you go.
+
+Connectivity is over Tailscale: `grips-zilla` is `ssh-grips` → `100.91.249.128`.
+
+**Promote new local content up to the master (laptop → grips, additive):**
+```bash
+# ON LAPTOP (xps)
+# 1. Preview (fast: size+mtime). Confirm it only ADDS your new files, 0 deletions.
+rsync -avh -e ssh --dry-run --stats \
+  ~/archive/nuc-zilla/ \
+  john@100.91.249.128:/data/archive/nuc-zilla/
+
+# 2. Run for real (drop --dry-run). NO --delete on this direction.
+rsync -avh -e ssh \
+  ~/archive/nuc-zilla/ \
+  john@100.91.249.128:/data/archive/nuc-zilla/
+```
+
+**Refresh the laptop backup from the master (grips → laptop, exact mirror):**
+```bash
+# ON LAPTOP (xps)
+# Dry-run FIRST and read the "deleted files" list before committing to --delete.
+rsync -avh -e ssh --dry-run --delete \
+  john@100.91.249.128:/data/archive/nuc-zilla/ \
+  ~/archive/nuc-zilla/
+
+# Then run for real (drop --dry-run) once you're happy with the preview.
+rsync -avh -e ssh --delete \
+  john@100.91.249.128:/data/archive/nuc-zilla/ \
+  ~/archive/nuc-zilla/
+```
+
+Notes:
+- **Trailing slashes matter** — `archive/nuc-zilla/` → `archive/nuc-zilla/` copies
+  *contents into* the destination dir. Keep them consistent on both sides.
+- Add `-c` (checksum) for a full integrity comparison instead of size+mtime — but
+  it re-reads the entire archive (~50 GB) on both ends, so it's slow. Reserve it
+  for periodic integrity checks, not routine syncs.
+- This replaces the retired `~/rsync_dir` sync scripts (legacy
+  `synchronize.py`/`pushsync.py`/etc. in `versioned_tools/older_scripts/`, which
+  targeted the now-decommissioned `nuc-zilla` as server). Do not use those.
+
+---
+
 ## AWS EC2 Setup
 
 ### Launch Instance

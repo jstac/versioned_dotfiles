@@ -12,6 +12,17 @@
 -- popup is not preselected (preselect = false), so it stays out of your way
 -- until you actually press Tab.
 
+-- LuaSnip cleanup events. Without these, every expanded snippet leaves a
+-- live "region" behind (tracked by extmarks) that is never reclaimed; over a
+-- long editing session they accumulate and Neovim must shift them on every
+-- edit, so each keystroke gets progressively slower until you restart. These
+-- two events retire a snippet session as soon as you leave or delete it.
+require('luasnip').setup({
+  history = true,
+  region_check_events = 'CursorMoved,InsertLeave',
+  delete_check_events  = 'TextChanged,InsertLeave',
+})
+
 require('luasnip.loaders.from_snipmate').load({
   paths = vim.fn.stdpath('config') .. '/snippets',
 })

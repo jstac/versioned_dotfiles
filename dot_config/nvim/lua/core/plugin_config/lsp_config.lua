@@ -1,3 +1,27 @@
+-- WORKAROUND for a Neovim core memory leak (traced 2026-06-11).
+--
+-- vim/diagnostic/_store.lua:once_buf_loaded() registers a fresh, ungrouped
+-- BufRead autocmd EVERY time diagnostics are set for an *unloaded* buffer, with
+-- no dedup. Project-wide LSPs republish diagnostics for many unloaded files on
+-- every edit — texlab over a multi-file paper (the opt_at_point project has 27
+-- .tex files), and pyright with diagnosticMode='workspace'. Those closures pile
+-- up in the Lua registry and never free, leaking ~10GB over a long session
+-- until nvim exhausts RAM and the whole machine thrashes swap.
+--
+-- We never display diagnostics for buffers that aren't loaded, so just drop
+-- them before they reach the leaking path. Diagnostics for files you actually
+-- open still work (the server republishes on didOpen once the buffer loads).
+-- Remove this once the upstream bug is fixed and we rebuild nvim.
+do
+  local orig_set = vim.diagnostic.set
+  vim.diagnostic.set = function(namespace, bufnr, diagnostics, opts)
+    if type(bufnr) == 'number' and bufnr > 0 and not vim.api.nvim_buf_is_loaded(bufnr) then
+      return
+    end
+    return orig_set(namespace, bufnr, diagnostics, opts)
+  end
+end
+
 -- Mason: install/manage external LSP servers (and any other tools we add
 -- later — formatters, linters, DAP). mason-tool-installer reconciles the
 -- ensure_installed list against what's actually present on disk.
